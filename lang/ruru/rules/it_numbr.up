@@ -529,6 +529,17 @@ rule pol_insert_l_10 takes 2 from glob.obj
   raw popn 5
   raw return reg r0
 end
+rule pol_insert_l_11 takes 2 from glob.obj
+  bare
+  raw push imm 0
+  raw push param 1
+  raw push imm 11
+  raw push imm 1
+  raw push param 0
+  raw call insert_l arity 5 depth 5
+  raw popn 5
+  raw return reg r0
+end
 
 # Two characters, for the places where Italian says a word Polish does
 # not: a million is milion and not jeden milion.

@@ -123,14 +123,14 @@ bytes pol_num_1      04 0d 03 15 48 # один, 1 space after it, 5 characters
 bytes pol_num_100    19 1a 04 # сто, 3 characters
 bytes pol_num_100j   c7 19 04 1a # сот, the joined hundreds after two to nine, пятьсот, 4 characters
 bytes pol_num_1000   1a 1e 19 cf d0 01 # тысяча, 6 characters
-bytes pol_num_1000j  c7 48 1a 1e 19 cf d0 03 48 # тысячи, a space and тысячи, for two thousand and up, 1 space after it, 9 characters
+bytes pol_num_1000j  c7 48 1a 1e 19 cf d0 48 # a space and тысяч, 1 space after it, 9 characters: right after five to twenty, the tens and the hundreds, and wrong only after a group of more than one digit that ends in 1 to 4, 22 000; a group of one digit asks for 2, 3 and 4 itself
 
 # The millions and the billions, and the and between them that Polish
 # does not say.
 bytes pol_num_mln    c7 48 14 03 13 03 04 15 # милион, a space and миллион, its лл said as one, 8 characters
-bytes pol_num_mlns   c7 48 14 03 13 03 04 15 01 # милиона, миллиона, right for two to four, 9 characters
+bytes pol_num_mlns   c7 48 14 03 13 03 04 15 04 1b # a space and миллионов, its лл said as one, 10 characters: right after five and up, as тысяч is, and a group of one digit asks for 2, 3 and 4 itself
 bytes pol_num_mld    c7 48 14 03 13 03 01 18 0d # милиард, миллиард, its лл said as one, 9 characters
-bytes pol_num_mlds   c7 48 14 03 13 03 01 18 0d 01 # милиарда, миллиарда, two to four again, 10 characters
+bytes pol_num_mlds   c7 48 14 03 13 03 01 18 0d 04 1b # a space and миллиардов, 11 characters: right after five and up, and wrong after two to four, which only the millions ask for yet
 bytes pol_num_and      c7 48                              # where Italian says e, 2 characters
 
 # The phone ą lays down, which is a code of its own rather than a retaken one:
@@ -262,3 +262,16 @@ bytes ru_ch_4       39                  # the digit 4
 bytes ru_num_200   0d 1b 02 19 1a 03            # двести, 6 characters
 bytes ru_num_300   1a 18 03 19 1a 01            # триста, 6 characters
 bytes ru_num_400   d0 02 1a 1e 18 02 19 1a 01   # четыреста, 9 characters
+
+# Two, three and four thousand, which a group of one digit says whole rather
+# than as the digit and тысяч: convert_ital_thousands asks for each before it
+# says the digit.
+bytes ru_num_2000  0d 1b 02 48 1a 1e 19 cf d0 03 # две тысячи, 10 characters
+bytes ru_num_3000  1a 18 03 48 1a 1e 19 cf d0 03 # три тысячи, 10 characters
+bytes ru_num_4000  d0 02 1a 1e 18 02 48 1a 1e 19 cf d0 03 # четыре тысячи, 13 characters
+
+# Two, three and four million, said whole by a group of one digit, as the
+# thousands are.
+bytes ru_num_2mln  0d 1b 01 48 14 03 13 03 04 15 01 # два миллиона, 11 characters
+bytes ru_num_3mln  1a 18 03 48 14 03 13 03 04 15 01 # три миллиона, 11 characters
+bytes ru_num_4mln  d0 02 1a 1e 18 02 48 14 03 13 03 04 15 01 # четыре миллиона, 14 characters

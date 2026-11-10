@@ -6998,6 +6998,76 @@ label L11 was $X8$92015
   call bspop_boa arity 1 depth 1
   push reg r6
   call ZZstarttest9 arity 1 depth 2
+  load movl slotaddr 88 into r0
+  push slotaddr 88
+  push reg r6
+  call ZZlpta_load__setscan_r__1 arity 2 depth 4
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L913
+  push sym ru_ch_2
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 6
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L911
+  push sym ru_num_2000
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  load movl slotaddr 88 into r0
+  push slotaddr 88
+  push reg r6
+  call pol_insert_10 arity 4 depth 6
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L911
+  popn 2
+  jump to L14
+label L911 was ru_thousands_2
+  push sym ru_ch_3
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 6
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L912
+  push sym ru_num_3000
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  load movl slotaddr 88 into r0
+  push slotaddr 88
+  push reg r6
+  call pol_insert_10 arity 4 depth 6
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L912
+  popn 2
+  jump to L14
+label L912 was ru_thousands_3
+  push sym ru_ch_4
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 6
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L913
+  push sym ru_num_4000
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  load movl slotaddr 88 into r0
+  push slotaddr 88
+  push reg r6
+  call pol_insert_13 arity 4 depth 6
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L913
+  popn 2
+  jump to L14
+label L913 was ru_thousands_4
   load movl slotaddr 100 into r0
   push slotaddr 100
   load movl slotaddr 88 into r0
@@ -7404,7 +7474,7 @@ label L26 was $X20$92148
   call rpta_loadp arity 2 depth 3
   push sym pol_num_mlns
   push reg r6
-  call pol_insert_l_9 arity 2 depth 5
+  call pol_insert_l_10 arity 2 depth 5
   popn 5
   jump to L6
 label L27 was at_0x32e
@@ -7420,6 +7490,76 @@ label L27 was at_0x32e
 label L28 was $X9$92118
   push reg r6
   call ZZstarttest6 arity 1 depth 1
+  load movl slotaddr -20 into r0
+  push slotaddr -20
+  push reg r6
+  call ZZlpta_load__setscan_r__1 arity 2 depth 3
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L923
+  push sym ru_ch_2
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 5
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L921
+  push sym ru_num_2mln
+  load movl slotaddr -8 into r0
+  push slotaddr -8
+  load movl slotaddr -20 into r0
+  push slotaddr -20
+  push reg r6
+  call pol_insert_11 arity 4 depth 5
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L921
+  popn 1
+  jump to L6
+label L921 was ru_millions_2
+  push sym ru_ch_3
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 5
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L922
+  push sym ru_num_3mln
+  load movl slotaddr -8 into r0
+  push slotaddr -8
+  load movl slotaddr -20 into r0
+  push slotaddr -20
+  push reg r6
+  call pol_insert_11 arity 4 depth 5
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L922
+  popn 1
+  jump to L6
+label L922 was ru_millions_3
+  push sym ru_ch_4
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 5
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L923
+  push sym ru_num_4mln
+  load movl slotaddr -8 into r0
+  push slotaddr -8
+  load movl slotaddr -20 into r0
+  push slotaddr -20
+  push reg r6
+  call pol_insert_14 arity 4 depth 5
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L923
+  popn 1
+  jump to L6
+label L923 was ru_millions_4
   load movl slotaddr -8 into r0
   push slotaddr -8
   load movl slotaddr -20 into r0
@@ -7769,7 +7909,7 @@ label L29 was $X19$92274
   call rpta_loadp arity 2 depth 2
   push sym pol_num_mlds
   push reg r6
-  call pol_insert_l_10 arity 2 depth 4
+  call pol_insert_l_11 arity 2 depth 4
   popn 4
   jump to L7
 label L30 was at_0x327

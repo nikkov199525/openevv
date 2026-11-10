@@ -163,359 +163,371 @@ uint8_t ruru_evv_authored_data[] = {
     199,25,4,26,
     /* pol_num_1000, 6 bytes at 352 */
     26,30,25,207,208,1,
-    /* pol_num_1000j, 9 bytes at 358 */
-    199,72,26,30,25,207,208,3,72,
-    /* pol_num_mln, 8 bytes at 367 */
+    /* pol_num_1000j, 8 bytes at 358 */
+    199,72,26,30,25,207,208,72,
+    /* pol_num_mln, 8 bytes at 366 */
     199,72,20,3,19,3,4,21,
-    /* pol_num_mlns, 9 bytes at 375 */
-    199,72,20,3,19,3,4,21,1,
+    /* pol_num_mlns, 10 bytes at 374 */
+    199,72,20,3,19,3,4,21,4,27,
     /* pol_num_mld, 9 bytes at 384 */
     199,72,20,3,19,3,1,24,13,
-    /* pol_num_mlds, 10 bytes at 393 */
-    199,72,20,3,19,3,1,24,13,1,
-    /* pol_num_and, 2 bytes at 403 */
+    /* pol_num_mlds, 11 bytes at 393 */
+    199,72,20,3,19,3,1,24,13,4,27,
+    /* pol_num_and, 2 bytes at 404 */
     199,72,
-    /* pol_ph_aogonek, 1 bytes at 405 */
+    /* pol_ph_aogonek, 1 bytes at 406 */
     35,
-    /* pol_letter_p, 1 bytes at 406 */
+    /* pol_letter_p, 1 bytes at 407 */
     22,
-    /* pol_letter_t, 1 bytes at 407 */
+    /* pol_letter_t, 1 bytes at 408 */
     26,
-    /* pol_letter_k, 1 bytes at 408 */
+    /* pol_letter_k, 1 bytes at 409 */
     18,
-    /* pol_letter_f, 1 bytes at 409 */
+    /* pol_letter_f, 1 bytes at 410 */
     14,
-    /* pol_letter_s, 1 bytes at 410 */
+    /* pol_letter_s, 1 bytes at 411 */
     25,
-    /* pol_letter_c, 1 bytes at 411 */
+    /* pol_letter_c, 1 bytes at 412 */
     12,
-    /* pol_letter_h, 1 bytes at 412 */
+    /* pol_letter_h, 1 bytes at 413 */
     16,
-    /* pol_ph_x, 1 bytes at 413 */
+    /* pol_ph_x, 1 bytes at 414 */
     36,
-    /* pol_letter_w, 1 bytes at 414 */
+    /* pol_letter_w, 1 bytes at 415 */
     28,
-    /* pol_letter_z, 1 bytes at 415 */
+    /* pol_letter_z, 1 bytes at 416 */
     31,
-    /* pol_capital_w, 1 bytes at 416 */
+    /* pol_capital_w, 1 bytes at 417 */
     49,
-    /* pol_capital_z, 1 bytes at 417 */
+    /* pol_capital_z, 1 bytes at 418 */
     52,
-    /* pol_letter_e, 1 bytes at 418 */
+    /* pol_letter_e, 1 bytes at 419 */
     2,
-    /* pol_fw_na, 2 bytes at 419 */
+    /* pol_fw_na, 2 bytes at 420 */
     21,1,
-    /* pol_fw_do, 2 bytes at 421 */
+    /* pol_fw_do, 2 bytes at 422 */
     13,4,
-    /* pol_fw_po, 2 bytes at 423 */
+    /* pol_fw_po, 2 bytes at 424 */
     22,4,
-    /* pol_fw_od, 2 bytes at 425 */
+    /* pol_fw_od, 2 bytes at 426 */
     4,13,
-    /* pol_fw_za, 2 bytes at 427 */
+    /* pol_fw_za, 2 bytes at 428 */
     31,1,
-    /* pol_fw_o, 1 bytes at 429 */
+    /* pol_fw_o, 1 bytes at 430 */
     4,
-    /* pol_fw_u, 1 bytes at 430 */
+    /* pol_fw_u, 1 bytes at 431 */
     5,
-    /* pol_fw_ku, 2 bytes at 431 */
+    /* pol_fw_ku, 2 bytes at 432 */
     18,5,
-    /* pol_fw_ze, 2 bytes at 433 */
+    /* pol_fw_ze, 2 bytes at 434 */
     31,2,
-    /* pol_fw_we, 2 bytes at 435 */
+    /* pol_fw_we, 2 bytes at 436 */
     28,2,
-    /* pol_fw_przy, 4 bytes at 437 */
+    /* pol_fw_przy, 4 bytes at 438 */
     22,24,31,30,
-    /* pol_fw_bez, 3 bytes at 441 */
+    /* pol_fw_bez, 3 bytes at 442 */
     11,2,31,
-    /* pol_fw_dla, 3 bytes at 444 */
+    /* pol_fw_dla, 3 bytes at 445 */
     13,19,1,
-    /* pol_fw_przez, 5 bytes at 447 */
+    /* pol_fw_przez, 5 bytes at 448 */
     22,24,31,2,31,
-    /* pol_fw_pod, 3 bytes at 452 */
+    /* pol_fw_pod, 3 bytes at 453 */
     22,4,13,
-    /* pol_fw_nad, 3 bytes at 455 */
+    /* pol_fw_nad, 3 bytes at 456 */
     21,1,13,
-    /* pol_fw_przed, 5 bytes at 458 */
+    /* pol_fw_przed, 5 bytes at 459 */
     22,24,31,2,13,
-    /* pol_fw_znad, 4 bytes at 463 */
+    /* pol_fw_znad, 4 bytes at 464 */
     31,21,1,13,
-    /* pol_fw_spod, 4 bytes at 467 */
+    /* pol_fw_spod, 4 bytes at 468 */
     25,22,4,13,
-    /* pol_fw_zza, 3 bytes at 471 */
+    /* pol_fw_zza, 3 bytes at 472 */
     31,31,1,
-    /* pol_fw_sprzed, 6 bytes at 474 */
+    /* pol_fw_sprzed, 6 bytes at 475 */
     25,22,24,31,2,13,
-    /* pol_fw_i, 1 bytes at 480 */
+    /* pol_fw_i, 1 bytes at 481 */
     3,
-    /* pol_fw_a, 1 bytes at 481 */
+    /* pol_fw_a, 1 bytes at 482 */
     1,
-    /* pol_fw_sie_, 3 bytes at 482 */
+    /* pol_fw_sie_, 3 bytes at 483 */
     25,3,209,
-    /* pol_fw_z_e, 2 bytes at 485 */
+    /* pol_fw_z_e, 2 bytes at 486 */
     214,2,
-    /* pol_fw_nie, 3 bytes at 487 */
+    /* pol_fw_nie, 3 bytes at 488 */
     21,3,2,
-    /* pol_capital_nie, 3 bytes at 490 */
+    /* pol_capital_nie, 3 bytes at 491 */
     42,3,2,
-    /* pol_ph_t, 1 bytes at 493 */
+    /* pol_ph_t, 1 bytes at 494 */
     4,
-    /* pol_ph_d, 1 bytes at 494 */
+    /* pol_ph_d, 1 bytes at 495 */
     3,
-    /* pol_ph_sz, 1 bytes at 495 */
+    /* pol_ph_sz, 1 bytes at 496 */
     24,
-    /* pol_ph_zh, 1 bytes at 496 */
+    /* pol_ph_zh, 1 bytes at 497 */
     22,
-    /* pol_fence_word, 1 bytes at 497 */
+    /* pol_fence_word, 1 bytes at 498 */
     4,
-    /* eti_null, 1 bytes at 498 */
+    /* eti_null, 1 bytes at 499 */
     0,
-    /* eti_s_e90e6, 1 bytes at 499 */
+    /* eti_s_e90e6, 1 bytes at 500 */
     72,
-    /* eti_s_e90e7, 1 bytes at 500 */
+    /* eti_s_e90e7, 1 bytes at 501 */
     71,
-    /* eti_s_e90e8, 1 bytes at 501 */
+    /* eti_s_e90e8, 1 bytes at 502 */
     81,
-    /* eti_s_e90e9, 1 bytes at 502 */
+    /* eti_s_e90e9, 1 bytes at 503 */
     96,
-    /* eti_s_e90ea, 1 bytes at 503 */
+    /* eti_s_e90ea, 1 bytes at 504 */
     73,
-    /* eti_s_e90eb, 1 bytes at 504 */
+    /* eti_s_e90eb, 1 bytes at 505 */
     168,
-    /* eti_s_e90ec, 1 bytes at 505 */
+    /* eti_s_e90ec, 1 bytes at 506 */
     172,
-    /* eti_s_e90ed, 1 bytes at 506 */
+    /* eti_s_e90ed, 1 bytes at 507 */
     65,
-    /* eti_s_e910c, 1 bytes at 507 */
+    /* eti_s_e910c, 1 bytes at 508 */
     67,
-    /* eti_s_e910e, 1 bytes at 508 */
+    /* eti_s_e910e, 1 bytes at 509 */
     66,
-    /* eti_s_e910f, 1 bytes at 509 */
+    /* eti_s_e910f, 1 bytes at 510 */
     69,
-    /* eti_s_e9110, 1 bytes at 510 */
+    /* eti_s_e9110, 1 bytes at 511 */
     68,
-    /* eti_s_e9111, 1 bytes at 511 */
+    /* eti_s_e9111, 1 bytes at 512 */
     64,
-    /* eti_s_e9112, 1 bytes at 512 */
+    /* eti_s_e9112, 1 bytes at 513 */
     4,
-    /* eti_s_e9113, 1 bytes at 513 */
+    /* eti_s_e9113, 1 bytes at 514 */
     70,
-    /* eti_s_e9114, 2 bytes at 514 */
+    /* eti_s_e9114, 2 bytes at 515 */
     70,71,
-    /* eti_s_e912a, 1 bytes at 516 */
+    /* eti_s_e912a, 1 bytes at 517 */
     167,
-    /* eti_s_e912b, 1 bytes at 517 */
+    /* eti_s_e912b, 1 bytes at 518 */
     76,
-    /* eti_s_e912c, 1 bytes at 518 */
+    /* eti_s_e912c, 1 bytes at 519 */
     171,
-    /* eti_s_e912f, 1 bytes at 519 */
+    /* eti_s_e912f, 1 bytes at 520 */
     80,
-    /* eti_s_e9130, 1 bytes at 520 */
+    /* eti_s_e9130, 1 bytes at 521 */
     83,
-    /* eti_s_e9131, 1 bytes at 521 */
+    /* eti_s_e9131, 1 bytes at 522 */
     82,
-    /* eti_s_e9132, 1 bytes at 522 */
+    /* eti_s_e9132, 1 bytes at 523 */
     94,
-    /* eti_s_e9133, 1 bytes at 523 */
+    /* eti_s_e9133, 1 bytes at 524 */
     95,
-    /* eti_s_e9139, 2 bytes at 524 */
+    /* eti_s_e9139, 2 bytes at 525 */
     72,72,
-    /* eti_s_e913b, 1 bytes at 526 */
+    /* eti_s_e913b, 1 bytes at 527 */
     84,
-    /* eti_s_e913c, 2 bytes at 527 */
+    /* eti_s_e913c, 2 bytes at 528 */
     65,72,
-    /* eti_s_e913e, 1 bytes at 529 */
+    /* eti_s_e913e, 1 bytes at 530 */
     199,
-    /* ru_digit_0, 4 bytes at 530 */
+    /* ru_digit_0, 4 bytes at 531 */
     21,4,19,210,
-    /* ru_digit_2, 3 bytes at 534 */
+    /* ru_digit_2, 3 bytes at 535 */
     13,27,1,
-    /* ru_digit_3, 3 bytes at 537 */
+    /* ru_digit_3, 3 bytes at 538 */
     26,24,3,
-    /* ru_digit_4, 6 bytes at 540 */
+    /* ru_digit_4, 6 bytes at 541 */
     208,2,26,30,24,2,
-    /* ru_digit_5, 4 bytes at 546 */
+    /* ru_digit_5, 4 bytes at 547 */
     22,207,26,210,
-    /* ru_digit_6, 5 bytes at 550 */
+    /* ru_digit_6, 5 bytes at 551 */
     28,2,25,26,210,
-    /* ru_digit_7, 4 bytes at 555 */
+    /* ru_digit_7, 4 bytes at 556 */
     25,2,20,210,
-    /* ru_digit_8, 6 bytes at 559 */
+    /* ru_digit_8, 6 bytes at 560 */
     27,4,25,2,20,210,
-    /* ru_digit_9, 6 bytes at 565 */
+    /* ru_digit_9, 6 bytes at 566 */
     13,2,27,207,26,210,
-    /* ru_and, 3 bytes at 571 */
+    /* ru_and, 3 bytes at 572 */
     72,3,72,
-    /* ru_time_join, 3 bytes at 574 */
+    /* ru_time_join, 3 bytes at 575 */
     199,72,72,
-    /* ru_ch_2, 1 bytes at 577 */
+    /* ru_ch_2, 1 bytes at 578 */
     55,
-    /* ru_ch_3, 1 bytes at 578 */
+    /* ru_ch_3, 1 bytes at 579 */
     56,
-    /* ru_ch_4, 1 bytes at 579 */
+    /* ru_ch_4, 1 bytes at 580 */
     57,
-    /* ru_num_200, 6 bytes at 580 */
+    /* ru_num_200, 6 bytes at 581 */
     13,27,2,25,26,3,
-    /* ru_num_300, 6 bytes at 586 */
+    /* ru_num_300, 6 bytes at 587 */
     26,24,3,25,26,1,
-    /* ru_num_400, 9 bytes at 592 */
+    /* ru_num_400, 9 bytes at 593 */
     208,2,26,30,24,2,25,26,1,
-    /* lts_0b, 1 bytes at 601 */
+    /* ru_num_2000, 10 bytes at 602 */
+    13,27,2,72,26,30,25,207,208,3,
+    /* ru_num_3000, 10 bytes at 612 */
+    26,24,3,72,26,30,25,207,208,3,
+    /* ru_num_4000, 13 bytes at 622 */
+    208,2,26,30,24,2,72,26,30,25,207,208,3,
+    /* ru_num_2mln, 11 bytes at 635 */
+    13,27,1,72,20,3,19,3,4,21,1,
+    /* ru_num_3mln, 11 bytes at 646 */
+    26,24,3,72,20,3,19,3,4,21,1,
+    /* ru_num_4mln, 14 bytes at 657 */
+    208,2,26,30,24,2,72,20,3,19,3,4,21,1,
+    /* lts_0b, 1 bytes at 671 */
     11,
-    /* lts_0d, 1 bytes at 602 */
+    /* lts_0d, 1 bytes at 672 */
     13,
-    /* lts_0f, 1 bytes at 603 */
+    /* lts_0f, 1 bytes at 673 */
     15,
-    /* lts_1f, 1 bytes at 604 */
+    /* lts_1f, 1 bytes at 674 */
     31,
-    /* lts_d6, 1 bytes at 605 */
+    /* lts_d6, 1 bytes at 675 */
     214,
-    /* fence_03, 1 bytes at 606 */
+    /* fence_03, 1 bytes at 676 */
     3,
-    /* lts_02, 1 bytes at 607 */
+    /* lts_02, 1 bytes at 677 */
     2,
-    /* lts_64, 1 bytes at 608 */
+    /* lts_64, 1 bytes at 678 */
     100,
-    /* lts_65, 1 bytes at 609 */
+    /* lts_65, 1 bytes at 679 */
     101,
-    /* lts_cf, 1 bytes at 610 */
+    /* lts_cf, 1 bytes at 680 */
     207,
-    /* lts_16, 1 bytes at 611 */
+    /* lts_16, 1 bytes at 681 */
     22,
-    /* lts_1a, 1 bytes at 612 */
+    /* lts_1a, 1 bytes at 682 */
     26,
-    /* lts_12, 1 bytes at 613 */
+    /* lts_12, 1 bytes at 683 */
     18,
-    /* lts_0e, 1 bytes at 614 */
+    /* lts_0e, 1 bytes at 684 */
     14,
-    /* lts_19, 1 bytes at 615 */
+    /* lts_19, 1 bytes at 685 */
     25,
-    /* lts_1c, 1 bytes at 616 */
+    /* lts_1c, 1 bytes at 686 */
     28,
-    /* lts_d4, 1 bytes at 617 */
+    /* lts_d4, 1 bytes at 687 */
     212,
-    /* lts_10, 1 bytes at 618 */
+    /* lts_10, 1 bytes at 688 */
     16,
-    /* lts_0c, 1 bytes at 619 */
+    /* lts_0c, 1 bytes at 689 */
     12,
-    /* lts_d0, 1 bytes at 620 */
+    /* lts_d0, 1 bytes at 690 */
     208,
-    /* say_1e, 1 bytes at 621 */
+    /* say_1e, 1 bytes at 691 */
     30,
-    /* lts_d2, 1 bytes at 622 */
+    /* lts_d2, 1 bytes at 692 */
     210,
-    /* say_1921, 2 bytes at 623 */
+    /* say_1921, 2 bytes at 693 */
     25,33,
-    /* lts_1d, 1 bytes at 625 */
+    /* lts_1d, 1 bytes at 695 */
     29,
-    /* say_21, 1 bytes at 626 */
+    /* say_21, 1 bytes at 696 */
     33,
-    /* say_191f, 2 bytes at 627 */
+    /* say_191f, 2 bytes at 697 */
     25,31,
-    /* say_191b, 2 bytes at 629 */
+    /* say_191b, 2 bytes at 699 */
     25,27,
-    /* say_1b, 1 bytes at 631 */
+    /* say_1b, 1 bytes at 701 */
     27,
-    /* say_191d, 2 bytes at 632 */
+    /* say_191d, 2 bytes at 702 */
     25,29,
-    /* say_0119, 2 bytes at 634 */
+    /* say_0119, 2 bytes at 704 */
     1,25,
-    /* say_01, 1 bytes at 636 */
+    /* say_01, 1 bytes at 706 */
     1,
-    /* say_0219, 2 bytes at 637 */
+    /* say_0219, 2 bytes at 707 */
     2,25,
-    /* say_08, 1 bytes at 639 */
+    /* say_08, 1 bytes at 709 */
     8,
-    /* say_0719, 2 bytes at 640 */
+    /* say_0719, 2 bytes at 710 */
     7,25,
-    /* say_07, 1 bytes at 642 */
+    /* say_07, 1 bytes at 712 */
     7,
-    /* say_0819, 2 bytes at 643 */
+    /* say_0819, 2 bytes at 713 */
     8,25,
-    /* say_1119, 2 bytes at 645 */
+    /* say_1119, 2 bytes at 715 */
     17,25,
-    /* say_11, 1 bytes at 647 */
+    /* say_11, 1 bytes at 717 */
     17,
-    /* lts_04, 1 bytes at 648 */
+    /* lts_04, 1 bytes at 718 */
     4,
-    /* lts_040d, 2 bytes at 649 */
+    /* lts_040d, 2 bytes at 719 */
     4,13,
-    /* say_05, 1 bytes at 651 */
+    /* say_05, 1 bytes at 721 */
     5,
-    /* say_0619, 2 bytes at 652 */
+    /* say_0619, 2 bytes at 722 */
     6,25,
-    /* say_06, 1 bytes at 654 */
+    /* say_06, 1 bytes at 724 */
     6,
-    /* say_0519, 2 bytes at 655 */
+    /* say_0519, 2 bytes at 725 */
     5,25,
-    /* say_24, 1 bytes at 657 */
+    /* say_24, 1 bytes at 727 */
     36,
-    /* say_2419, 2 bytes at 658 */
+    /* say_2419, 2 bytes at 728 */
     36,25,
-    /* lts_0dd2, 2 bytes at 660 */
+    /* lts_0dd2, 2 bytes at 730 */
     13,210,
-    /* say_0319, 2 bytes at 662 */
+    /* say_0319, 2 bytes at 732 */
     3,25,
-    /* lts_1ad219cf, 4 bytes at 664 */
+    /* lts_1ad219cf, 4 bytes at 734 */
     26,210,25,207,
-    /* say_101e, 2 bytes at 668 */
+    /* say_101e, 2 bytes at 738 */
     16,30,
-    /* lts_1a19cf, 3 bytes at 670 */
+    /* lts_1a19cf, 3 bytes at 740 */
     26,25,207,
-    /* lts_1ad2, 2 bytes at 673 */
+    /* lts_1ad2, 2 bytes at 743 */
     26,210,
-    /* say_0419, 2 bytes at 675 */
+    /* say_0419, 2 bytes at 745 */
     4,25,
-    /* lts_1fd0, 2 bytes at 677 */
+    /* lts_1fd0, 2 bytes at 747 */
     31,208,
-    /* lts_1fd2, 2 bytes at 679 */
+    /* lts_1fd2, 2 bytes at 749 */
     31,210,
-    /* say_0a, 1 bytes at 681 */
+    /* say_0a, 1 bytes at 751 */
     10,
-    /* say_0919, 2 bytes at 682 */
+    /* say_0919, 2 bytes at 752 */
     9,25,
-    /* say_09, 1 bytes at 684 */
+    /* say_09, 1 bytes at 754 */
     9,
-    /* lts_19d0, 2 bytes at 685 */
+    /* lts_19d0, 2 bytes at 755 */
     25,208,
-    /* lts_19d2, 2 bytes at 687 */
+    /* lts_19d2, 2 bytes at 757 */
     25,210,
-    /* say_0a19, 2 bytes at 689 */
+    /* say_0a19, 2 bytes at 759 */
     10,25,
-    /* lts_15d2, 2 bytes at 691 */
+    /* lts_15d2, 2 bytes at 761 */
     21,210,
-    /* say_13, 1 bytes at 693 */
+    /* say_13, 1 bytes at 763 */
     19,
-    /* lts_13d2, 2 bytes at 694 */
+    /* lts_13d2, 2 bytes at 764 */
     19,210,
-    /* say_17, 1 bytes at 696 */
+    /* say_17, 1 bytes at 766 */
     23,
-    /* say_1719, 2 bytes at 697 */
+    /* say_1719, 2 bytes at 767 */
     23,25,
-    /* lts_18d2, 2 bytes at 699 */
+    /* lts_18d2, 2 bytes at 769 */
     24,210,
-    /* say_15, 1 bytes at 701 */
+    /* say_15, 1 bytes at 771 */
     21,
-    /* say_1519, 2 bytes at 702 */
+    /* say_1519, 2 bytes at 772 */
     21,25,
-    /* lts_1cd2, 2 bytes at 704 */
+    /* lts_1cd2, 2 bytes at 774 */
     28,210,
-    /* say_18, 1 bytes at 706 */
+    /* say_18, 1 bytes at 776 */
     24,
-    /* say_0309, 2 bytes at 707 */
+    /* say_0309, 2 bytes at 777 */
     3,9,
-    /* lts_d1, 1 bytes at 709 */
+    /* lts_d1, 1 bytes at 779 */
     209,
-    /* say_191e, 2 bytes at 710 */
+    /* say_191e, 2 bytes at 780 */
     25,30,
-    /* lts_d6d2, 2 bytes at 712 */
+    /* lts_d6d2, 2 bytes at 782 */
     214,210,
-    /* lts_d01a, 2 bytes at 714 */
+    /* lts_d01a, 2 bytes at 784 */
     208,26,
-    /* say_1804, 2 bytes at 716 */
+    /* say_1804, 2 bytes at 786 */
     24,4,
-    /* lts_d0d2, 2 bytes at 718 */
+    /* lts_d0d2, 2 bytes at 788 */
     208,210,
-    /* lts_d4d2, 2 bytes at 720 */
+    /* lts_d4d2, 2 bytes at 790 */
     212,210,
 };
 
