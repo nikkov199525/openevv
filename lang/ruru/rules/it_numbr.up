@@ -1,4 +1,4 @@
-# The words Polish counts with.
+# The words Russian counts with, in the rules Polish wrote for its own.
 #
 # Italian's number rules are 26 of them over nine thousand lines and they cover
 # dates, times, money, Roman numerals, ordinals and fractions as well as
@@ -13,7 +13,7 @@
 # written as raw lower notation inside a bare rule so that nothing else about
 # them can differ from it.
 
-# dwa
+# два
 rule pol_say_2 takes 3 from glob.obj
   bare
   raw push param 2
@@ -33,7 +33,7 @@ rule pol_say_2 takes 3 from glob.obj
   raw return reg r0
 end
 
-# trzy
+# три
 rule pol_say_3 takes 3 from glob.obj
   bare
   raw push param 2
@@ -42,7 +42,7 @@ rule pol_say_3 takes 3 from glob.obj
   raw call lpta_rpta_loadp arity 3 depth 3
   raw push imm 0
   raw push sym pol_num_3
-  raw push imm 4
+  raw push imm 3
   raw push imm 1
   raw push param 0
   raw call insert_2pt_s arity 5 depth 8
@@ -53,7 +53,7 @@ rule pol_say_3 takes 3 from glob.obj
   raw return reg r0
 end
 
-# cztery
+# четыре
 rule pol_say_4 takes 3 from glob.obj
   bare
   raw push param 2
@@ -73,7 +73,7 @@ rule pol_say_4 takes 3 from glob.obj
   raw return reg r0
 end
 
-# pięć
+# пять
 rule pol_say_5 takes 3 from glob.obj
   bare
   raw push param 2
@@ -93,7 +93,7 @@ rule pol_say_5 takes 3 from glob.obj
   raw return reg r0
 end
 
-# sześć
+# шесть
 rule pol_say_6 takes 3 from glob.obj
   bare
   raw push param 2
@@ -113,7 +113,7 @@ rule pol_say_6 takes 3 from glob.obj
   raw return reg r0
 end
 
-# siedem
+# семь
 rule pol_say_7 takes 3 from glob.obj
   bare
   raw push param 2
@@ -122,6 +122,26 @@ rule pol_say_7 takes 3 from glob.obj
   raw call lpta_rpta_loadp arity 3 depth 3
   raw push imm 0
   raw push sym pol_num_7
+  raw push imm 4
+  raw push imm 1
+  raw push param 0
+  raw call insert_2pt_s arity 5 depth 8
+  raw popn 8
+  raw alu negl none reg r0
+  raw alu sbbl reg r0 reg r0
+  raw alu negl none reg r0
+  raw return reg r0
+end
+
+# восемь
+rule pol_say_8 takes 3 from glob.obj
+  bare
+  raw push param 2
+  raw push param 1
+  raw push param 0
+  raw call lpta_rpta_loadp arity 3 depth 3
+  raw push imm 0
+  raw push sym pol_num_8
   raw push imm 6
   raw push imm 1
   raw push param 0
@@ -133,27 +153,7 @@ rule pol_say_7 takes 3 from glob.obj
   raw return reg r0
 end
 
-# osiem
-rule pol_say_8 takes 3 from glob.obj
-  bare
-  raw push param 2
-  raw push param 1
-  raw push param 0
-  raw call lpta_rpta_loadp arity 3 depth 3
-  raw push imm 0
-  raw push sym pol_num_8
-  raw push imm 5
-  raw push imm 1
-  raw push param 0
-  raw call insert_2pt_s arity 5 depth 8
-  raw popn 8
-  raw alu negl none reg r0
-  raw alu sbbl reg r0 reg r0
-  raw alu negl none reg r0
-  raw return reg r0
-end
-
-# dziewięć
+# девять
 rule pol_say_9 takes 3 from glob.obj
   bare
   raw push param 2
@@ -162,7 +162,7 @@ rule pol_say_9 takes 3 from glob.obj
   raw call lpta_rpta_loadp arity 3 depth 3
   raw push imm 0
   raw push sym pol_num_9
-  raw push imm 8
+  raw push imm 6
   raw push imm 1
   raw push param 0
   raw call insert_2pt_s arity 5 depth 8

@@ -1578,7 +1578,7 @@ label L25 was $X5$92892
   push slotaddr 76
   push reg r6
   call lpta_loadp arity 2 depth 2
-  push sym string_139
+  push sym ru_time_join
   push reg r6
   call ZZinsert_r_1_3 arity 2 depth 4
   popn 4
@@ -5029,7 +5029,7 @@ label L96 was $X77$93894
   push slotaddr -44
   push reg r6
   call rpta_loadp arity 2 depth 2
-  push sym string_139
+  push sym ru_time_join
   push reg r6
   call ZZinsert_l_1_3 arity 2 depth 4
   popn 4
@@ -6474,7 +6474,7 @@ label L100 was $X89$91154
   cmp cmpw reg r7w reg r3w
   popreg r1
   branch jne to L101
-  push sym string_36
+  push sym ru_and
   load movl slotaddr -20 into r0
   push slotaddr -20
   load movl slotaddr -72 into r0
@@ -6658,6 +6658,63 @@ label L5 was at_0xfd
   cmp testl reg r0 reg r0
   branch je to L7
 label L6 was at_0x139
+  push sym ru_ch_2
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L901
+  push sym ru_num_200
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  load movl slotaddr 92 into r0
+  push slotaddr 92
+  push reg r6
+  call pol_insert_6 arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch je to L7
+label L901 was ru_hundreds_2
+  push sym ru_ch_3
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L902
+  push sym ru_num_300
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  load movl slotaddr 92 into r0
+  push slotaddr 92
+  push reg r6
+  call pol_insert_6 arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch je to L7
+label L902 was ru_hundreds_3
+  push sym ru_ch_4
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L903
+  push sym ru_num_400
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  load movl slotaddr 92 into r0
+  push slotaddr 92
+  push reg r6
+  call pol_insert_9 arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch je to L7
+label L903 was ru_hundreds_4
   push reg r6
   call ZZstarttest8 arity 1 depth 1
   load movl slotaddr 100 into r0
@@ -7887,7 +7944,7 @@ label L5 was $X3$93284
 label L6 was $X6$93289
   push reg r6
   call bspop_boa arity 1 depth 1
-  setarg 0 sym string_36
+  setarg 0 sym ru_and
   load movl slotaddr -36 into r0
   push slotaddr -36
   load movl slotaddr -44 into r0

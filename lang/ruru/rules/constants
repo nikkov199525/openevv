@@ -76,58 +76,61 @@ bytes pol_name_x         03 12 19       # iks
 bytes pol_name_y         03 0f 18 02 12 # igrek
 bytes pol_name_z         1f 02 1a       # zet
 
-# The Polish number words. Italian's are in the wrappers its own arms
-# call, one wrapper to a word with the word and its length baked into the
-# name, so a word of Polish's is a wrapper of ours and one call name
-# changed in the arm. zero is not here: Polish says zero too, with the
-# same four characters.
-bytes pol_num_2      0d 1c 01                   # dwa, 3 characters
-bytes pol_num_3      1a 18 1f 1e                # trzy, 4 characters
-bytes pol_num_4      0c 1f 1a 02 18 1e          # cztery, 6 characters
-bytes pol_num_5      16 03 d1 d0                # pięć, 4 characters
-bytes pol_num_6      19 1f 02 d4 d0             # sześć, 5 characters
-bytes pol_num_7      19 03 02 0d 02 14          # siedem, 6 characters
-bytes pol_num_8      04 19 03 02 14             # osiem, 5 characters
-bytes pol_num_9      0d 1f 03 02 1c 03 d1 d0    # dziewięć, 8 characters
+# Russian's number words, in the places Polish wrote for its own. Italian's
+# are in the wrappers its own arms call, one wrapper to a word with the word
+# and its length baked into the name, so a word of Polish's was a wrapper of
+# its own and one call name changed in the arm, and Russian's are the same
+# wrappers with Russian's words in them. A word shorter than the length an
+# arm inserts is filled out with spaces, and one longer is written as it is
+# said: одиннадцать is одинацать, as дц is ц. The units are inserted by
+# pol_say_2 to pol_say_9, at their own lengths.
+bytes pol_num_2         0d 1b 01 # два, 3 characters, which pol_say_2 inserts
+bytes pol_num_3      1a 18 03 48 # три and a space, 4 characters: pol_say_3 inserts three of them and the compound units all four
+bytes pol_num_4         d0 02 1a 1e 18 02 # четыре, 6 characters, which pol_say_4 inserts
+bytes pol_num_5         16 cf 1a d2 # пять, 4 characters, which pol_say_5 inserts
+bytes pol_num_6         1c 02 19 1a d2 # шесть, 5 characters, which pol_say_6 inserts
+bytes pol_num_7         19 02 14 d2 # семь, 4 characters, which pol_say_7 inserts
+bytes pol_num_8         1b 04 19 02 14 d2 # восемь, 6 characters, which pol_say_8 inserts
+bytes pol_num_9         0d 02 1b cf 1a d2 # девять, 6 characters, which pol_say_9 inserts
 
 # The teens.
-bytes pol_num_10     0d 1f 03 02 19 03 d1 d0                      # dziesięć, 8 characters
-bytes pol_num_11     11 02 0d 02 15 01 d4 0c 03 02                # jedenaście, 10 characters
-bytes pol_num_12     0d 1c 01 15 01 d4 0c 03 02                   # dwanaście, 9 characters
-bytes pol_num_13     1a 18 1f 1e 15 01 d4 0c 03 02                # trzynaście, 10 characters
-bytes pol_num_14     0c 1f 1a 02 18 15 01 d4 0c 03 02             # czternaście, 11 characters
-bytes pol_num_15     16 03 d1 1a 15 01 d4 0c 03 02                # piętnaście, 10 characters
-bytes pol_num_16     19 1f 02 19 15 01 d4 0c 03 02                # szesnaście, 10 characters
-bytes pol_num_17     19 03 02 0d 02 14 15 01 d4 0c 03 02          # siedemnaście, 12 characters
-bytes pol_num_18     04 19 03 02 14 15 01 d4 0c 03 02             # osiemnaście, 11 characters
-bytes pol_num_19     0d 1f 03 02 1c 03 d1 1a 15 01 d4 0c 03 02    # dziewiętnaście, 14 characters
+bytes pol_num_10     0d 02 19 cf 1a d2 48 48 # десять, 2 spaces after it, 8 characters
+bytes pol_num_11     04 0d 03 15 01 0c 01 1a d2 48 # одинацать, одиннадцать, written as it is said: дц is ц, 1 space after it, 10 characters
+bytes pol_num_12     0d 1b 02 15 01 0c 01 1a d2 # двенацать, двенадцать, as it is said, 9 characters
+bytes pol_num_13     1a 18 03 15 01 0c 01 1a d2 48 # тринацать, тринадцать, as it is said, 1 space after it, 10 characters
+bytes pol_num_14     d0 02 1a 1e 18 15 01 0c 01 1a d2 # четырнацать, четырнадцать, as it is said, 11 characters
+bytes pol_num_15     16 cf 1a 15 01 0c 01 1a d2 48 # пятнацать, пятнадцать, as it is said, 1 space after it, 10 characters
+bytes pol_num_16     1c 02 19 15 01 0c 01 1a d2 48 # шеснацать, шестнадцать, as it is said, its т silent, 1 space after it, 10 characters
+bytes pol_num_17     19 02 14 15 01 0c 01 1a d2 48 48 48 # семнацать, семнадцать, as it is said, 3 spaces after it, 12 characters
+bytes pol_num_18     1b 04 19 02 14 15 01 0c 01 1a d2 # восемнацать, восемнадцать, as it is said, 11 characters
+bytes pol_num_19     0d 02 1b cf 1a 15 01 0c 01 1a d2 48 48 48 # девятнацать, девятнадцать, as it is said, 3 spaces after it, 14 characters
 
 # The tens, each with a trailing space.
-bytes pol_num_20     0d 1c 01 0d 1f 03 02 d4 0c 03 01 48                # dwadzieścia and a space, 12 characters
-bytes pol_num_30     1a 18 1f 1e 0d 1f 03 02 d4 0c 03 48                # trzydzieści and a space, 12 characters
-bytes pol_num_40     0c 1f 1a 02 18 0d 1f 03 02 d4 0c 03 48             # czterdzieści and a space, 13 characters
-bytes pol_num_50     16 03 d1 d0 0d 1f 03 02 19 03 cf 1a 48             # pięćdziesiąt and a space, 13 characters
-bytes pol_num_60     19 1f 02 d4 d0 0d 1f 03 02 19 03 cf 1a 48          # sześćdziesiąt and a space, 14 characters
-bytes pol_num_70     19 03 02 0d 02 14 0d 1f 03 02 19 03 cf 1a 48       # siedemdziesiąt and a space, 15 characters
-bytes pol_num_80     04 19 03 02 14 0d 1f 03 02 19 03 cf 1a 48          # osiemdziesiąt and a space, 14 characters
-bytes pol_num_90     0d 1f 03 02 1c 03 d1 d0 0d 1f 03 02 19 03 cf 1a 48 # dziewięćdziesiąt and a space, 17 characters
+bytes pol_num_20     0d 1b 01 0c 01 1a d2 48 48 48 48 48 # двацать, двадцать and a space, as it is said, 4 spaces after it, 12 characters
+bytes pol_num_30     1a 18 03 0c 01 1a d2 48 48 48 48 48 # трицать, тридцать and a space, as it is said, 4 spaces after it, 12 characters
+bytes pol_num_40     19 04 18 04 12 48 48 48 48 48 48 48 48 # сорок, and a space, 7 spaces after it, 13 characters
+bytes pol_num_50     16 cf 1a d2 0d 02 19 cf 1a 48 48 48 48 # пятьдесят, and a space, 3 spaces after it, 13 characters
+bytes pol_num_60     1c 02 19 1a d2 0d 02 19 cf 1a 48 48 48 48 # шестьдесят, and a space, 3 spaces after it, 14 characters
+bytes pol_num_70     19 02 14 d2 0d 02 19 cf 1a 48 48 48 48 48 48 # семьдесят, and a space, 5 spaces after it, 15 characters
+bytes pol_num_80     1b 04 19 02 14 d2 0d 02 19 cf 1a 48 48 48 # восемьдесят, and a space, 2 spaces after it, 14 characters
+bytes pol_num_90     0d 02 1b cf 15 04 19 1a 04 48 48 48 48 48 48 48 48 # девяносто, and a space, 7 spaces after it, 17 characters
 
 # One, which Italian says four ways and Polish one.
-bytes pol_num_1      11 02 0d 02 15                                     # jeden, 5 characters
+bytes pol_num_1      04 0d 03 15 48 # один, 1 space after it, 5 characters
 
 # A hundred and a thousand. The joined forms keep the mark Italian puts
 # in front of them, since that is the machine's and not the language's.
-bytes pol_num_100      19 1a 04                       # sto, 3 characters
-bytes pol_num_100j     c7 19 02 1a                    # the joined hundreds, after two to nine, 4 characters
-bytes pol_num_1000     1a 1e 19 03 cf 0c              # tysiąc, 6 characters
-bytes pol_num_1000j    c7 48 1a 1e 19 03 cf 0c 02     # a space and tysiące, for two thousand and up, 9 characters
+bytes pol_num_100    19 1a 04 # сто, 3 characters
+bytes pol_num_100j   c7 19 04 1a # сот, the joined hundreds after two to nine, пятьсот, 4 characters
+bytes pol_num_1000   1a 1e 19 cf d0 01 # тысяча, 6 characters
+bytes pol_num_1000j  c7 48 1a 1e 19 cf d0 03 48 # тысячи, a space and тысячи, for two thousand and up, 1 space after it, 9 characters
 
 # The millions and the billions, and the and between them that Polish
 # does not say.
-bytes pol_num_mln      c7 48 14 03 13 03 04 15            # a million, 8 characters
-bytes pol_num_mlns     c7 48 14 03 13 03 04 15 1e         # millions, which is right for two to four, 9 characters
-bytes pol_num_mld      c7 48 14 03 13 03 01 18 0d         # a billion, 9 characters
-bytes pol_num_mlds     c7 48 14 03 13 03 01 18 0d 1e      # billions, two to four again, 10 characters
+bytes pol_num_mln    c7 48 14 03 13 03 04 15 # милион, a space and миллион, its лл said as one, 8 characters
+bytes pol_num_mlns   c7 48 14 03 13 03 04 15 01 # милиона, миллиона, right for two to four, 9 characters
+bytes pol_num_mld    c7 48 14 03 13 03 01 18 0d # милиард, миллиард, its лл said as one, 9 characters
+bytes pol_num_mlds   c7 48 14 03 13 03 01 18 0d 01 # милиарда, миллиарда, two to four again, 10 characters
 bytes pol_num_and      c7 48                              # where Italian says e, 2 characters
 
 # The phone ą lays down, which is a code of its own rather than a retaken one:
@@ -228,3 +231,34 @@ bytes eti_s_e9139      48 48
 bytes eti_s_e913b      54
 bytes eti_s_e913c      41 48
 bytes eti_s_e913e      c7
+
+# The digits as Russian says them one at a time, for the wrappers in glob.dr
+# that IBM's Italian names them with: each wrapper there now inserts one of
+# these, at its length, where it inserted the Italian word.
+bytes ru_digit_0   15 04 13 d2          # ноль, where Italian says zero
+bytes ru_digit_2   0d 1b 01             # два, where Italian says due
+bytes ru_digit_3   1a 18 03             # три, where Italian says tre
+bytes ru_digit_4   d0 02 1a 1e 18 02    # четыре, where Italian says quattro
+bytes ru_digit_5   16 cf 1a d2          # пять, where Italian says cinque
+bytes ru_digit_6   1c 02 19 1a d2       # шесть, where Italian says sei
+bytes ru_digit_7   19 02 14 d2          # семь, where Italian says sette
+bytes ru_digit_8   1b 04 19 02 14 d2    # восемь, where Italian says otto
+bytes ru_digit_9   0d 02 1b cf 1a d2    # девять, where Italian says nove
+
+# Where Italian says e between two numbers. Between the whole and the decimal
+# part and between the units of an amount of money Russian says и, and between
+# the hours and the minutes of a time and the parts of a fraction it says
+# nothing, so the e there is a space. Each keeps the length and the mark of the
+# string it stands for, string_36 and string_139 of it_numbr.obj.
+bytes ru_and       48 03 48          # и between spaces, 3 characters
+bytes ru_time_join c7 48 48          # the mark and two spaces, 3 characters
+
+# Two, three and four hundred, which Russian does not make of the digit and
+# сот as it makes the rest: convert_ital_hundreds asks for each of the three
+# digits before it says the digit and joins сот to it.
+bytes ru_ch_2       37                  # the digit 2
+bytes ru_ch_3       38                  # the digit 3
+bytes ru_ch_4       39                  # the digit 4
+bytes ru_num_200   0d 1b 02 19 1a 03            # двести, 6 characters
+bytes ru_num_300   1a 18 03 19 1a 01            # триста, 6 characters
+bytes ru_num_400   d0 02 1a 1e 18 02 19 1a 01   # четыреста, 9 characters
