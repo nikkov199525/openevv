@@ -258,12 +258,48 @@ static char *slurp(const char *path)
     return buf;
 }
 
+#if defined(_WIN32)
+/* The arguments as UTF-8, as a POSIX shell hands them over. The C runtime
+   gives main the ANSI code page's bytes, which is the machine's and not the
+   text's: on a Russian Windows Cyrillic arrives as 1251 and anything outside
+   it as a question mark, so the same case reached the engine differently here
+   and on Linux. The wide command line is what the caller actually wrote. */
+static char **utf8_args(int *argc, char **argv)
+{
+    int      n, i;
+    wchar_t **wide = CommandLineToArgvW(GetCommandLineW(), &n);
+    char   **out;
+
+    if (wide == NULL)
+        return argv;
+    out = calloc((size_t)n + 1, sizeof *out);
+    for (i = 0; out != NULL && i < n; i++) {
+        int m = WideCharToMultiByte(CP_UTF8, 0, wide[i], -1, NULL, 0, NULL, NULL);
+
+        out[i] = m > 0 ? malloc((size_t)m) : NULL;
+        if (out[i] == NULL)
+            return argv;
+        WideCharToMultiByte(CP_UTF8, 0, wide[i], -1, out[i], m, NULL, NULL);
+    }
+    LocalFree(wide);
+    if (out == NULL)
+        return argv;
+    *argc = n;
+    return out;
+}
+#endif
+
 int main(int argc, char **argv)
 {
-    const char *text = (argc > 1) ? argv[1]
-        : "Hello. This is OpenEVV speaking.";
-    const char *out = (argc > 2) ? argv[2] : "speak.wav";
+    const char *text;
+    const char *out;
     OldInst    *h;
+
+#if defined(_WIN32)
+    argv = utf8_args(&argc, argv);
+#endif
+    text = (argc > 1) ? argv[1] : "Hello. This is OpenEVV speaking.";
+    out = (argc > 2) ? argv[2] : "speak.wav";
 
     if (text[0] == '@')
         text = slurp(text + 1);

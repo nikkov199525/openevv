@@ -271,15 +271,16 @@ development sets were used. Neither its audio nor its text is in this
 repository; what is here is the numbers derived from it and `tools/measure/pitch.py`,
 which derived them.
 
-Russian is the US English module copied and edited as it is built, so what
-is said here of lang/enus is said of lang/ruru, and of the two rules in
-tools/russian/rules, which are adapted from IBM's: the MIT licence reaches
-neither. Only a build whose LANGS names lang/ruru has any of Russian in it.
-Its stress table is made from OpenRussian's dictionary and is under CC BY-SA
-4.0, and so is the part of a Russian library it becomes. RuLex's lexicon,
-rulex.dat, is under the GNU General Public License, version 2, kept as a
-file the engine reads rather than compiled in, and goes out with its licence
-and its complete source beside it. tools/russian/NOTICE says which is which.
+`lang/ruru` says Russian and is Polish's module, which is to say Italian's.
+It was made by copying `lang/plpl`'s text forms and renaming them, so every
+rule and every table in it that `lang/plpl` holds as IBM's Italian is IBM's
+Italian here too, and what is said of `lang/plpl` above is said of it. What
+is ours in it is what was ours in Polish's and came with the copy, and what
+was written for Russian: `lang/ruru/letters`, every block of which is
+Russian's own, the arms and the classes alike, `ruru.codepoints`, and the
+records `ruru.statements` gives ы, ё, ю, ь, ъ, ш and ж. What those name is
+still IBM's numbering, as it is for Polish. `make EVVLANG=lang/ruru census
+TEMPLATE=plpl` says how much of it is still Polish's.
 
 Names
 -----

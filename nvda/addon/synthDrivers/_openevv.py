@@ -233,11 +233,10 @@ def nameOf(language):
 #: The code set each language's text goes in, which is not UTF-8. The engine
 #: reads bytes: IBM's eight Western languages take the Windows Western set and
 #: Japanese takes Shift-JIS, which its romanizer reads. Polish declares letters
-#: of its own, the one case in which the engine converts UTF-8 itself, and
-#: Russian is read as UTF-8 by src/eci/synth/eci_russian.c before the module
-#: sees it -- in the Western set every Cyrillic letter would be a question
-#: mark. Never the machine's own ANSI code page, which belongs to the person's
-#: Windows and not to the voice.
+#: of its own, and so does Russian: those are the two in which the engine
+#: converts UTF-8 itself, and in the Western set every Cyrillic letter would
+#: be a question mark. Never the machine's own ANSI code page, which belongs
+#: to the person's Windows and not to the voice.
 CODE_SETS = {0x80000: "cp932", 0x110000: "utf-8", 0x120000: "utf-8"}
 
 #: Characters that lay text out and say nothing.
@@ -281,6 +280,7 @@ DICTIONARY_CODES = {
 	0x90000: "fin",
 	0x70000: "ptb",
 	0x110000: "plk",
+	0x120000: "rus",
 }
 
 #: The engine's three volumes, as a file's name says them.

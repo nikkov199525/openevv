@@ -258,6 +258,14 @@ The reader is written and it matches IBM's over 176 documents, which is the shar
 
 `lang/plpl` builds and speaks, and it is the one module IBM never shipped: it was made by copying Italian's text forms and renaming them, so it is Italian until each piece has been replaced. `make EVVLANG=lang/plpl census` says how much still is. It has no oracle and never will, so `test/matrix.sh` and an ear are the only things that can tell a change from an accident, and its 98 cases are ours rather than translated. What has been replaced so far -- its own letters and how they arrive, the two sibilant series, the vowels, the nasal vowels, final and pre-consonantal devoicing, counting, the letter names, the intonation and the stress, and w and z joined to the word after them -- is in `docs/notes/polish.md`, in the order it was done, with what each change cost and what it proved.
 
+## Russian
+
+`lang/ruru` builds and speaks, and it is the second module IBM never shipped: it was made by copying Polish's text forms and renaming them, so it is Polish's -- and through Polish, Italian's -- until each piece has been replaced. `make EVVLANG=lang/ruru census TEMPLATE=plpl` says how much still is: 98% of its rules, on 10 November 2026. It has no oracle, so `test/matrix.sh` and an ear are the check, and its 109 cases are ours, written for Russian rather than translated.
+
+What is Russian's own is its letters and what they say. Cyrillic arrives through `ruru.codepoints` as bytes the alphabet already had rules for, and `lang/ruru/letters` reads them: a consonant soft before е, ё, и, ю, я and ь, the glide before е, ё, ю and я where they begin a syllable, ж, ш and ц hard and ч and щ soft, voicing assimilated both ways and lost at the end of a word, and the spellings Russian does not say as written -- что, -ого and -его, -тся and -ться, сч and зч. `build/probe '@file' out p` says what it decided: здравствуйте comes back as `` `[.0zdrafst.1vuy.0tyE] ``, сегодня as `` `[.0syE.1vcd.Na] `` and учиться as `` `[.0u.1Ci.0Ta] ``.
+
+What is not: where the stress falls, which is still Polish's penultimate, and with it the unstressed vowels Russian reduces, which need the stress first; the number words, which are still Polish's read through Russian's letters; Polish's own w and z joined to the word after them, where Russian's are в, к and с; and the dictionaries, which are still Italian's and Polish's.
+
 ## A language module as text
 
 Every generated file in a module has a text form beside it that regenerates it byte for byte, so a module is five texts and its rules rather than a pile of lifted C. `make tables-check` is what holds them to it, over all nine languages. `docs/notes/module-as-text.md` says what each text says and what is deliberately left out of it.

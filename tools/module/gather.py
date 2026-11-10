@@ -50,7 +50,8 @@ NAMES = {
     "fifi": "Finnish",
     # The same, family seven, Brazilian Portuguese in IBM's numbering.
     "ptbr": "Brazilian Portuguese",
-    # Family eighteen: Russian.
+    # Ours, family eighteen, the last the three tables have room for: built
+    # the way Polish is, out of Polish's module.
     "ruru": "Russian",
 }
 

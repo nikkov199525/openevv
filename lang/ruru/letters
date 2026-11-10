@@ -1,0 +1,244 @@
+# Russian letter-to-sound.
+#
+# One block a letter and its arms in order, the first that matches winning,
+# the last arm of a block the bare letter. The letters are Russian's own; each
+# arrives as a byte of the alphabet the module brought, which
+# lang/ruru/ruru.codepoints names, and a block whose letter took a Latin byte
+# says which rule it stands in for with `as': т is read as t.
+#
+# The phones are the module's, which it brought from Polish, and several are
+# named for the Polish sounds they took over, so the lines above the letters
+# let an arm name them by Russian spelling: ш is Polish's sz, the retroflex,
+# and ж its ż; ч is Polish's ć, which is the same soft affricate Russian's ч
+# is; щ is ś, the long soft sibilant said short; ц is ts and х the velar
+# fricative. The vowels keep the engine's names: а says a, о says c, the open
+# o Polish's took over, е and э say E, и says i and ы says e, the close-mid
+# vowel Polish's ɨ took over, which is what Russian's ы is nearest to.
+#
+# A consonant is soft before е, ё, и, ю, я and ь. Before е, ё, ю and я the
+# softness is the glide y laid after it, and the vowel letter then says its
+# vowel alone; before и the i is soft enough; before ь, which says nothing,
+# т, д, с, з and н take the soft consonants the module has -- ć, dź, ś, ź and
+# ń -- and the rest are said as they are. ж, ш and ц are hard whatever
+# follows, and ч and щ soft. After a vowel, at the start of a word and after
+# ь or ъ, е, ё, ю and я are the glide and the vowel: ель, моё, вьюга, съел.
+#
+# A voiced consonant is voiceless before a voiceless one and at the end of a
+# word -- хлеб is хлеп, лодка лотка -- and a voiceless one voiced before a
+# voiced one: сделать is зделать, вокзал вогзал. в is voiceless where it is
+# devoiced but voices nothing, so it is not in `voiced': твой keeps its т.
+# The end of a word is not voiceless when the next word begins with a voiced
+# obstruent, which is `unless voiced follows', and a voiceless consonant at
+# the end of a word then takes the voice: к дому, брат был.
+#
+# Not here yet, and wanting more than letters: where the stress falls, which
+# is penultimate as Polish's is until a dictionary says otherwise, and with
+# it the unstressed vowels Russian reduces.
+
+rules in it_phone.obj named apply_pol_%s_rules
+a piece runs from 864 to 872
+a word runs from 704 to 712
+
+voiceless means п т к ф с ш щ х ц ч and the end of the word unless voiced follows
+voiced means б д г з ж unless voiceless follows
+iot means е ё ю я
+ж ч щ ь э я come through q
+
+phone ш is L
+phone ж is R
+phone щ is S
+phone ч is C
+phone ть is C
+phone дь is J
+phone ц is T
+phone х is A
+phone нь is N
+phone сь is S
+phone зь is Z
+
+# ---- vowels -----------------------------------------------------------
+
+letter а as a
+  а    says a
+
+letter о as o
+  ё after ь  says y c      # бельё
+  ё after ъ  says y c      # объём
+  ё after consonant  says c
+  ё    says y c            # ёж, моё
+  о    says c
+
+letter у as u
+  ю after ь  says y u      # вьюга
+  ю after ъ  says y u
+  ю after consonant  says u
+  ю    says y u            # юг, мою
+  у    says u
+
+letter ы as y
+  ы    says e
+
+letter э
+  э    says E
+
+letter и as i
+  и after ж  says e        # жить
+  и after ш  says e        # шило
+  и after ц  says e        # цирк
+  и after ь  says y i      # соловьи
+  и    says i
+
+letter е as e
+  е after ь  says y E      # семье
+  е after ъ  says y E      # съел
+  е after consonant  says E
+  е    says y E            # ель, поет
+
+
+
+letter я
+  я after ь  says y a      # семья
+  я after ъ  says y a      # объявление
+  я after consonant  says a
+  я    says y a            # яма, моя
+
+letter й as j
+  й    says y
+
+# ---- signs ------------------------------------------------------------
+
+# Each says nothing: what ь does is in the consonant before it, and what both
+# do to a vowel after them is in the vowel.
+letter ь
+  ь    says nothing
+
+letter ъ as x
+  ъ    says nothing
+
+# ---- consonants -------------------------------------------------------
+
+letter б as b
+  б before voiceless   says p      # хлеб, обхват
+  б before iot         says b y    # бег
+  б    says b
+
+letter п as p
+  п before voiced word says b      # суп был
+  п before voiced      says b
+  п before iot         says p y    # пёс
+  п    says p
+
+letter в as v
+  в before voiceless   says f      # вторник, кровь
+  в before iot         says v y    # ветер
+  в    says v
+
+letter ф as f
+  ф before voiced word says v
+  ф before voiced      says v
+  ф before iot         says f y
+  ф    says f
+
+letter м as m
+  м before iot         says m y    # мясо
+  м    says m
+
+# -ого and -его, the genitive, say в for their г: его, сегодня, нового.
+letter г as g
+  г after о before о at word end  says v     # нового, его
+  г after е before о at word end  says v     # его, моего
+  г after е before од  says v               # сегодня
+  г before voiceless   says k      # друг, ногти
+  г before iot         says g y
+  г    says g
+
+letter к as k
+  к before voiced word says g      # так быстро
+  к before voiced      says g      # вокзал
+  к before iot         says k y
+  к    says k
+
+letter х as h
+  х before voiced      says A
+  х before iot         says A y
+  х    says A
+
+letter д as d
+  дь before voiceless  says C      # грудь
+  дь                   says дь     # дьяк
+  д before voiceless   says t      # сад, лодка
+  д before iot         says d y    # дети
+  д    says d
+
+# -тся and -ться at the end of a verb are one ц and an a.
+letter т as t
+  ться at word end     says ц a    # учиться
+  тся at word end      says ц a    # учится
+  ть before voiced word  says дь   # мать была
+  ть                   says ть     # мать
+  т before voiced word says d      # брат был
+  т before voiced      says d      # отдать
+  т before iot         says t y    # тело
+  т    says t
+
+letter з as z
+  зч                   says щ      # извозчик
+  зь before voiceless  says сь
+  зь                   says зь
+  з before voiceless   says s      # раз, сказка
+  з before iot         says z y    # зеленый
+  з    says z
+
+letter с as s
+  сч                   says щ      # счастье
+  сь before voiced     says зь     # просьба
+  сь                   says сь     # весь
+  с before voiced word says z      # нас дома
+  с before voiced      says z      # сделать
+  с before iot         says s y    # сено
+  с    says s
+
+letter н as n
+  нь                   says нь     # конь
+  н before iot         says нь     # нет, няня
+  н    says n
+
+letter л as l
+  ль                   says l      # соль
+  л before iot         says l y    # лес
+  л    says l
+
+letter р as r
+  рь                   says r      # царь
+  р before iot         says r y    # река
+  р    says r
+
+letter ж
+  жь before voiceless  says ш      # рожь
+  жь                   says ж
+  ж before voiceless   says ш      # нож, ложка
+  ж    says ж
+
+letter ш as w
+  шь before voiced     says ж
+  шь                   says ш      # мышь
+  ш before voiced word says ж
+  ш before voiced      says ж
+  ш    says ш
+
+# что and its kin say ш for their ч.
+letter ч
+  чт before о at word end  says ш t     # что, ничто
+  чь before voiced     says дь          # дочь была
+  чь                   says ч           # ночь
+  ч before voiced word says дь
+  ч before voiced      says дь
+  ч    says ч
+
+letter щ
+  щь                   says щ      # вещь
+  щ    says щ
+
+letter ц as c
+  ц before voiced      says d z
+  ц    says ц
