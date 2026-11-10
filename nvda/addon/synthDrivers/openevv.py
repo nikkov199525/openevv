@@ -195,6 +195,20 @@ class SynthDriver(SynthDriver):
 		self._engine.open()
 		self._voice = self._voiceId(self._engine.language, _openevv.VOICE_FIRST)
 		self._applyDictionaries()
+		# Until the reader has chosen a voice, speak the language NVDA itself
+		# is in where the library has it. The library's first language is US
+		# English, and Polish text handed to the English module is read as
+		# Western bytes -- a stream of symbol names that sounds like the text
+		# arriving in the wrong encoding. A voice the reader has saved is set
+		# after this and wins.
+		try:
+			import languageHandler
+			mine = self._languageFor(languageHandler.getLanguage())
+		except Exception:
+			log.debugWarning("openevv: could not ask NVDA its language", exc_info=True)
+			mine = None
+		if mine is not None and mine != self._engine.language:
+			self._set_voice(self._voiceId(mine, _openevv.VOICE_FIRST))
 		log.debug("openevv: engine version %s" % self._engine.version)
 
 	def terminate(self):
