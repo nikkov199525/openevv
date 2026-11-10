@@ -275,3 +275,23 @@ bytes ru_num_4000  d0 02 1a 1e 18 02 48 1a 1e 19 cf d0 03 # четыре тыс�
 bytes ru_num_2mln  0d 1b 01 48 14 03 13 03 04 15 01 # два миллиона, 11 characters
 bytes ru_num_3mln  1a 18 03 48 14 03 13 03 04 15 01 # три миллиона, 11 characters
 bytes ru_num_4mln  d0 02 1a 1e 18 02 48 14 03 13 03 04 15 01 # четыре миллиона, 14 characters
+
+# What the word before тысяча is, which decides its form. convert_ital_thousands
+# reads it leftwards from where тысяча goes, and a leftward test reads the
+# nearest letter first, so each of these is written backwards: ав is the end
+# of два, ир of три, and with a space before it of три with the space the
+# compound units leave after it, ер of четыре, ни of один. After два the а
+# becomes е and тысячи follows, after три and четыре тысячи, after один its
+# ин becomes на and тысяча follows, and after anything else тысяч.
+bytes ru_lt_a        01            # а
+bytes ru_lt_av       01 1b         # ав, the end of два backwards
+bytes ru_lt_ri       03 18         # ир, the end of три backwards
+bytes ru_lt_sri      48 03 18      # a space and ир
+bytes ru_lt_er       02 18         # ер, the end of четыре backwards
+bytes ru_lt_ni       15 03         # ни, the end of один backwards
+bytes ru_lt_sni      48 15 03      # a space and ни
+bytes ru_lt_e        02            # е, which два's а becomes
+bytes ru_na          15 01         # на, which один's ин becomes
+bytes ru_na_s        15 01 48      # на and a space, for один with its space
+bytes ru_num_1000a   c7 48 1a 1e 19 cf d0 03 48 # a space and тысячи, 9 characters
+bytes ru_num_1000one c7 48 1a 1e 19 cf d0 01    # a space and тысяча, 8 characters

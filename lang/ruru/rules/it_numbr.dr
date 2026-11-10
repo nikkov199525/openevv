@@ -7090,6 +7090,240 @@ label L13 was $X13$92032
   load movl slotaddr 100 into r0
   push slotaddr 100
   push reg r6
+  call ZZlpta_load__setscan_l__1 arity 2 depth 2
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  push sym ru_lt_av
+  push imm 2
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L941
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call ZZlpta_load__setscan_l__1 arity 2 depth 2
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  push sym ru_lt_a
+  push imm 1
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  load movl slotaddr 72 into r0
+  push slotaddr 72
+  push reg r6
+  call ZZsavescptr15 arity 2 depth 2
+  popn 2
+  push sym ru_lt_e
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  load movl slotaddr 72 into r0
+  push slotaddr 72
+  push reg r6
+  call pol_insert_1 arity 4 depth 4
+  popn 4
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call rpta_loadp arity 2 depth 2
+  push sym ru_num_1000a
+  push reg r6
+  call pol_insert_l_9 arity 2 depth 4
+  popn 4
+  jump to L14
+label L941 was ru_thousands_three
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call ZZlpta_load__setscan_l__1 arity 2 depth 2
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  push sym ru_lt_ri
+  push imm 2
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L942
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call rpta_loadp arity 2 depth 2
+  push sym ru_num_1000a
+  push reg r6
+  call pol_insert_l_9 arity 2 depth 4
+  popn 4
+  jump to L14
+label L942 was ru_thousands_ru_lt_ri
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call ZZlpta_load__setscan_l__1 arity 2 depth 2
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  push sym ru_lt_sri
+  push imm 3
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L943
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call rpta_loadp arity 2 depth 2
+  push sym ru_num_1000a
+  push reg r6
+  call pol_insert_l_9 arity 2 depth 4
+  popn 4
+  jump to L14
+label L943 was ru_thousands_ru_lt_sri
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call ZZlpta_load__setscan_l__1 arity 2 depth 2
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  push sym ru_lt_er
+  push imm 2
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L944
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call rpta_loadp arity 2 depth 2
+  push sym ru_num_1000a
+  push reg r6
+  call pol_insert_l_9 arity 2 depth 4
+  popn 4
+  jump to L14
+label L944 was ru_thousands_ru_lt_er
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call ZZlpta_load__setscan_l__1 arity 2 depth 2
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  push sym ru_lt_ni
+  push imm 2
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L945
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call ZZlpta_load__setscan_l__1 arity 2 depth 2
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  push sym ru_lt_ni
+  push imm 2
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  load movl slotaddr 72 into r0
+  push slotaddr 72
+  push reg r6
+  call ZZsavescptr15 arity 2 depth 2
+  popn 2
+  push sym ru_na
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  load movl slotaddr 72 into r0
+  push slotaddr 72
+  push reg r6
+  call pol_insert_2 arity 4 depth 4
+  popn 4
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call rpta_loadp arity 2 depth 2
+  push sym ru_num_1000one
+  push reg r6
+  call pol_insert_l_8 arity 2 depth 4
+  popn 4
+  jump to L14
+label L945 was ru_thousands_one_spaced
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call ZZlpta_load__setscan_l__1 arity 2 depth 2
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  push sym ru_lt_sni
+  push imm 3
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call ZZlpta_load__setscan_l__1 arity 2 depth 2
+  popn 2
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  push sym ru_lt_sni
+  push imm 3
+  push imm 1
+  push reg r6
+  call test_string_s arity 4 depth 4
+  popn 4
+  cmp testl reg r0 reg r0
+  branch jne to L949
+  load movl slotaddr 72 into r0
+  push slotaddr 72
+  push reg r6
+  call ZZsavescptr15 arity 2 depth 2
+  popn 2
+  push sym ru_na_s
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  load movl slotaddr 72 into r0
+  push slotaddr 72
+  push reg r6
+  call pol_insert_3 arity 4 depth 4
+  popn 4
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
+  call rpta_loadp arity 2 depth 2
+  push sym ru_num_1000one
+  push reg r6
+  call pol_insert_l_8 arity 2 depth 4
+  popn 4
+  jump to L14
+label L949 was ru_thousands_plural
+  load movl slotaddr 100 into r0
+  push slotaddr 100
+  push reg r6
   call rpta_loadp arity 2 depth 2
   push sym pol_num_1000j
   push reg r6

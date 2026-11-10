@@ -562,3 +562,24 @@ rule pol_insert_2 takes 4 from glob.obj
   raw alu negl none reg r0
   raw return reg r0
 end
+
+# One character, for the letter a тысяча changes in the word before it:
+# два is две before тысячи.
+rule pol_insert_1 takes 4 from glob.obj
+  bare
+  raw push param 2
+  raw push param 1
+  raw push param 0
+  raw call lpta_rpta_loadp arity 3 depth 3
+  raw push imm 0
+  raw push param 3
+  raw push imm 1
+  raw push imm 1
+  raw push param 0
+  raw call insert_2pt_s arity 5 depth 8
+  raw popn 8
+  raw alu negl none reg r0
+  raw alu sbbl reg r0 reg r0
+  raw alu negl none reg r0
+  raw return reg r0
+end
