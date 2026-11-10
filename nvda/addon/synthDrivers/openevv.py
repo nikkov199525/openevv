@@ -13,6 +13,7 @@
 
 import os
 import re
+import unicodedata
 from collections import OrderedDict
 
 from autoSettingsUtils.driverSetting import (
@@ -87,6 +88,61 @@ _PROSODY_PARAMS = {
 	RateCommand: _openevv.VOICE_SPEED,
 	VolumeCommand: _openevv.VOICE_VOLUME,
 }
+# What the engine says out loud rather than pausing at, when it is left in
+# the text: a bracket, a quotation mark, @, #, /, a comma or a full stop with
+# no word before it, a run of commas, and the rest, by name and in English
+# whatever the language. NVDA has its own setting for how much punctuation to
+# say, in the reader's language, and what it chose not to say still reaches
+# the synth. So a reader who turns "Synthesizer reads punctuation" off has
+# every mark taken out before the engine sees it. It is on unless they do,
+# because what goes includes $, %, # and @, and with them the engine's own
+# readings of money and percent: "$5" would reach it as "5" and "50%" as
+# "50". What a mark is for besides its name is the pause, and that much is
+# kept: a run of marks after a word becomes the one mark that says how long
+# to pause, attached to that word, where the engine never names it. A run
+# with no word before it is only a space.
+_MARK_RUN = re.compile(r"\s*(?:[^\w\s]|_)(?:\s*(?:[^\w\s]|_))*")
+# One of these alone between two letters or digits belongs to the word: 3.5,
+# 10:30, 1,5, 1-\u0433\u043e, \u0442.\u0435, don't.
+_INNER_MARKS = ".,:-/'\u2019"
+_COMMA_MARKS = re.compile(r"[-,;:\u2014\u2013\u2026]|\.\.\.")
+
+
+def _quietPunctuation(text):
+	"""Text with no mark left in it that the engine would say by name.
+
+	Composed first, so that an accent written as a combining mark stays on
+	its letter rather than being taken for punctuation, and nothing is added
+	at either end of the text: whether a stretch ends in a space is how the
+	driver decides where to cut it."""
+	text = unicodedata.normalize("NFC", text)
+
+	def one(match):
+		run = match.group(0)
+		start, end = match.span()
+		before = text[start - 1] if start else ""
+		after = text[end] if end < len(text) else ""
+		if all(unicodedata.combining(c) for c in run.strip()):
+			return run
+		if len(run) == 1 and run in _INNER_MARKS and before.isalnum() and after.isalnum():
+			return run
+		# A space where the run stood between two words, and nothing where
+		# the text already has one or ends.
+		space = " " if after and not after.isspace() else ""
+		if not before.isalnum():
+			return space if before else ""
+		marks = "".join(run.split())
+		if "?" in marks:
+			return "?" + space
+		if "!" in marks:
+			return "!" + space
+		if "." in marks.replace("...", ""):
+			return "." + space
+		if _COMMA_MARKS.search(marks):
+			return "," + space
+		return space
+
+	return _MARK_RUN.sub(one, text)
 
 #: Closing marks which may follow sentence-final punctuation.
 _CLOSERS = "\"')]}\N{RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK}\N{RIGHT DOUBLE QUOTATION MARK}\N{RIGHT SINGLE QUOTATION MARK}"
@@ -153,6 +209,8 @@ class SynthDriver(SynthDriver):
 			defaultVal=str(_openevv.DEFAULT_PAUSE_MODE),
 		),
 		# Translators: Label for a setting in voice settings dialog.
+		BooleanDriverSetting("synthPunctuation", _("Synthesizer reads &punctuation"), False, defaultVal=True),
+		# Translators: Label for a setting in voice settings dialog.
 		BooleanDriverSetting("voiceTags", _("Allow backquote voice &tags"), False),
 		# Translators: Label for a setting in voice settings dialog.
 		DriverSetting("samplerate", _("Sa&mple rate"), False),
@@ -191,6 +249,7 @@ class SynthDriver(SynthDriver):
 		self._voiceTags = False
 		self._dictionarySet = dictionaries.NO_SET
 		self._personalDictionary = True
+		self._synthPunctuation = True
 		self._engine = _openevv.Engine(self._onIndexReached)
 		self._engine.open()
 		self._voice = self._voiceId(self._engine.language, _openevv.VOICE_FIRST)
@@ -262,7 +321,7 @@ class SynthDriver(SynthDriver):
 
 		for item in speechSequence:
 			if isinstance(item, str):
-				said = self._processText(item)
+				said = self._processText(item, spelling)
 				words = words or said.strip() != ""
 				# Sentence ends are free boundaries because the engine already pauses
 				# there. Whitespace after the much larger cap bounds a sentence which
@@ -369,12 +428,18 @@ class SynthDriver(SynthDriver):
 				(tuple(sorted(_PROSODY_PARAMS[command] for command in prosody)),),
 			)])
 
-	def _processText(self, text):
+	def _processText(self, text, spelling=False):
 		if not self._voiceTags:
 			# A backtick starts an annotation, so ordinary text carrying one
 			# would be read as a command rather than spoken. Unless the reader
 			# has asked for tags to go through, it becomes a space.
 			text = text.replace("`", " ")
+			# Punctuation is NVDA's to say unless the reader has asked for the
+			# engine's. Not while spelling: a character on its own is what
+			# the reader asked to hear. And not with voice tags on, whose
+			# annotations are made of these characters.
+			if not self._synthPunctuation and not spelling:
+				text = _quietPunctuation(text)
 		return text
 
 	def cancel(self):
@@ -526,6 +591,12 @@ class SynthDriver(SynthDriver):
 			log.error("openevv: %r is not a pause mode" % (value,))
 			return
 		self._engine.control([(self._engine.setPauseMode, (mode,))])
+
+	def _get_synthPunctuation(self):
+		return self._synthPunctuation
+
+	def _set_synthPunctuation(self, enable):
+		self._synthPunctuation = bool(enable)
 
 	def _get_voiceTags(self):
 		return self._voiceTags
