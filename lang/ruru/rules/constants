@@ -1,408 +1,304 @@
-# Bytes a rule of Polish's names by address, which no lifter writes: these are
-# ours. A string a rule holds against the text is one code per character in
-# the alphabet the statement type declares, not ASCII, and
-# tools/module/alphabet.py show ruru is what says which code is which letter.
-# The phonemes are the phone statement's own alphabet, which
-# tools/module/phonemes.py prints.
+# Bytes a rule of ours names by address, laid down by tools/rules/consts.py
+# into delta_authored_ruru.c and recorded in rules/symbols. See the top of
+# that tool for what the bytes are: not ASCII, but one code per character in
+# the alphabet the statement type declares.
+#
+# This one is IBM's own two-byte prefix "re" as ZZstring278 holds it, copied
+# so that every build compiles a store of ours, registers it in the arena
+# beside the lifted ones and copies it in. Nothing names it: what it proves is
+# the path, on every build and in every configuration the suite runs. What
+# proves the naming is in docs/building.md, which says how to hold a rule that
+# reads this against the same rule reading IBM's copy.
 
-# The eight letters Italian has not got, by the codes the alphabet gives them.
-bytes pol_letter_aogonek  cf      # a with an ogonek
-bytes pol_letter_cacute   d0      # c with an acute
-bytes pol_letter_eogonek  d1      # e with an ogonek
-bytes pol_letter_lstroke  d2      # l with a stroke
-bytes pol_letter_nacute   d3      # n with an acute
-bytes pol_letter_sacute   d4      # s with an acute
-bytes pol_letter_zacute   d5      # z with an acute
-bytes pol_letter_zdot     d6      # z with a dot above
+bytes lex_prefix_re 18 02
 
-# What the two ogoneks say. They are nasal vowels, which this inventory has
-# not got: they are spoken as the vowel and then an n, which is what Polish
-# itself does before a stop and near enough elsewhere until there is a nasal
-# vowel to use. The other six letters say one phoneme each and the module
-# already has a wrapper that lays each of those down, so they name nothing
-# here.
-bytes pol_ph_on           21 12   # the open o, then n
-bytes pol_ph_en           1d 12   # the open e, then n
-
-# The hard affricates, cz and dż. Polish's soft ć and dź are Italian's own C
-# and J, which its phonology already breaks into a stop and the palatal
-# fricative; the hard pair has no code of its own left, so a letter rule lays
-# down the stop and the retroflex fricative itself, which is the same two
-# sounds in the same order.
-bytes pol_ph_tsz          04 18   # t, then the hard sz
-bytes pol_ph_dzz          03 16   # d, then the hard ż
-
-# The names of the six letters Polish has that Italian has not, as characters
-# rather than sounds: a lone letter is spoken by spelling its name out and
-# reading that back as a word, which is what ital_char_name does for every
-# letter Italian has. The codes are the input alphabet's, so ż inside żet is
-# the same 0xd6 the text arrives as, and every one of these names is spelled
-# with letters that already speak.
-bytes pol_name_cacute   d0 02   # че, the name of ч
-bytes pol_name_lstroke  14 cf 0f 12 03 11 48 1f 15 01 12   # мягкий знак, the name of ь
-bytes pol_name_nacute   05 0d 01 18 02 15 03 02   # ударение, the name of the stress mark
-bytes pol_name_sacute   d4 01   # ща, the name of щ
-bytes pol_name_zacute     1f 03 02 1a   # ziet
-bytes pol_name_zdot     d6 d1   # жэ, the name of ж
-
-# And the Russian name of the letter that took each Latin letter's byte, for
-# the same reason: a lone letter is spoken by its name. The names keep the
-# symbols Polish gave them, which are the bytes' and not the letters': the
-# name at pol_name_w is ша, since ш is the letter that arrives as w.
-bytes pol_name_a        01   # а, the name of а
-bytes pol_name_b        0b d1   # бэ, the name of б
-bytes pol_name_c        0c d1   # цэ, the name of ц
-bytes pol_name_d        0d d1   # дэ, the name of д
-bytes pol_name_e        02   # е, the name of е
-bytes pol_name_f        d1 0e   # эф, the name of ф
-bytes pol_name_g        0f d1   # гэ, the name of г
-bytes pol_name_h        10 01   # ха, the name of х
-bytes pol_name_i        03   # и, the name of и
-bytes pol_name_j        03 48 12 18 01 1a 12 04 02   # и краткое, the name of й
-bytes pol_name_k        12 01   # ка, the name of к
-bytes pol_name_l        d1 13 d2   # эль, the name of л
-bytes pol_name_m        d1 14   # эм, the name of м
-bytes pol_name_n        d1 15   # эн, the name of н
-bytes pol_name_o        04   # о, the name of о
-bytes pol_name_p        16 d1   # пэ, the name of п
-bytes pol_name_q        12 05   # ку, the name of Latin q
-bytes pol_name_r        d1 18   # эр, the name of р
-bytes pol_name_s        d1 19   # эс, the name of с
-bytes pol_name_t        1a d1   # тэ, the name of т
-bytes pol_name_u        05   # у, the name of у
-bytes pol_name_v        1b d1   # вэ, the name of в
-bytes pol_name_w        1c 01   # ша, the name of ш
-bytes pol_name_x        1a 1b 64 18 0d 1e 11 48 1f 15 01 12   # твёрдый знак, the name of ъ
-bytes pol_name_y        1e   # ы, the name of ы
-bytes pol_name_z        1f d1   # зэ, the name of з
-
-# Russian's number words, in the places Polish wrote for its own. Italian's
-# are in the wrappers its own arms call, one wrapper to a word with the word
-# and its length baked into the name, so a word of Polish's was a wrapper of
-# its own and one call name changed in the arm, and Russian's are the same
-# wrappers with Russian's words in them. A word shorter than the length an
-# arm inserts is filled out with spaces, and one longer is written as it is
-# said: одиннадцать is одинацать, as дц is ц. The units are inserted by
-# pol_say_2 to pol_say_9, at their own lengths.
-bytes pol_num_2         0d 1b 01 # два, 3 characters, which pol_say_2 inserts
-bytes pol_num_3      1a 18 03 48 # три and a space, 4 characters: pol_say_3 inserts three of them and the compound units all four
-bytes pol_num_4         d0 02 1a 1e 18 02 # четыре, 6 characters, which pol_say_4 inserts
-bytes pol_num_5         16 cf 1a d2 # пять, 4 characters, which pol_say_5 inserts
-bytes pol_num_6         1c 02 19 1a d2 # шесть, 5 characters, which pol_say_6 inserts
-bytes pol_num_7         19 02 14 d2 # семь, 4 characters, which pol_say_7 inserts
-bytes pol_num_8         1b 04 19 02 14 d2 # восемь, 6 characters, which pol_say_8 inserts
-bytes pol_num_9         0d 02 1b cf 1a d2 # девять, 6 characters, which pol_say_9 inserts
-
-# The teens.
-bytes pol_num_10     0d 02 19 cf 1a d2 48 48 # десять, 2 spaces after it, 8 characters
-bytes pol_num_11     04 0d 03 15 01 0c 01 1a d2 48 # одинацать, одиннадцать, written as it is said: дц is ц, 1 space after it, 10 characters
-bytes pol_num_12     0d 1b 02 15 01 0c 01 1a d2 # двенацать, двенадцать, as it is said, 9 characters
-bytes pol_num_13     1a 18 03 15 01 0c 01 1a d2 48 # тринацать, тринадцать, as it is said, 1 space after it, 10 characters
-bytes pol_num_14     d0 02 1a 1e 18 15 01 0c 01 1a d2 # четырнацать, четырнадцать, as it is said, 11 characters
-bytes pol_num_15     16 cf 1a 15 01 0c 01 1a d2 48 # пятнацать, пятнадцать, as it is said, 1 space after it, 10 characters
-bytes pol_num_16     1c 02 19 15 01 0c 01 1a d2 48 # шеснацать, шестнадцать, as it is said, its т silent, 1 space after it, 10 characters
-bytes pol_num_17     19 02 14 15 01 0c 01 1a d2 48 48 48 # семнацать, семнадцать, as it is said, 3 spaces after it, 12 characters
-bytes pol_num_18     1b 04 19 02 14 15 01 0c 01 1a d2 # восемнацать, восемнадцать, as it is said, 11 characters
-bytes pol_num_19     0d 02 1b cf 1a 15 01 0c 01 1a d2 48 48 48 # девятнацать, девятнадцать, as it is said, 3 spaces after it, 14 characters
-
-# The tens, each with a trailing space.
-bytes pol_num_20     0d 1b 01 0c 01 1a d2 48 48 48 48 48 # двацать, двадцать and a space, as it is said, 4 spaces after it, 12 characters
-bytes pol_num_30     1a 18 03 0c 01 1a d2 48 48 48 48 48 # трицать, тридцать and a space, as it is said, 4 spaces after it, 12 characters
-bytes pol_num_40     19 04 18 04 12 48 48 48 48 48 48 48 48 # сорок, and a space, 7 spaces after it, 13 characters
-bytes pol_num_50     16 cf 1a d2 0d 02 19 cf 1a 48 48 48 48 # пятьдесят, and a space, 3 spaces after it, 13 characters
-bytes pol_num_60     1c 02 19 1a d2 0d 02 19 cf 1a 48 48 48 48 # шестьдесят, and a space, 3 spaces after it, 14 characters
-bytes pol_num_70     19 02 14 d2 0d 02 19 cf 1a 48 48 48 48 48 48 # семьдесят, and a space, 5 spaces after it, 15 characters
-bytes pol_num_80     1b 04 19 02 14 d2 0d 02 19 cf 1a 48 48 48 # восемьдесят, and a space, 2 spaces after it, 14 characters
-bytes pol_num_90     0d 02 1b cf 15 04 19 1a 04 48 48 48 48 48 48 48 48 # девяносто, and a space, 7 spaces after it, 17 characters
-
-# One, which Italian says four ways and Polish one.
-bytes pol_num_1      04 0d 03 15 48 # один, 1 space after it, 5 characters
-
-# A hundred and a thousand. The joined forms keep the mark Italian puts
-# in front of them, since that is the machine's and not the language's.
-bytes pol_num_100    19 1a 04 # сто, 3 characters
-bytes pol_num_100j   c7 19 04 1a # сот, the joined hundreds after two to nine, пятьсот, 4 characters
-bytes pol_num_1000   1a 1e 19 cf d0 01 # тысяча, 6 characters
-bytes pol_num_1000j  c7 48 1a 1e 19 cf d0 48 # a space and тысяч, 1 space after it, 9 characters: right after five to twenty, the tens and the hundreds, and wrong only after a group of more than one digit that ends in 1 to 4, 22 000; a group of one digit asks for 2, 3 and 4 itself
-
-# The millions and the billions, and the and between them that Polish
-# does not say.
-bytes pol_num_mln    c7 48 14 03 13 03 04 15 # милион, a space and миллион, its лл said as one, 8 characters
-bytes pol_num_mlns   c7 48 14 03 13 03 04 15 04 1b # a space and миллионов, its лл said as one, 10 characters: right after five and up, as тысяч is, and a group of one digit asks for 2, 3 and 4 itself
-bytes pol_num_mld    c7 48 14 03 13 03 01 18 0d # милиард, миллиард, its лл said as one, 9 characters
-bytes pol_num_mlds   c7 48 14 03 13 03 01 18 0d 04 1b # a space and миллиардов, 11 characters: right after five and up, and wrong after two to four, which only the millions ask for yet
-bytes pol_num_and      c7 48                              # where Italian says e, 2 characters
-
-# The phone ą lays down, which is a code of its own rather than a retaken one:
-# there was nothing left to retake.
-bytes pol_ph_aogonek     23             # the nasal open o, code 35
-
-# The letters that make a voiced consonant in front of them voiceless: p, t, k,
-# f, s, c, h and the two soft ones. sz and cz need no entry of their own, since
-# they start with s and c.
-bytes pol_letter_p        16
-bytes pol_letter_t        1a
-bytes pol_letter_k        12
-bytes pol_letter_f        0e
-bytes pol_letter_s        19
-bytes pol_letter_c        0c
-bytes pol_letter_h        10
-
-# The phone ch and h lay down: /x/, code 36.
-bytes pol_ph_x            24
-
-# w and z, the two prepositions with no vowel, in both cases: the one a text
-# has is the one that goes back in when it is joined to the word after it.
-bytes pol_letter_w        1c
-bytes pol_letter_z        1f
-bytes pol_capital_w       31
-bytes pol_capital_z       34
-bytes pol_letter_e        02
-
-# The one-syllable words Polish never stresses: the prepositions, the
-# conjunctions i and a, and się and że. The rules in ia_gcat.up hold a word
-# against these, and against nie, which is stressed only sometimes.
-bytes pol_fw_na          15 01   # na
-bytes pol_fw_do          0d 04   # do
-bytes pol_fw_po          16 04   # po
-bytes pol_fw_od          04 0d   # od
-bytes pol_fw_za          1f 01   # za
-bytes pol_fw_o           04   # o
-bytes pol_fw_u           05   # u
-bytes pol_fw_ku          12 05   # ku
-bytes pol_fw_ze          1f 02   # ze
-bytes pol_fw_we          1c 02   # we
-bytes pol_fw_przy        16 18 1f 1e   # przy
-bytes pol_fw_bez         0b 02 1f   # bez
-bytes pol_fw_dla         0d 13 01   # dla
-bytes pol_fw_przez       16 18 1f 02 1f   # przez
-bytes pol_fw_pod         16 04 0d   # pod
-bytes pol_fw_nad         15 01 0d   # nad
-bytes pol_fw_przed       16 18 1f 02 0d   # przed
-bytes pol_fw_znad        1f 15 01 0d   # znad
-bytes pol_fw_spod        19 16 04 0d   # spod
-bytes pol_fw_zza         1f 1f 01   # zza
-bytes pol_fw_sprzed      19 16 18 1f 02 0d   # sprzed
-bytes pol_fw_i           03   # i
-bytes pol_fw_a           01   # a
-bytes pol_fw_sie_        19 03 d1   # się
-bytes pol_fw_z_e         d6 02   # że
-bytes pol_fw_nie         15 03 02   # nie
-bytes pol_capital_nie     2a 03 02   # Nie
-
-# The phones either side of a syllable boundary pol_syll_init_con in
-# it_syll.up asks about: a t or d and then the hard sz or ż.
-bytes pol_ph_t            04
-bytes pol_ph_d            03
-bytes pol_ph_sz           18
-bytes pol_ph_zh           16
-# The word statement, which pol_syll_init_con fences on so that a t ending one
-# word is not taken into a syllable of the next.
-bytes pol_fence_word      04
-
-# 6.1 Italian's own strings, which the rules lifted out of it at the end of
-# ut_norm.up test against and lay down; Polish takes them as Italian does.
+# 6.1's own strings, which the rules lifted out of it at the end of
+# ut_norm.up test against and lay down. Where 6.1 marks an annotation with a
+# backslash and an exclamation mark, which only its own annotation reader
+# takes, the annotation is written with the backquote IBM's reader takes and
+# a space after it, which keeps the length the rule states.
 bytes eti_null         00
-bytes eti_s_e90e6      48
-bytes eti_s_e90e7      47
-bytes eti_s_e90e8      51
-bytes eti_s_e90e9      60
-bytes eti_s_e90ea      49
-bytes eti_s_e90eb      a8
-bytes eti_s_e90ec      ac
-bytes eti_s_e90ed      41
-bytes eti_s_e910c      43
-bytes eti_s_e910e      42
-bytes eti_s_e910f      45
-bytes eti_s_e9110      44
-bytes eti_s_e9111      40
-bytes eti_s_e9112      04
-bytes eti_s_e9113      46
-bytes eti_s_e9114      46 47
-bytes eti_s_e912a      a7
-bytes eti_s_e912b      4c
-bytes eti_s_e912c      ab
-bytes eti_s_e912f      50
-bytes eti_s_e9130      53
-bytes eti_s_e9131      52
-bytes eti_s_e9132      5e
-bytes eti_s_e9133      5f
-bytes eti_s_e9139      48 48
-bytes eti_s_e913b      54
-bytes eti_s_e913c      41 48
-bytes eti_s_e913e      c7
+bytes eti_s_1b90d6     05
+bytes eti_s_1b90d7     48
+bytes eti_s_1b90d8     47
+bytes eti_s_1b90d9     51
+bytes eti_s_1b90da     60
+bytes eti_s_1b90db     49
+bytes eti_s_1b90dc     a8
+bytes eti_s_1b90dd     ac
+bytes eti_s_1b90de     41
+bytes eti_s_1b90df     4f
+bytes eti_s_1b90e0     c7 48
+bytes eti_s_1b90e2     c7 40 48
+bytes eti_s_1b90e5     10 1a
+bytes eti_s_1b90e7     0e
+bytes eti_s_1b90e8     1a 16
+bytes eti_s_1b90ea     43 58 58
+bytes eti_s_1b90ed     1c 1c 1c 41
+bytes eti_s_1b90f1     48 41 41 41 48
+bytes eti_s_1b90f6     58
+bytes eti_s_1b90f7     c7 48 4c 35 48
+bytes eti_s_1b90fc     5d
+bytes eti_s_1b90fd     43
+bytes eti_s_1b90fe     3f
+bytes eti_s_1b90ff     42
+bytes eti_s_1b9100     45
+bytes eti_s_1b9101     44
+bytes eti_s_1b9102     40
+bytes eti_s_1b9103     04
+bytes eti_s_1b9104     46
+bytes eti_s_1b9105     46 47
+bytes eti_s_1b9112     c7 48 4c 36 48 48
+bytes eti_s_1b9118     a7
+bytes eti_s_1b9119     4c
+bytes eti_s_1b911a     ab
+bytes eti_s_1b911d     50
+bytes eti_s_1b911e     53
+bytes eti_s_1b911f     52
+bytes eti_s_1b9120     5e
+bytes eti_s_1b9121     5f
+bytes eti_s_1b9126     4e
+bytes eti_s_1b9127     48 4c 35 48 48 0d 04 1a 48
+bytes eti_s_1b9130     19 1a 01 18
+bytes eti_s_1b9134     19
+bytes eti_s_1b9135     2e
+bytes eti_s_1b9136     48 48
+bytes eti_s_1b9138     54
+bytes eti_s_1b9139     41 48
+bytes eti_s_1b913b     c7
+# The prefixes 6.1's strip_scientific_prefixes tests, in et_prfx.up.
+bytes eti_s_1be896     03
+bytes eti_s_1be8b5     01 05 0d 03 04
+bytes eti_s_1be8ba     0c 01 18 0d 03 04
+bytes eti_s_1be8c0     0c 10 02 14 04
+bytes eti_s_1be8c5     02 13 02 0c 1a 18 04
+bytes eti_s_1be8cc     10 1e 0d 18 04
+bytes eti_s_1be8d1     15 02 05 18 04
+bytes eti_s_1be8d6     15 03 1a 18 04
+bytes eti_s_1be8db     0d 02
+bytes eti_s_1be8dd     04 1d 1e
+bytes eti_s_1be8e0     18 03 0b 04
+bytes eti_s_1be8e4     18 01 0d 03 04
+bytes eti_s_1be8e9     1a 02 13 02
+bytes eti_s_1be8ed     1a 10 02 18 14 04
 
-# The digits as Russian says them one at a time, for the wrappers in glob.dr
-# that IBM's Italian names them with: each wrapper there now inserts one of
-# these, at its length, where it inserted the Italian word.
-bytes ru_digit_0   15 04 13 d2          # ноль, where Italian says zero
-bytes ru_digit_2   0d 1b 01             # два, where Italian says due
-bytes ru_digit_3   1a 18 03             # три, where Italian says tre
-bytes ru_digit_4   d0 02 1a 1e 18 02    # четыре, where Italian says quattro
-bytes ru_digit_5   16 cf 1a d2          # пять, where Italian says cinque
-bytes ru_digit_6   1c 02 19 1a d2       # шесть, where Italian says sei
-bytes ru_digit_7   19 02 14 d2          # семь, where Italian says sette
-bytes ru_digit_8   1b 04 19 02 14 d2    # восемь, where Italian says otto
-bytes ru_digit_9   0d 02 1b cf 1a d2    # девять, where Italian says nove
+# 6.1's own strings for the phone numbers, which et_numbr.up lays down and
+# tests against.
+bytes eti_s_1b9176     36
+bytes eti_s_1b917a     3f
+bytes eti_s_1b917f     46
+bytes eti_s_1b9180     47
+bytes eti_s_1b9181     48
+bytes eti_s_1b9182     35 35
+bytes eti_s_1b9184     02
+bytes eti_s_1b9185     1d
+bytes eti_s_1b9186     1a
+bytes eti_s_1b9187     41
+bytes eti_s_1b9188     48 02 1d 1a 02 15 19 03 04 15 48
 
-# Where Italian says e between two numbers. Between the whole and the decimal
-# part and between the units of an amount of money Russian says и, and between
-# the hours and the minutes of a time and the parts of a fraction it says
-# nothing, so the e there is a space. Each keeps the length and the mark of the
-# string it stands for, string_36 and string_139 of it_numbr.obj.
-bytes ru_and       48 03 48          # и between spaces, 3 characters
-bytes ru_time_join c7 48 48          # the mark and two spaces, 3 characters
+# 6.1's own strings for the day of the month, which et_numbr.up names.
+bytes eti_s_1b91bf     c7 48
+bytes eti_s_1be0fe     48
+bytes eti_s_1be129     40
+bytes eti_s_1be12a     3f
+bytes eti_s_1be1fb     15 03
+bytes eti_s_1be1fd     04
+bytes eti_s_1be1fe     01 15 0d
+bytes eti_s_1be201     1a 04
+bytes eti_s_1be203     04 18
+bytes eti_s_1be205     48 1a 04 48
+bytes eti_s_1be209     40 48
+bytes eti_s_1be20b     15 02 02
+bytes eti_s_1be20e     c7 02
 
-# Two, three and four hundred, which Russian does not make of the digit and
-# сот as it makes the rest: convert_ital_hundreds asks for each of the three
-# digits before it says the digit and joins сот to it.
-bytes ru_ch_2       37                  # the digit 2
-bytes ru_ch_3       38                  # the digit 3
-bytes ru_ch_4       39                  # the digit 4
-bytes ru_num_200   0d 1b 02 19 1a 03            # двести, 6 characters
-bytes ru_num_300   1a 18 03 19 1a 01            # триста, 6 characters
-bytes ru_num_400   d0 02 1a 1e 18 02 19 1a 01   # четыреста, 9 characters
+# The month names eng_months in et_numbr.up tests for, and what it writes
+# in place of a short one.
+bytes month_Apr        06 16 18
+bytes month_April      06 16 18 03 13
+bytes month_Aug        06 05 0f
+bytes month_August     06 05 0f 05 19 1a
+bytes month_Dec        22 02 0c
+bytes month_December   22 02 0c 02 14 0b 02 18
+bytes month_Feb        23 02 0b
+bytes month_February   23 02 0b 18 05 01 18 1e
+bytes month_Jan        26 01 15
+bytes month_January    26 01 15 05 01 18 1e
+bytes month_Jul        26 05 13
+bytes month_July       26 05 13 1e
+bytes month_Jun        26 05 15
+bytes month_June       26 05 15 02
+bytes month_Mar        29 01 18
+bytes month_March      29 01 18 0c 10
+bytes month_May        29 01 1e
+bytes month_Nov        2a 04 1b
+bytes month_November   2a 04 1b 02 14 0b 02 18
+bytes month_Oct        09 0c 1a
+bytes month_October    09 0c 1a 04 0b 02 18
+bytes month_Sep        2e 02 16
+bytes month_Sept       2e 02 16 1a
+bytes month_September  2e 02 16 1a 02 14 0b 02 18
+bytes month_april      01 16 18 03 13
+bytes month_august     01 05 0f 05 19 1a
+bytes month_december   0d 02 0c 02 14 0b 02 18
+bytes month_february   0e 02 0b 18 05 01 18 1e
+bytes month_january    11 01 15 05 01 18 1e
+bytes month_july       11 05 13 1e
+bytes month_june       11 05 15 02
+bytes month_march      14 01 18 0c 10
+bytes month_november   15 04 1b 02 14 0b 02 18
+bytes month_october    04 0c 1a 04 0b 02 18
+bytes month_september  19 02 16 1a 02 14 0b 02 18
 
-# Two, three and four thousand, which a group of one digit says whole rather
-# than as the digit and тысяч: convert_ital_thousands asks for each before it
-# says the digit.
-bytes ru_num_2000  0d 1b 02 48 1a 1e 19 cf d0 03 # две тысячи, 10 characters
-bytes ru_num_3000  1a 18 03 48 1a 1e 19 cf d0 03 # три тысячи, 10 characters
-bytes ru_num_4000  d0 02 1a 1e 18 02 48 1a 1e 19 cf d0 03 # четыре тысячи, 13 characters
+# The hyphen hyphen_chain in et_numbr.up looks for between numbers.
+bytes hyphen_mark      3f
 
-# Two, three and four million, said whole by a group of one digit, as the
-# thousands are.
-bytes ru_num_2mln  0d 1b 01 48 14 03 13 03 04 15 01 # два миллиона, 11 characters
-bytes ru_num_3mln  1a 18 03 48 14 03 13 03 04 15 01 # три миллиона, 11 characters
-bytes ru_num_4mln  d0 02 1a 1e 18 02 48 14 03 13 03 04 15 01 # четыре миллиона, 14 characters
+# 6.1's own strings for money, which et_numbr.up names.
+bytes eti_s_1be0f8     35
+bytes eti_s_1be0f9     55
+bytes eti_s_1be0fa     a4
+bytes eti_s_1be0fb     07 0a 2d
+bytes eti_s_1be0ff     2e 2f 24
+bytes eti_s_1be102     2e
+bytes eti_s_1be103     19
+bytes eti_s_1be104     1a 0f
+bytes eti_s_1be106     0a 2e 22
+bytes eti_s_1be109     21 22 2a
+bytes eti_s_1be10c     06 0a 22
+bytes eti_s_1be10f     25 27 22
+bytes eti_s_1be112     2e 24 22
+bytes eti_s_1be115     0a 2e
+bytes eti_s_1be117     21 06
+bytes eti_s_1be119     22
+bytes eti_s_1be11a     2a
+bytes eti_s_1be11b     06 0a
+bytes eti_s_1be11d     25 27
+bytes eti_s_1be11f     21
+bytes eti_s_1be120     06
+bytes eti_s_1be121     2a 34
+bytes eti_s_1be123     46
+bytes eti_s_1be124     55 47
+bytes eti_s_1be126     22 2a
+bytes eti_s_1be128     41
+bytes eti_s_1be12b     1a
+bytes eti_s_1be12c     2f
+bytes eti_s_1be12d     10 04 05 19 01 15 0d
+bytes eti_s_1be134     14
+bytes eti_s_1be135     29
+bytes eti_s_1be136     0b
+bytes eti_s_1be137     20
+bytes eti_s_1be138     18
+bytes eti_s_1be139     03 13 13 03 04 15
+bytes eti_s_1be13f     2f 25 09 0a 2e 06 2a 22
+bytes eti_s_1be147     2f 2d
+bytes eti_s_1be149     08 28 28 08 09 2a
+bytes eti_s_1be14f     15
+bytes eti_s_1be150     1a 15
+bytes eti_s_1be152     48 14 03 13 13 03 04 15
+bytes eti_s_1be15a     48 0b 03 13 13 03 04 15
+bytes eti_s_1be162     48 1a 18 03 13 13 03 04 15
+bytes eti_s_1be16b     14 03 15 05 19 48
+bytes eti_s_1be171     35 35
+bytes eti_s_1be173     1f 02 18 04
+bytes eti_s_1be177     36
+bytes eti_s_1be178     1c 05 15
+bytes eti_s_1be17b     35 36
+bytes eti_s_1be17d     48 01 15 0d 48
+bytes eti_s_1be182     16
+bytes eti_s_1be183     19 1a 0f
+bytes eti_s_1be186     2e 1a 0f
+bytes eti_s_1be189     c7 48 0d 04 13 13 01 18
+bytes eti_s_1be191     c7 48 16 04 05 15 0d
+bytes eti_s_1be198     c7 48 02 05 18 04
+bytes eti_s_1be19e     c7 19
+bytes eti_s_1be1a0     c7 48 19 1a 02 18 13 03 15 0f
+bytes eti_s_1be1aa     c7 48 1e 05 02 48 02 19 19
+bytes eti_s_1be1b3     c7 48 01 05 19 1a 18 01 13 03 01 15
+bytes eti_s_1be1bf     c7 48 0c 01 15 01 0d 03 01 15
+bytes eti_s_1be1c9     c7 48 19 03 15 0f 01 16 04 18 02
+bytes eti_s_1be1d4     c7 48 10 04 15 0f 48 12 04 15 0f
+bytes eti_s_1be1df     c7 48 15 02 1c 48 1f 02 01 13 01 15 0d
+bytes eti_s_1be1ec     c7 48 0c 02 15 1a
+bytes eti_s_1be1f2     c7 48 16 02 15 0c 02
+bytes eti_s_1be339     48 16 04 03 15 1a
 
-# What the word before тысяча is, which decides its form. convert_ital_thousands
-# reads it leftwards from where тысяча goes, and a leftward test reads the
-# nearest letter first, so each of these is written backwards: ав is the end
-# of два, ир of три, and with a space before it of три with the space the
-# compound units leave after it, ер of четыре, ни of один. After два the а
-# becomes е and тысячи follows, after три and четыре тысячи, after один its
-# ин becomes на and тысяча follows, and after anything else тысяч.
-bytes ru_lt_a        01            # а
-bytes ru_lt_av       01 1b         # ав, the end of два backwards
-bytes ru_lt_ri       03 18         # ир, the end of три backwards
-bytes ru_lt_sri      48 03 18      # a space and ир
-bytes ru_lt_er       02 18         # ер, the end of четыре backwards
-bytes ru_lt_ni       15 03         # ни, the end of один backwards
-bytes ru_lt_sni      48 15 03      # a space and ни
-bytes ru_lt_e        02            # е, which два's а becomes
-bytes ru_na          15 01         # на, which один's ин becomes
-bytes ru_na_s        15 01 48      # на and a space, for один with its space
-bytes ru_num_1000a   c7 48 1a 1e 19 cf d0 03 48 # a space and тысячи, 9 characters
-bytes ru_num_1000one c7 48 1a 1e 19 cf d0 01    # a space and тысяча, 8 characters
+# The two letters n and y, which et_norm.up writes in place of ñ.
+bytes lts_enye         15 1e
 
-# The words Russian never stresses, which ia_gcat.up asks the letters for.
-bytes ru_fw_1501           15 01            # на
-bytes ru_fw_0d04           0d 04            # до
-bytes ru_fw_1604           16 04            # по
-bytes ru_fw_041a           04 1a            # от
-bytes ru_fw_1f01           1f 01            # за
-bytes ru_fw_04             04               # о
-bytes ru_fw_05             05               # у
-bytes ru_fw_040b           04 0b            # об
-bytes ru_fw_1204           12 04            # ко
-bytes ru_fw_1904           19 04            # со
-bytes ru_fw_1b04           1b 04            # во
-bytes ru_fw_031f           03 1f            # из
-bytes ru_fw_161803         16 18 03         # при
-bytes ru_fw_161804         16 18 04         # про
-bytes ru_fw_0b021f         0b 02 1f         # без
-bytes ru_fw_0d13cf         0d 13 cf         # для
-bytes ru_fw_16040d         16 04 0d         # под
-bytes ru_fw_15010d         15 01 0d         # над
-bytes ru_fw_040b04         04 0b 04         # обо
-bytes ru_fw_041a04         04 1a 04         # ото
-bytes ru_fw_031f04         03 1f 04         # изо
-bytes ru_fw_16040d04       16 04 0d 04      # подо
-bytes ru_fw_d00218021f     d0 02 18 02 1f   # через
-bytes ru_fw_160218020d     16 02 18 02 0d   # перед
-bytes ru_fw_1502           15 02            # не
-bytes ru_fw_03             03               # и
-bytes ru_fw_01             01               # а
-bytes ru_fw_1504           15 04            # но
-bytes ru_fw_0d01           0d 01            # да
-bytes ru_fw_1503           15 03            # ни
-bytes ru_fw_d602           d6 02            # же
-bytes ru_fw_0b1e           0b 1e            # бы
-bytes ru_fw_1303           13 03            # ли
+# The adverbs before read that say it was read before, which read_by_its_
+# neighbours in ea_homog.up holds the word before it against.
+bytes read_after_already     01 13 18 02 01 0d 1e
+bytes read_after_widely      1c 03 0d 02 13 1e
+bytes read_after_previously  16 18 02 1b 03 04 05 19 13 1e
+bytes read_after_recently    18 02 0c 02 15 1a 13 1e
+bytes read_after_yet         1e 02 1a
 
-# The prepositions of one consonant, в, к and с, small and capital, which
-# pol_tok_lookup in ut_norm.up joins to the word after them.
-bytes ru_join_v      1b   # в
-bytes ru_join_k      12   # к
-bytes ru_join_s      19   # с
-bytes ru_join_cap_v  30   # В
-bytes ru_join_cap_k  27   # К
-bytes ru_join_cap_s  2e   # С
+# The endings ru_assign_stress asks for, and the number words, each written
+# backwards, since a leftward test reads the nearest letter first.
+bytes ru_end_6178a0                  a0 78 61                           # ать backwards
+bytes ru_end_9178a0                  a0 78 91                           # ять backwards
+bytes ru_end_6c78a0                  a0 78 6c                           # ить backwards
+bytes ru_end_8d78a0                  a0 78 8d                           # еть backwards
+bytes ru_end_8078a0                  a0 78 80                           # уть backwards
+bytes ru_end_9578a0                  a0 78 95                           # ыть backwards
+bytes ru_end_8578a0                  a0 78 85                           # оть backwards
+bytes ru_end_6163                    63 61                              # ал backwards
+bytes ru_end_9163                    63 91                              # ял backwards
+bytes ru_end_6c63                    63 6c                              # ил backwards
+bytes ru_end_8d63                    63 8d                              # ел backwards
+bytes ru_end_6c6e78                  78 6e 6c                           # ист backwards
+bytes ru_end_6c626d                  6d 62 6c                           # изм backwards
+bytes ru_end_617778                  78 77 61                           # ант backwards
+bytes ru_end_8d7778                  78 77 8d                           # ент backwards
+bytes ru_end_8584                    84 85                              # ок backwards
+bytes ru_end_8d65                    65 8d                              # ец backwards
+bytes ru_end_8576                    76 85                              # ой backwards
+bytes ru_end_6e8578                  78 85 6e                           # сот backwards
+bytes ru_end_838d6e9178              78 91 6e 8d 83                     # десят backwards
+bytes ru_end_6191                    91 61                              # ая backwards
+bytes ru_end_9191                    91 91                              # яя backwards
+bytes ru_end_858d                    8d 85                              # ое backwards
+bytes ru_end_8d8d                    8d 8d                              # ее backwards
+bytes ru_end_958d                    8d 95                              # ые backwards
+bytes ru_end_6c8d                    8d 6c                              # ие backwards
+bytes ru_end_809f                    9f 80                              # ую backwards
+bytes ru_end_9f9f                    9f 9f                              # юю backwards
+bytes ru_end_6c91                    91 6c                              # ия backwards
+bytes ru_end_6c9f                    9f 6c                              # ию backwards
+bytes ru_end_6c6c                    6c 6c                              # ии backwards
+bytes ru_end_956d6c                  6c 6d 95                           # ыми backwards
+bytes ru_end_6c6d6c                  6c 6d 6c                           # ими backwards
+bytes ru_end_857f85                  85 7f 85                           # ого backwards
+bytes ru_end_8d7f85                  85 7f 8d                           # его backwards
+bytes ru_end_856d80                  80 6d 85                           # ому backwards
+bytes ru_end_8d6d80                  80 6d 8d                           # ему backwards
+bytes ru_end_78956e916f61            61 6f 91 6e 95 78                  # тысяча backwards
+bytes ru_end_78956e916f6c            6c 6f 91 6e 95 78                  # тысячи backwards
+bytes ru_end_838d6e9178a0            a0 78 91 6e 8d 83                  # десять backwards
+bytes ru_end_838d759178a0            a0 78 91 75 8d 83                  # девять backwards
+bytes ru_end_75856e8d6da0            a0 6d 8d 6e 85 75                  # восемь backwards
+bytes ru_end_6e8d6da0838d6e9178      78 91 6e 8d 83 a0 6d 8d 6e         # семьдесят backwards
+bytes ru_end_75856e8d6da0838d6e9178  78 91 6e 8d 83 a0 6d 8d 6e 85 75   # восемьдесят backwards
+bytes ru_end_837561656178a0          a0 78 61 65 61 75 83               # двацать backwards
+bytes ru_end_78646c656178a0          a0 78 61 65 6c 64 78               # трицать backwards
+bytes ru_end_85836c7761656178a0      a0 78 61 65 61 77 6c 83 85         # одинацать backwards
+bytes ru_end_83758d7761656178a0      a0 78 61 65 61 77 8d 75 83         # двенацать backwards
+bytes ru_end_78646c7761656178a0      a0 78 61 65 61 77 6c 64 78         # тринацать backwards
+bytes ru_end_6f8d7895647761656178a0  a0 78 61 65 61 77 64 95 78 8d 6f   # четырнацать backwards
+bytes ru_end_9991787761656178a0      a0 78 61 65 61 77 78 91 99         # пятнацать backwards
+bytes ru_end_798d6e7761656178a0      a0 78 61 65 61 77 6e 8d 79         # шеснацать backwards
+bytes ru_end_6e8d6d7761656178a0      a0 78 61 65 61 77 6d 8d 6e         # семнацать backwards
+bytes ru_end_6f8d7895648d6e7861      61 78 6e 8d 64 95 78 8d 6f         # четыреста backwards
+bytes ru_end_75856e8d6d7761656178a0  a0 78 61 65 61 77 6d 8d 6e 85 75   # восемнацать backwards
+bytes ru_end_838d7591787761656178a0  a0 78 61 65 61 77 78 91 75 8d 83   # девятнацать backwards
+bytes ru_end_85836c77                77 6c 83 85                        # один backwards
+bytes ru_end_85837761                61 77 83 85                        # одна backwards
+bytes ru_end_6d6c636c8577            77 85 6c 63 6c 6d                  # милион backwards
+bytes ru_end_6d6c636c616483          83 64 61 6c 63 6c 6d               # милиард backwards
 
-# The endings ru_primary_stress asks for, each written backwards, since a
-# leftward test reads the nearest letter first.
-bytes ru_end_011ad2          d2 1a 01     # ать backwards
-bytes ru_end_cf1ad2          d2 1a cf     # ять backwards
-bytes ru_end_031ad2          d2 1a 03     # ить backwards
-bytes ru_end_021ad2          d2 1a 02     # еть backwards
-bytes ru_end_051ad2          d2 1a 05     # уть backwards
-bytes ru_end_1e1ad2          d2 1a 1e     # ыть backwards
-bytes ru_end_041ad2          d2 1a 04     # оть backwards
-bytes ru_end_0113            13 01        # ал backwards
-bytes ru_end_cf13            13 cf        # ял backwards
-bytes ru_end_0313            13 03        # ил backwards
-bytes ru_end_0213            13 02        # ел backwards
-bytes ru_end_03191a          1a 19 03     # ист backwards
-bytes ru_end_031f14          14 1f 03     # изм backwards
-bytes ru_end_01151a          1a 15 01     # ант backwards
-bytes ru_end_02151a          1a 15 02     # ент backwards
-bytes ru_end_0412            12 04        # ок backwards
-bytes ru_end_020c            0c 02        # ец backwards
-bytes ru_end_0411            11 04        # ой backwards
-bytes ru_end_19041a          1a 04 19     # сот backwards
-bytes ru_end_0d0219cf1a      1a cf 19 02 0d # десят backwards
-bytes ru_end_01cf            cf 01        # ая backwards
-bytes ru_end_cfcf            cf cf        # яя backwards
-bytes ru_end_0402            02 04        # ое backwards
-bytes ru_end_0202            02 02        # ее backwards
-bytes ru_end_1e02            02 1e        # ые backwards
-bytes ru_end_0302            02 03        # ие backwards
-bytes ru_end_0565            65 05        # ую backwards
-bytes ru_end_6565            65 65        # юю backwards
-bytes ru_end_03cf            cf 03        # ия backwards
-bytes ru_end_0365            65 03        # ию backwards
-bytes ru_end_0303            03 03        # ии backwards
-bytes ru_end_1e1403          03 14 1e     # ыми backwards
-bytes ru_end_031403          03 14 03     # ими backwards
-bytes ru_end_040f04          04 0f 04     # ого backwards
-bytes ru_end_020f04          04 0f 02     # его backwards
-bytes ru_end_041405          05 14 04     # ому backwards
-bytes ru_end_021405          05 14 02     # ему backwards
-bytes ru_end_1a1e19cfd001    01 d0 cf 19 1e 1a # тысяча backwards
-bytes ru_end_1a1e19cfd003    03 d0 cf 19 1e 1a # тысячи backwards
-bytes ru_end_0d0219cf1ad2    d2 1a cf 19 02 0d # десять backwards
-bytes ru_end_0d021bcf1ad2    d2 1a cf 1b 02 0d # девять backwards
-bytes ru_end_1b04190214d2    d2 14 02 19 04 1b # восемь backwards
-bytes ru_end_190214d20d0219cf1a 1a cf 19 02 0d d2 14 02 19 # семьдесят backwards
-bytes ru_end_1b04190214d20d0219cf1a 1a cf 19 02 0d d2 14 02 19 04 1b # восемьдесят backwards
-bytes ru_end_0d1b010c011ad2  d2 1a 01 0c 01 1b 0d # двацать backwards
-bytes ru_end_1a18030c011ad2  d2 1a 01 0c 03 18 1a # трицать backwards
-bytes ru_end_040d0315010c011ad2 d2 1a 01 0c 01 15 03 0d 04 # одинацать backwards
-bytes ru_end_0d1b0215010c011ad2 d2 1a 01 0c 01 15 02 1b 0d # двенацать backwards
-bytes ru_end_1a180315010c011ad2 d2 1a 01 0c 01 15 03 18 1a # тринацать backwards
-bytes ru_end_d0021a1e1815010c011ad2 d2 1a 01 0c 01 15 18 1e 1a 02 d0 # четырнацать backwards
-bytes ru_end_16cf1a15010c011ad2 d2 1a 01 0c 01 15 1a cf 16 # пятнацать backwards
-bytes ru_end_1c021915010c011ad2 d2 1a 01 0c 01 15 19 02 1c # шеснацать backwards
-bytes ru_end_19021415010c011ad2 d2 1a 01 0c 01 15 14 02 19 # семнацать backwards
-bytes ru_end_d0021a1e1802191a01 01 1a 19 02 18 1e 1a 02 d0 # четыреста backwards
-bytes ru_end_1b0419021415010c011ad2 d2 1a 01 0c 01 15 14 02 19 04 1b # восемнацать backwards
-bytes ru_end_0d021bcf1a15010c011ad2 d2 1a 01 0c 01 15 1a cf 1b 02 0d # девятнацать backwards
-bytes ru_end_040d0315        15 03 0d 04  # один backwards
-bytes ru_end_040d1501        01 15 0d 04  # одна backwards
-bytes ru_end_140313030415    15 04 03 13 03 14 # милион backwards
-bytes ru_end_1403130301180d  0d 18 01 03 13 03 14 # милиард backwards
+# The vowels ru_reduce lays down where an unstressed one stood.
+bytes ru_ph_H  23   # an unstressed а or о before the stress
+bytes ru_ph_x  24   # the schwa, an unstressed а or о anywhere else
+bytes ru_ph_I  1d   # an unstressed е, и or я
+bytes ru_ph_X  21   # an unstressed е after ж or ш
+bytes ru_ph_U  2e   # an unstressed у
 
-# The two vowels ru_reduce lays down where an unstressed one stood.
-bytes ru_ph_a  1e   # the phone a
-bytes ru_ph_i  1b   # the phone i

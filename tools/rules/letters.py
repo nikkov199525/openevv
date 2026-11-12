@@ -62,7 +62,9 @@ liczb does not.
 `ą ć ę ł ń ś ź ż come through q' says those letters
 have no link of their own in the dispatcher and reach their rules through
 q's, so their blocks are compiled as arms of one rule standing where q's
-rule stood, with a test beside it for the dispatcher to ask. And
+rule stood, with a test beside it for the dispatcher to ask. The shared
+letter may keep a block of its own, whose arms come after theirs: Russian's
+letters come through English's q, and qu is still k w. And
 `phone sz is L' lets an arm name a phone by a spelling of its own where the
 phone statement's name would mislead: Polish's hard sz took over Italian's
 L, and `sz says L' reads as something it is not.
@@ -657,7 +659,10 @@ def rule_for(tag, letter, name, obj, arms, known, lcode, pcode,
     if not arms:
         raise Trouble("the %s block has no arms" % letter)
     if through:
-        for a in arms:
+        # The letter whose link the others share may have arms of its own,
+        # after theirs, and the last of those is its bare one: every letter
+        # that comes through has been caught by then.
+        for a in arms[:-1] if not arms[-1].tests(letter) else arms:
             if not a.tests(letter):
                 raise Trouble("%s: an arm of a letter that comes through %s"
                               " asks nothing, so nothing after it could be"
@@ -1378,12 +1383,10 @@ def compile_tag(tag):
         if missing:
             raise Trouble("%s come through %s but have no block: %s"
                           % (" ".join(letters), via, " ".join(missing)))
-        if any(b[0] == via for b in blocks):
-            raise Trouble("%s has a block of its own, and its link is the"
-                          " one the letters that come through it use" % via)
-        blocks = [b for b in blocks if b[0] not in letters]
+        own = [b for b in blocks if b[0] == via]
+        blocks = [b for b in blocks if b[0] not in letters and b[0] != via]
         shared = (via, header.pattern % via, header.obj,
-                  [a for b in mine for a in b[3]], mine[0][4])
+                  [a for b in mine + own for a in b[3]], mine[0][4])
 
     # A class that counts the end of the word takes its `unless' from one
     # that does not, asked of the next word; one that does not takes it from
@@ -1428,8 +1431,11 @@ def compile_tag(tag):
                             wordrange, header))
     if shared is not None:
         via, name, obj, arms, ranges = shared
+        own = any(not a.tests(via) for a in arms)
         out.append("")
-        out.append(through_test("%s_test" % name, header.through[0], known,
+        out.append(through_test("%s_test" % name,
+                                header.through[0] + ([via] if own else []),
+                                known,
                                 lcode, letters_at, obj))
         out.append("")
         out.append(rule_for(tag, via, name, obj, arms, known, lcode, pcode,

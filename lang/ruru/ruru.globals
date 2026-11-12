@@ -10,20 +10,20 @@
 # by the same walk delta_new does.
 
 word 20
-short 1
+short 2
 word 5
-short 7
+short 8
 word 10
 short 30
 word 3
 short 2
 word 1
+short 3
+word 45
 short 2
-word 33
-short 2
-compound 1 7
-compound 1 7
-compound 1 7
+compound 1 5
+compound 1 5
+compound 1 5
 compound 7 2
 compound 9 2
 compound 0 2
@@ -32,14 +32,16 @@ long 11
 short 5
 word 3
 short 3
-compound 1 7
+compound 1 5
 short 11
 word 1
 short 4
 word 3
 short 1
 word 1
-short 110
+short 89
+long 1
+short 30
 compound 5 10
 compound 5 10
 compound 5 10
@@ -47,16 +49,16 @@ short 39
 word 1
 short 3
 long 1
-short 34
+short 38
 long 1
 short 5
 long 1
-compound 4 14
+compound 4 16
 compound 6 32
-compound 4 14
+compound 4 16
 long 1
 short 1
-compound 1 7
+compound 1 5
 short 1
 long 1
 short 3
@@ -90,36 +92,36 @@ long 3
 word 1
 short 2
 compound 5 10
-compound 4 14
-compound 4 14
+compound 4 16
+compound 4 16
 short 3
 long 1
 short 98
 long 11
-short 2
+short 20
 word 1
-short 12
-compound 4 14
-short 2
+short 13
 word 1
 long 1
 word 1
 
-# What we have worked out the language means by some of them.
-#
-# Ten consecutive shorts hold the formant targets a consonant is spoken with:
-# each formant twice, once for the transition into it and once for the one out.
-# Read off Italian's own value rules, where the trill sets f1 to 450 and its f2
-# to 1250, the labials f2 to 850, the dentals and velars to 1700 and the
-# palatals to 1800 -- which is where a labial's low second formant and a
-# palatal's high one are supposed to be, so the reading is the language's own.
-name short 421 f1_in
-name short 422 f1_out
-name short 423 f2_in
-name short 424 f2_out
-name short 425 f3_in
-name short 426 f3_out
-name short 427 f4_in
-name short 428 f4_out
-name short 429 f5_in
-name short 430 f5_out
+# Six that ETI Eloquence 6.1 declares and 4.3 never had, which the rules
+# lifted out of it use: the cell count_input fills at the head of each pass
+# of normalize_text; what kind of token was last read whole, and the two
+# kinds it is compared against, a path or a host and a dictionary word,
+# which set_global_constants sets to two and one; and whether a slash was
+# read as per, with the one it is compared against.
+short 6
+
+# One of ours: where the number after a hyphen begins when that hyphen is one
+# of a chain of them, so that the hyphen after that number is read as one of
+# the chain too. hyphen_in_chain in et_numbr.up sets it and reset_sent_vars
+# clears it.
+long 1
+name long 39 hyphen_chain_next
+
+# Seven that 6.1 declares and 4.3 never had, which its money rules lifted into
+# et_numbr.up compare against: a thirteenth kind of currency, where both number
+# the first eleven alike, and six kinds of dollar. set_global_constants sets
+# them to 6.1's values.
+short 7

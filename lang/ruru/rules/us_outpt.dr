@@ -74,7 +74,7 @@ label L0 was _synthesizeRange
   popn 6
   jump to L3
 label L1 was at_0xc5
-  cmp cmpw reg r7w ind reg r6 2618
+  cmp cmpw reg r7w ind reg r6 2778
   branch jne to L4
   push reg r6
   call ZZstarttest2 arity 1 depth 1
@@ -111,7 +111,7 @@ label L2 was at_0x106
   call ZZstarttest2 arity 1 depth 1
   popreg r1
 label L3 was at_0x11c
-  cmp cmpw reg r7w ind reg r6 2614
+  cmp cmpw reg r7w ind reg r6 2774
   branch je to L1
 label L4 was at_0x125
   push reg r6
@@ -179,7 +179,7 @@ label L2 was at_0x59
   call ZZfence_null arity 1 depth 1
   push reg r6
   call ZZstarttest1 arity 1 depth 2
-  load movw ind reg r6 2598 into r0w
+  load movw ind reg r6 2758 into r0w
   cmp testw reg r0w reg r0w
   popreg r1
   popreg r1
@@ -187,10 +187,10 @@ label L2 was at_0x59
   push reg r6
   call ZZstarttest3 arity 1 depth 1
   push imm 0
-  addk 3012 reg r6 into r7
+  addk 3172 reg r6 into r7
   push reg r7
   push reg r6
-  store movw imm 4 ind reg r6 3014
+  store movw imm 4 ind reg r6 3174
   call if_testeq_v_i arity 3 depth 4
   popn 4
   cmp testl reg r0 reg r0
@@ -200,7 +200,7 @@ label L2 was at_0x59
   push imm 1
   push reg r7
   push reg r6
-  store movw imm 4 ind reg r6 3014
+  store movw imm 4 ind reg r6 3174
   call if_testeq_v_i arity 3 depth 4
   popn 4
   cmp testl reg r0 reg r0
@@ -210,7 +210,7 @@ label L2 was at_0x59
   push imm 30
   push reg r7
   push reg r6
-  store movw imm 5 ind reg r6 3014
+  store movw imm 5 ind reg r6 3174
   call if_testge_v_i arity 3 depth 4
   popn 4
   cmp testl reg r0 reg r0
@@ -220,7 +220,7 @@ label L2 was at_0x59
   push imm 40
   jump to L5
 label L3 was at_0xe4
-  store movw imm 4 ind reg r6 2534
+  store movw imm 4 ind reg r6 2694
   jump to L7
 label L4 was at_0xef
   call ZZstarttest4 arity 1 depth 1
@@ -228,7 +228,7 @@ label L4 was at_0xef
 label L5 was at_0xf6
   push reg r7
   push reg r6
-  store movw imm 5 ind reg r6 3014
+  store movw imm 5 ind reg r6 3174
   call if_testge_v_i arity 3 depth 4
   popn 4
   alu negl none reg r0
@@ -236,22 +236,22 @@ label L5 was at_0xf6
   alu negl none reg r0
   alu addl imm 4 reg r0
 label L6 was at_0x112
-  store movw reg r0w ind reg r6 2534
+  store movw reg r0w ind reg r6 2694
 label L7 was at_0x119
   push reg r6
   call ZZstarttest9 arity 1 depth 1
-  addk 3012 reg r6 into r0
+  addk 3172 reg r6 into r0
   setarg 0 imm 8000
   push reg r0
   push reg r6
-  store movw imm 3 ind reg r6 3014
+  store movw imm 3 ind reg r6 3174
   call if_testeq_v_i arity 3 depth 3
   popn 3
   cmp testl reg r0 reg r0
   branch jne to L9
   push reg r6
   call ZZstarttest10 arity 1 depth 1
-  addk 2534 reg r6 into r0
+  addk 2694 reg r6 into r0
   popreg r1
   load movw ind reg r0 0 into r1w
   cmp cmpw imm 2 reg r1w
@@ -301,83 +301,83 @@ label L0 was _set_klattparms
   branch jne to L19
   push state 0
   call ZZfence_null arity 1 depth 1
-  load movl state 3012 into r7
-  push state 3012
-  load movl state 2528 into r0
-  push state 2528
+  load movl state 3172 into r7
+  push state 3172
+  load movl state 2688 into r0
+  push state 2688
   push state 0
-  store movw imm 3 statefld 3014
+  store movw imm 3 statefld 3174
   call copyvar arity 3 depth 4
   push state 0
-  store movw imm 0 statefld 2594
+  store movw imm 0 statefld 2754
   call ZZstarttest1 arity 1 depth 5
   load movl imm 4 into r3
   push imm 1
-  push state 3012
+  push state 3172
   push state 0
-  store movw imm 4 statefld 3014
+  store movw imm 4 statefld 3174
   call if_testeq_v_i arity 3 depth 8
   popn 8
   cmp testl reg r0 reg r0
   branch jne to L16
-  load movw statefld 2590 into r0w
+  load movw statefld 2750 into r0w
   push state 0
-  store movw reg r0w statefld 2582
+  store movw reg r0w statefld 2742
   call ZZstarttest2 arity 1 depth 1
   push imm 30
-  push state 3012
+  push state 3172
   push state 0
-  store movw imm 5 statefld 3014
+  store movw imm 5 statefld 3174
   call if_testgt_v_i arity 3 depth 4
   popn 4
   cmp testl reg r0 reg r0
   branch jne to L1
-  store movw imm 1 statefld 2594
-label L1 was $X2$90688
+  store movw imm 1 statefld 2754
+label L1 was $X2$99610
   push reg r6
   call ZZstarttest4 arity 1 depth 1
   push reg r6
   call set_num_formants arity 1 depth 2
   popreg r1
   popreg r1
-label L2 was $X4$90690
+label L2 was $X4$99612
   push reg r7
-  addk 2536 reg r6 into r0
+  addk 2696 reg r6 into r0
   push reg r0
   push reg r6
-  store movw imm 1 ind reg r6 3014
+  store movw imm 1 ind reg r6 3174
   call copyvar arity 3 depth 3
   push reg r6
   call ZZstarttest5 arity 1 depth 4
   popn 4
-  cmp cmpw imm 1 ind reg r6 2594
+  cmp cmpw imm 1 ind reg r6 2754
   branch jne to L13
-  alu andw imm 0 ind reg r6 2542
-  store movw imm 90 ind reg r6 2546
-  store movw imm 5 ind reg r6 2562
+  alu andw imm 0 ind reg r6 2702
+  store movw imm 90 ind reg r6 2706
+  store movw imm 5 ind reg r6 2722
 label L3 was at_0x12a
-  store movw imm 1000 ind reg r6 2550
-  store movw imm 1000 ind reg r6 2554
-label L4 was $X6$90695
-  load movswl ind reg r6 2538 into r0
+  store movw imm 1000 ind reg r6 2710
+  store movw imm 1000 ind reg r6 2714
+label L4 was $X6$99617
+  load movswl ind reg r6 2698 into r0
   alu subl imm 100 reg r0
   widen cltd
   load movl reg r3 into r1
   div idivl reg r1
   push reg r6
-  store movw imm 6 ind reg r6 2570
-  alu addw reg r0w ind reg r6 2562
+  store movw imm 6 ind reg r6 2730
+  alu addw reg r0w ind reg r6 2722
   call ZZstarttest9 arity 1 depth 1
   push imm 1
   push reg r7
   push reg r6
-  store movw reg r3w ind reg r6 3014
+  store movw reg r3w ind reg r6 3174
   call if_testeq_v_i arity 3 depth 4
   popn 4
   cmp testl reg r0 reg r0
   branch jne to L12
-  store movw imm 65533 ind reg r6 2574
-label L5 was $X10$90704
+  store movw imm 65533 ind reg r6 2734
+label L5 was $X10$99626
   push reg r6
   call ZZstarttest11 arity 1 depth 1
   push reg r6
@@ -385,7 +385,7 @@ label L5 was $X10$90704
   push imm 0
   push reg r7
   push reg r6
-  store movw reg r3w ind reg r6 3014
+  store movw reg r3w ind reg r6 3174
   call if_testeq_v_i arity 3 depth 5
   popn 5
   jump to L8
@@ -400,24 +400,24 @@ label L6 was at_0x1a6
   popreg r1
   branch ja to L19
   switch reg r0 to L16 L1 L1 L2 L13 L4 L14 L15 L12 L5 L17 L7 L9 L10 L18
-label L7 was $X12$90709
+label L7 was $X12$99631
   push imm 2
   push reg r7
   push reg r6
-  store movw reg r3w ind reg r6 3014
+  store movw reg r3w ind reg r6 3174
   call if_testeq_v_i arity 3 depth 3
   popn 3
 label L8 was at_0x1d6
   cmp testl reg r0 reg r0
   branch jne to L6
-label L9 was $X13$90708
-  alu andw imm 0 ind reg r6 2566
-label L10 was $X14$90712
+label L9 was $X13$99630
+  alu andw imm 0 ind reg r6 2726
+label L10 was $X14$99634
   push reg r7
-  addk 2576 reg r6 into r0
+  addk 2736 reg r6 into r0
   push reg r0
   push reg r6
-  store movw imm 8 ind reg r6 3014
+  store movw imm 8 ind reg r6 3174
   call copyvar arity 3 depth 3
   push reg r6
   call succeed arity 1 depth 4
@@ -425,64 +425,64 @@ label L10 was $X14$90712
   load movl imm 0 into r0
 label L11 was at_0x204
   return reg r0
-label L12 was $X9$90703
-  store movw imm 65531 ind reg r6 2574
+label L12 was $X9$99625
+  store movw imm 65531 ind reg r6 2734
   jump to L5
-label L13 was $X5$90694
+label L13 was $X5$99616
   push reg r6
   call ZZstarttest7 arity 1 depth 1
-  cmp cmpw imm 3 ind reg r6 2534
+  cmp cmpw imm 3 ind reg r6 2694
   popreg r1
   branch jne to L14
-  store movw imm 100 ind reg r6 2542
-  store movw imm 15 ind reg r6 2546
-  store movw imm 7 ind reg r6 2562
+  store movw imm 100 ind reg r6 2702
+  store movw imm 15 ind reg r6 2706
+  store movw imm 7 ind reg r6 2722
   jump to L3
-label L14 was $X7$90697
+label L14 was $X7$99619
   push reg r6
   call ZZstarttest8 arity 1 depth 1
   push imm 1
   push reg r7
   push reg r6
-  store movw reg r3w ind reg r6 3014
+  store movw reg r3w ind reg r6 3174
   call if_testeq_v_i arity 3 depth 4
   popn 4
   cmp testl reg r0 reg r0
   branch jne to L15
-  alu andw reg r0w ind reg r6 2542
-  store movw imm 350 ind reg r6 2550
-  store movw imm 500 ind reg r6 2554
-  store movw imm 500 ind reg r6 2558
-  store movw imm 90 ind reg r6 2546
-  store movw imm 3 ind reg r6 2562
+  alu andw reg r0w ind reg r6 2702
+  store movw imm 350 ind reg r6 2710
+  store movw imm 500 ind reg r6 2714
+  store movw imm 500 ind reg r6 2718
+  store movw imm 90 ind reg r6 2706
+  store movw imm 3 ind reg r6 2722
   jump to L4
-label L15 was $X8$90700
-  alu andw imm 0 ind reg r6 2542
-  store movw imm 350 ind reg r6 2550
-  store movw imm 500 ind reg r6 2554
-  store movw imm 500 ind reg r6 2558
-  store movw imm 90 ind reg r6 2546
-  store movw reg r3w ind reg r6 2562
+label L15 was $X8$99622
+  alu andw imm 0 ind reg r6 2702
+  store movw imm 350 ind reg r6 2710
+  store movw imm 500 ind reg r6 2714
+  store movw imm 500 ind reg r6 2718
+  store movw imm 90 ind reg r6 2706
+  store movw reg r3w ind reg r6 2722
   jump to L4
-label L16 was $X1$90685
-  load movw ind reg r6 2586 into r0w
-  store movw reg r0w ind reg r6 2582
+label L16 was $X1$99607
+  load movw ind reg r6 2746 into r0w
+  store movw reg r0w ind reg r6 2742
   jump to L1
-label L17 was $X11$90713
+label L17 was $X11$99635
   push reg r6
   call ZZstarttest15 arity 1 depth 1
   push imm 1
   push reg r7
   push reg r6
-  store movw reg r3w ind reg r6 3014
+  store movw reg r3w ind reg r6 3174
   call if_testeq_v_i arity 3 depth 4
   popn 4
   cmp testl reg r0 reg r0
   branch jne to L18
-  store movw imm 65529 ind reg r6 2566
+  store movw imm 65529 ind reg r6 2726
   jump to L10
-label L18 was $X15$90716
-  store movw imm 65526 ind reg r6 2566
+label L18 was $X15$99638
+  store movw imm 65526 ind reg r6 2726
   jump to L10
 label L19 was at_0x322
   push imm 94
@@ -492,6 +492,6 @@ label L19 was at_0x322
   popreg r1
   load movl imm 94 into r0
   jump to L11
-label L20 was $L90842
+label L20 was $L99764
 end
 

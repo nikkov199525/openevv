@@ -35,52 +35,37 @@ statement char_count
 end
 
 statement inp
-  length 7
+  length 5
   stride 0
   varlen 0
   whole 1
   marks 124 124 0 0
   numbers 0 0 1 0
-  at start stride 5
-  at start varlen 5
-  fresh 00 00 00 01 00 00 01
-  variants 00 00 00 01 00 01 01 01 01 1e 01 01 01 01 1c 01 01 01 01 1b 01 01 01 01 20 01 01 01 01 1f 02 01
-  variants 01 01 00 02 01 01 01 1d 02 01 01 01 00 02 01 01 01 00 02 01 01 01 00 01 01 02 01 01 01 01 02 01
-  variants 21 01 01 02 01 03 01 01 02 01 08 01 01 02 01 06 01 01 02 01 00 01 01 02 01 00 01 01 02 01 05 01
-  variants 01 02 01 17 01 01 02 01 11 01 01 02 01 12 01 01 02 01 02 01 01 02 01 00 01 01 02 01 15 01 01 02
-  variants 01 0a 01 01 02 01 04 01 01 02 01 07 01 01 02 01 18 01 01 02 01 00 01 01 01 01 1c 01 01 02 01 09
-  variants 02 01 02 01 00 02 01 02 01 0e 02 01 02 01 0f 02 01 02 01 00 02 01 02 01 14 02 01 02 01 00 02 01
-  variants 02 01 0d 02 01 02 01 00 02 01 02 01 18 02 01 02 01 00 02 01 02 01 13 02 01 02 01 00 02 01 02 01
-  variants 00 02 01 02 01 16 02 01 02 01 0c 02 01 02 01 10 02 01 02 01 00 02 01 02 01 00 02 01 02 01 00 02
-  variants 01 03 01 00 02 01 02 01 0b 00 02 00 01 00 00 02 00 01 00 00 02 00 01 00 00 02 00 01 00 00 02 00
-  variants 01 00 00 02 00 01 00 00 02 00 01 00 00 02 00 01 00 00 02 00 01 00 00 02 00 01 00 00 05 00 01 00
-  variants 00 04 00 01 00 00 04 00 01 00 00 04 00 01 00 00 04 00 01 00 00 04 00 01 00 00 04 00 01 00 00 05
-  variants 00 01 00 00 05 00 01 00 00 05 00 01 00 00 01 00 01 00 00 00 00 01 00 00 05 00 01 00 00 00 00 01
-  variants 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 05 00 01 00 00 00 00 01 00 00
-  variants 05 00 01 00 00 00 00 01 00 00 00 00 01 00 00 05 00 01 00 00 00 00 01 00 00 05 00 01 00 00 05 00
-  variants 01 00 00 00 00 01 00 00 05 00 01 00 00 00 00 01 00 00 05 00 01 00 00 00 00 01 00 00 05 00 01 00
-  variants 00 05 00 01 00 01 01 01 00 00 01 01 01 00 00 01 01 01 00 00 01 01 01 00 00 01 01 01 00 00 02 01
-  variants 01 00 00 02 01 01 00 00 02 01 01 00 00 02 01 01 00 00 02 01 01 00 00 01 01 01 01 00 01 01 01 00
-  variants 00 01 01 01 01 00 01 01 01 00 00 01 01 01 01 00 02 01 01 01 00 02 01 01 00 00 02 01 01 01 00 02
-  variants 01 01 00 00 02 01 01 01 00 01 01 01 01 00 01 01 01 01 00 01 01 01 01 00 01 01 01 01 00 01 01 01
-  variants 01 00 02 01 01 01 00 02 01 01 01 00 02 01 01 01 00 02 01 01 01 00 02 01 01 01 00 01 01 01 01 00
-  variants 01 01 01 01 00 02 01 01 01 00 02 01 01 01 00 01 01 01 01 00 01 01 01 01 00 01 01 01 01 00 01 01
-  variants 01 01 00 01 01 01 01 00 02 01 01 01 00 02 01 01 01 00 02 01 01 01 00 02 01 01 01 00 02 01 01 01
-  variants 00 01 01 01 01 00 02 01 01 01 00 01 01 01 01 00 02 01 01 01 00 01 01 01 01 00 02 01 01 01 00 01
-  variants 01 01 01 00 02 01 01 01 00 01 01 01 01 00 02 01 01 01 00 01 01 02 01 00 02 01 02 01 00 01 01 02
-  variants 01 00 02 01 02 01 00 01 01 02 01 00 02 01 02 01 00 01 01 02 01 00 02 01 02 01 00 01 01 02 01 00
-  variants 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 05
-  variants 00 01 00 00 00 00 01 00 00 05 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01
-  variants 00 00 05 00 01 00 00 05 00 01 00 00 03 00 01 00 00 03 00 01 00 00 03 00 01 00 00 00 00 01 00 00
-  variants 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00
-  variants 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00
-  variants 00 00 00 01 00 00 00 00 01 00 00 05 00 01 00 00 05 00 01 00 00 05 00 01 00 00 00 00 01 00 00 00
-  variants 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 05 00 01 00 00 05 00 01 00 00 00 00 01
-  variants 00 00 00 00 01 00 00 00 00 01 00 01 01 01 01 1e 01 01 02 01 0e 01 01 01 01 1c 01 01 02 01 00 01
-  variants 01 01 01 00 01 01 02 01 0c 01 01 01 01 20 01 01 02 01 16 02 01 01 01 00 02 01 02 01 00 02 01 01
-  variants 01 00 02 01 02 01 00 02 01 02 01 00 02 01 02 01 00 02 01 02 01 00 02 01 02 01 00 00 00 00 00 00
+  at start stride 3
+  at start varlen 3
+  fresh 00 00 00 00 01
+  variants 00 00 00 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01
+  variants 01 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01
+  variants 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 03 01 01 02
+  variants 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01
+  variants 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 02 02 01 03 02 01 02 00
+  variants 02 00 00 02 00 00 02 00 00 02 00 00 02 00 00 02 00 00 02 00 00 02 00 00 02 00 00 02 00 00 05 00
+  variants 00 04 00 00 04 00 00 04 00 00 04 00 00 04 00 00 04 00 00 05 00 00 05 00 00 05 00 00 01 00 00 00
+  variants 00 00 05 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05 00 00 00 00 00 05 00 00 00 00 00
+  variants 00 00 00 05 00 00 00 00 00 05 00 00 05 00 00 00 00 00 05 00 00 00 00 00 05 00 00 00 00 00 05 00
+  variants 00 05 00 01 01 01 01 01 02 01 01 02 01 01 02 01 01 02 02 01 01 02 01 01 02 01 01 02 01 01 02 01
+  variants 01 01 01 02 01 01 01 01 01 02 01 01 02 01 01 02 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 01
+  variants 01 02 01 01 02 01 01 02 01 01 02 01 01 02 02 01 01 02 01 01 02 01 01 02 01 01 02 01 01 01 01 02
+  variants 01 01 01 02 01 01 02 01 01 01 01 02 01 01 02 01 01 01 01 01 02 01 01 02 02 01 01 02 01 01 02 01
+  variants 01 02 01 01 02 01 01 01 01 01 02 01 01 01 01 01 02 01 01 01 01 01 02 01 01 01 01 02 02 01 01 01
+  variants 01 01 02 01 01 01 01 02 02 01 02 01 01 02 02 01 02 01 01 01 02 01 02 01 01 01 02 01 02 01 01 01
+  variants 01 01 02 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05 00 00 00 00 00 05 00 00 00 00 00 00
+  variants 00 00 00 00 00 00 00 00 05 00 00 05 00 00 03 00 00 03 00 00 03 00 00 00 00 00 00 00 00 00 00 00
+  variants 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  variants 00 00 00 00 00 00 00 05 00 00 05 00 00 05 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05
+  variants 00 00 05 00 00 00 00 00 00 00 00 00 00 00 00 00
   field name
-    where 5 5 1
+    where 3 3 1
     what -1 1 0
     format %d
     value GAP
@@ -290,22 +275,6 @@ statement inp
     value ¯
     value µ
     value ¶
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
-    value 
     end
   field letcase
     where 0 0 1
@@ -316,7 +285,7 @@ statement inp
     value upper
     end
   field afterslash
-    where 6 6 1
+    where 4 4 1
     what -1 0 0
     format %d
     value yes
@@ -343,57 +312,10 @@ statement inp
     value glid
     value acute_acc
     end
-  field accent
-    where 3 3 1
-    what -1 0 0
-    format %d
-    value yes
-    value ~yes
-    end
-  field phon_form
-    where 4 4 1
-    what -1 1 0
-    format %d
-    value GAP
-    value b
-    value p
-    value d
-    value t
-    value k
-    value g
-    value v
-    value f
-    value z
-    value s
-    value Z
-    value S
-    value J
-    value C
-    value D
-    value T
-    value m
-    value n
-    value N
-    value G
-    value r
-    value R
-    value l
-    value L
-    value y
-    value w
-    value i
-    value e
-    value E
-    value a
-    value u
-    value o
-    value c
-    value #
-    end
 end
 
 statement phone
-  length 18
+  length 14
   stride 0
   varlen 0
   whole 1
@@ -401,17 +323,21 @@ statement phone
   numbers 0 0 1 0
   at start stride 8
   at start varlen 8
-  fresh 00 01 01 08 05 03 03 01 00 00 00 00 00 00 01 00 00 00
-  variants 00 01 01 08 05 03 03 01 02 00 01 00 00 03 03 01 02 01 01 00 00 03 03 01 02 00 01 00 01 03 03 01
-  variants 02 01 01 00 01 03 03 01 02 01 01 00 03 03 03 01 02 00 01 00 03 03 03 01 02 00 01 01 00 03 03 01
-  variants 02 01 01 01 00 03 03 01 02 00 01 01 01 03 03 01 02 01 01 01 01 03 03 01 02 00 01 01 02 03 03 01
-  variants 02 01 01 01 02 03 03 01 02 00 01 02 02 03 03 01 02 01 01 02 02 03 03 01 02 00 01 02 01 03 03 01
-  variants 02 01 01 02 01 03 03 01 02 00 01 04 00 03 03 01 02 00 01 04 01 03 03 01 02 00 01 04 02 03 03 01
-  variants 02 00 01 04 03 03 03 01 02 00 01 06 04 03 03 01 02 00 01 01 04 03 03 01 02 00 00 03 05 03 03 01
-  variants 02 01 01 01 04 03 03 01 02 00 00 05 02 03 03 01 02 00 00 05 00 03 03 01 01 00 00 08 05 00 00 00
-  variants 01 00 00 08 05 01 00 00 01 00 00 08 05 01 00 01 01 00 00 08 05 02 01 01 01 00 00 08 05 00 02 00
-  variants 01 00 00 08 05 01 02 00 01 00 00 08 05 01 02 01 00 01 01 08 05 03 03 01 01 00 00 08 05 01 02 01
-  variants 02 01 01 01 03 03 03 01
+  fresh 00 01 01 0a 08 03 00 00 00 00 00 00 00 00
+  variants 00 01 01 0a 08 03 00 00 02 00 01 00 00 03 00 00 02 01 01 00 00 03 00 00 02 00 01 00 02 03 00 00
+  variants 02 01 01 00 02 03 00 00 02 01 01 00 02 03 00 00 02 01 01 00 08 03 00 00 02 01 01 00 04 03 00 00
+  variants 02 00 01 00 04 03 00 00 02 00 01 01 01 03 00 00 02 01 01 01 01 03 00 00 02 00 01 01 00 03 00 00
+  variants 02 01 01 01 00 03 00 00 02 00 01 01 02 03 00 00 02 01 01 01 02 03 00 00 02 00 01 01 03 03 00 00
+  variants 02 01 01 01 03 03 00 00 02 00 01 02 03 03 00 00 02 01 01 02 03 03 00 00 02 01 01 0a 08 03 00 00
+  variants 02 00 01 04 00 03 00 00 02 00 01 04 02 03 00 00 02 00 01 04 04 03 00 00 02 00 01 01 04 03 00 00
+  variants 02 00 00 03 08 03 00 00 02 00 00 03 08 03 00 00 02 00 00 05 03 03 00 00 02 00 00 05 00 03 00 00
+  variants 01 00 00 06 05 00 00 00 01 00 00 0a 05 00 00 00 01 00 00 06 06 00 00 00 01 00 00 0a 06 00 00 00
+  variants 01 00 00 0a 07 00 00 00 01 00 00 07 05 01 00 00 01 00 00 07 05 01 00 00 01 00 00 0a 06 01 00 00
+  variants 01 00 00 07 06 01 00 00 01 00 00 06 06 01 00 00 01 00 00 0a 07 01 00 00 01 00 00 0a 07 02 00 00
+  variants 01 00 00 0a 08 01 00 00 01 00 00 0a 08 01 00 00 01 00 00 0a 08 01 00 00 01 00 00 0a 08 01 00 00
+  variants 01 00 00 0a 07 01 00 00 01 00 00 06 05 02 00 00 01 00 00 0a 05 02 00 00 01 00 00 06 06 02 00 00
+  variants 01 00 00 0a 07 02 00 00 01 00 00 06 07 03 00 00 01 00 00 06 07 03 00 00 01 00 00 06 07 03 00 00
+  variants 00 01 01 0a 08 03 01 00
   field name
     where 8 8 1
     what -1 1 0
@@ -421,8 +347,12 @@ statement phone
     value p
     value d
     value t
+    value F
+    value ?
     value k
     value g
+    value D
+    value T
     value v
     value f
     value z
@@ -431,28 +361,40 @@ statement phone
     value S
     value J
     value C
-    value D
-    value T
+    value h
     value m
     value n
-    value N
     value G
+    value Q
     value r
-    value R
     value l
-    value L
     value y
     value w
     value i
+    value I
     value e
     value E
+    value A
+    value X
+    value Xx
+    value H
+    value x
+    value R
+    value L
+    value @
+    value c@
+    value a@
+    value Aa
+    value H@
     value a
     value u
+    value U
     value o
     value c
+    value Y
+    value W
+    value O
     value #
-    value x
-    value A
     end
   field class
     where 0 0 1
@@ -487,34 +429,28 @@ statement phone
     value liq
     value nas
     value glid
-    value tap
-    value trill
-    value undefined
+    value tense
+    value red
     value AP
     value VC
+    value undefined
     end
   field place_of_artic
     where 4 4 1
     what -1 0 0
     format %d
     value lab
+    value intd
     value alv
     value pal
     value vel
-    value ret
-    value undefined
-    end
-  field height
-    where 5 5 1
-    what -1 0 0
-    format %d
     value high
     value mid
     value low
     value undefined
     end
   field backness
-    where 6 6 1
+    where 5 5 1
     what -1 0 0
     format %d
     value front
@@ -522,20 +458,13 @@ statement phone
     value back
     value undefined
     end
-  field tenseness
-    where 7 7 1
-    what -1 0 0
-    format %d
-    value tense
-    value ~tense
-    end
   field stress
-    where 10 10 2
+    where 6 6 2
     what -4 0 0
     format %d
     end
   field transition
-    where 12 12 1
+    where 9 9 1
     what -1 0 0
     format %d
     value undefined
@@ -543,58 +472,79 @@ statement phone
     value tvoic
     end
   field diaph_ghost
-    where 13 13 1
+    where 10 10 1
     what -1 0 0
     format %d
     value undefined
-    value +C
-    value +J
-    value +T
-    value +D
-    value +n
+    value +t
+    value +d
+    value epen
     end
-  field geminate
-    where 14 14 1
+  field after
+    where 11 11 1
     what -1 0 0
     format %d
-    value yes
-    value ~yes
+    value undefined
+    value h
+    value glot
     end
   field duration
-    where 16 16 2
+    where 12 12 2
     what -4 0 0
     format %d
     end
 end
 
 statement morph
-  length 1
+  length 3
   stride 0
   varlen 0
   whole 0
   marks 39 39 0 0
   numbers 0 0 1 0
-  fresh 00
+  fresh 00 00 00
   field name
     where 0 0 1
     what -1 1 0
     format %d
     value GAP
-    value proclit
     value pre
     value root
-    value clit
+    value suf
+    end
+  field type
+    where 1 1 1
+    what -1 0 0
+    format %d
+    value undef
+    value clitic
+    value ed
+    value ing
+    value s
+    value final
+    end
+  field phonesAssigned
+    where 2 2 1
+    what -1 0 0
+    format %d
+    value undef
+    value no
+    value dict
+    value spr
+    value worddict
+    value rootdict
+    value userdict
     end
 end
 
 statement word
-  length 14
+  length 16
   stride 0
   varlen 0
   whole 0
   marks 39 39 0 0
   numbers 0 0 1 0
-  fresh 00 00 00 00 00 00 00 01 00 00 00 00 00 00
+  fresh 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00
   field name
     where 0 0 2
     what -4 1 0
@@ -606,57 +556,125 @@ statement word
     format %d
     value undef
     value adj
-    value adj_verb
     value adv
-    value adv_nounadj
-    value adv_noun_prep
-    value adv_verb
     value aux
+    value comp
     value conj
     value dem
     value det
-    value det_pro
+    value interj
+    value not
     value noun
-    value nounadj
-    value noun_subord
-    value noun_verb
-    value pos
+    value other
+    value postpos
     value prep
     value pro
     value pro2
     value quant
+    value there
     value verb
     value wh
+    value disambigDict
+    value adj_adv
+    value noun_verb
+    value noun_adj
+    value verb_adj
     end
   field subcat
     where 3 3 1
     what -1 0 0
     format %d
     value non
-    value artic
+    value any
+    value as
     value be
     value coord
     value def
+    value does
+    value ed
     value hav
+    value foreign
+    value get
     value indef
     value inf
-    value fras
-    value gerund
+    value ing
+    value lik
+    value ly
+    value of
     value modal
     value neg
+    value nomposs
     value num
-    value pastpart
-    value prespart
+    value obj
+    value one
+    value only
+    value ord
+    value poss
     value proper
+    value quantif
+    value refl
+    value so
+    value some
+    value subj
     value subord
+    value such
+    value than
+    value that
+    value tim
+    value too
+    value very
+    value hav_modal
+    value be_poss
+    value be_poss_nom
+    value obj_poss
+    value poss_nom
+    value subj_obj
+    value letname
+    end
+  field contrac
+    where 4 4 1
+    what -1 0 0
+    format %d
+    value no
+    value contr
+    value auxil
+    value negat
+    value test
+    end
+  field origin
+    where 5 5 1
+    what -1 0 0
+    format %d
+    value undfn
+    value spnsh
+    value frnch
+    value grk
+    value latin
+    end
+  field number
+    where 6 6 1
+    what -1 0 0
+    format %d
+    value nonapp
+    value sg
+    value pl
+    value ambig
+    end
+  field plural
+    where 7 7 1
+    what -1 0 0
+    format %d
+    value sing
+    value s
+    value es
     end
   field stress_level
-    where 4 4 2
+    where 8 8 2
     what -4 0 0
     format %d
     end
   field acc_valu
-    where 6 6 1
+    where 10 10 1
     what -1 0 0
     format %d
     value h
@@ -668,14 +686,14 @@ statement word
     value undefined
     end
   field d_step
-    where 7 7 1
+    where 11 11 1
     what -1 0 0
     format %d
     value ~down
     value down
     end
   field annot
-    where 8 8 1
+    where 12 12 1
     what -1 0 0
     format %d
     value none
@@ -684,16 +702,9 @@ statement word
     value str_acc
     end
   field brk_priority
-    where 10 10 2
+    where 14 14 2
     what -4 0 0
     format %d
-    end
-  field reproc
-    where 12 12 1
-    what -1 0 0
-    format %d
-    value no
-    value gendr
     end
 end
 
@@ -734,6 +745,7 @@ statement inton_phr
     value LHS
     value HSL
     value HLS
+    value smH
     value none
     value noneZero
     end

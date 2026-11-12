@@ -1,94 +1,95 @@
 # What each Russian letter arrives as: the code point a caller writes, and the
 # byte of the module's alphabet the letter is read as.
 #
-# Russian has thirty-three letters and the alphabet Polish brought has room
-# for no more than three new ones, so the letters take bytes the alphabet
-# already has, each of which has a rule of its own in the dispatcher: the
-# twenty-five Latin letters other than q, and Polish's eight, which come
-# through q's link. Which byte a letter takes is only a name for it -- т is
-# read as t and ш as w -- and lang/ruru/letters is written in the Russian
-# letters themselves, through this file, so what each one says is decided
-# there and nowhere else. ruru.statements says what kind of letter each byte
-# is: ы, ё and ю are vowels there, and ь and ъ are signs.
+# The module is US English's, and its Latin letters stay English's: a word in
+# Latin letters inside Russian text is read by English's rules, as English.
+# So Russian's letters take bytes no English word is written with, the ones
+# the alphabet has for the accented letters of other Western languages --
+# à to ÿ but ñ and ÷, with ß,  and  -- which it knows as
+# letters already. ruru.statements says which of them is a vowel now, and
+# generate_diaphones in rules/et_phone.dr asks for them before anything
+# else, so none reaches the rule of the Latin letter it was an accent on.
+# ь and ъ share a byte: neither says anything, and what each does to the
+# letters beside it is the same.
 #
-# A capital arrives as the Latin capital where its letter took a Latin byte,
-# which the module lowers as it lowers any capital, and as its own lowercase
-# where its letter took one of Polish's, as Polish's own capitals do.
+# The cost is that an accented Latin letter inside Russian text is read as
+# the Russian letter that took its byte. ñ, the n with a tilde, is left
 #
-# Latin text in Russian is read by the same rules, as though it were the
-# Cyrillic letter that took its byte.
+# A capital arrives as its own small letter. Nothing in the module lowers a
+# letter it was not written for, and nothing here wants to know a Russian
+# letter was a capital.
 
-0430 61   # а, as Latin a
-0431 62   # б, as Latin b
-0432 76   # в, as Latin v
-0433 67   # г, as Latin g
-0434 64   # д, as Latin d
-0435 65   # е, as Latin e
-0451 f2   # ё, as o with grave, a vowel the module takes as stressed, as ё is
-0436 8b   # ж, as z with dot above
-0437 7a   # з, as Latin z
-0438 69   # и, as Latin i
-0439 6a   # й, as Latin j
-043a 6b   # к, as Latin k
-043b 6c   # л, as Latin l
-043c 6d   # м, as Latin m
-043d 6e   # н, as Latin n
-043e 6f   # о, as Latin o
-043f 70   # п, as Latin p
-0440 72   # р, as Latin r
-0441 73   # с, as Latin s
-0442 74   # т, as Latin t
-0443 75   # у, as Latin u
-0444 66   # ф, as Latin f
-0445 68   # х, as Latin h
-0446 63   # ц, as Latin c
-0447 83   # ч, as c with acute
-0448 77   # ш, as Latin w
-0449 88   # щ, as s with acute
-044a 78   # ъ, as Latin x
-044b 79   # ы, as Latin y
-044c 86   # ь, as l with stroke
-044d 84   # э, as e with ogonek
-044e f9   # ю, as u with grave: of the four accented u it is the one the module keeps to the letter rules rather than writing as u
-044f 82   # я, as a with ogonek
+0430 e0   # а
+0431 e1   # б
+0432 e2   # в
+0433 e3   # г
+0434 e4   # д
+0435 e5   # е
+0451 e6   # ё
+0436 e7   # ж
+0437 e8   # з
+0438 e9   # и
+0439 ea   # й
+043a eb   # к
+043b ec   # л
+043c ed   # м
+043d ee   # н
+043e ef   # о
+043f f0   # п
+0440 f2   # р
+0441 f3   # с
+0442 f4   # т
+0443 f5   # у
+0444 f6   # ф
+0445 f8   # х
+0446 f9   # ц
+0447 fa   # ч
+0448 fb   # ш
+0449 fc   # щ
+044b fd   # ы
+044c fe   # ь
+044a fe   # ъ
+044d f1   # э
+044e df   # ю
+044f 9c   # я
 
-0410 41   # А
-0411 42   # Б
-0412 56   # В
-0413 47   # Г
-0414 44   # Д
-0415 45   # Е
-0401 f2   # Ё, as its lowercase
-0416 8b   # Ж, as its lowercase
-0417 5a   # З
-0418 49   # И
-0419 4a   # Й
-041a 4b   # К
-041b 4c   # Л
-041c 4d   # М
-041d 4e   # Н
-041e 4f   # О
-041f 50   # П
-0420 52   # Р
-0421 53   # С
-0422 54   # Т
-0423 55   # У
-0424 46   # Ф
-0425 48   # Х
-0426 43   # Ц
-0427 83   # Ч, as its lowercase
-0428 57   # Ш
-0429 88   # Щ, as its lowercase
-042a 58   # Ъ
-042b 59   # Ы
-042c 86   # Ь, as its lowercase
-042d 84   # Э, as its lowercase
-042e f9   # Ю, as its lowercase
-042f 82   # Я, as its lowercase
+0410 e0   # А, as its small letter
+0411 e1   # Б, as its small letter
+0412 e2   # В, as its small letter
+0413 e3   # Г, as its small letter
+0414 e4   # Д, as its small letter
+0415 e5   # Е, as its small letter
+0401 e6   # Ё, as its small letter
+0416 e7   # Ж, as its small letter
+0417 e8   # З, as its small letter
+0418 e9   # И, as its small letter
+0419 ea   # Й, as its small letter
+041a eb   # К, as its small letter
+041b ec   # Л, as its small letter
+041c ed   # М, as its small letter
+041d ee   # Н, as its small letter
+041e ef   # О, as its small letter
+041f f0   # П, as its small letter
+0420 f2   # Р, as its small letter
+0421 f3   # С, as its small letter
+0422 f4   # Т, as its small letter
+0423 f5   # У, as its small letter
+0424 f6   # Ф, as its small letter
+0425 f8   # Х, as its small letter
+0426 f9   # Ц, as its small letter
+0427 fa   # Ч, as its small letter
+0428 fb   # Ш, as its small letter
+0429 fc   # Щ, as its small letter
+042b fd   # Ы, as its small letter
+042c fe   # Ь, as its small letter
+042a fe   # Ъ, as its small letter
+042d f1   # Э, as its small letter
+042e df   # Ю, as its small letter
+042f 9c   # Я, as its small letter
 
 # The stress mark, the combining acute a writer puts after the vowel a word is
-# stressed on: за́мок and замо́к. It takes the byte Polish gave its ń, which
-# Russian left free, and is a letter that says nothing: ru_primary_stress in
-# rules/it_strss.up reads it where it stands among the letters. It is how a
-# dictionary says where a word is stressed, too.
-0301 87   # the stress mark
+# stressed on: за́мок and замо́к. It is a letter that says nothing, and the
+# stress rule reads it where it stands. It is how a dictionary says where a
+# word is stressed, too.
+0301 9a   # the stress mark
+

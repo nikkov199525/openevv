@@ -271,18 +271,20 @@ development sets were used. Neither its audio nor its text is in this
 repository; what is here is the numbers derived from it and `tools/measure/pitch.py`,
 which derived them.
 
-`lang/ruru` says Russian and is Polish's module, which is to say Italian's.
-It was made by copying `lang/plpl`'s text forms and renaming them, so every
-rule and every table in it that `lang/plpl` holds as IBM's Italian is IBM's
-Italian here too, and what is said of `lang/plpl` above is said of it. What
-is ours in it is what was ours in Polish's and came with the copy, and what
-was written for Russian: `lang/ruru/letters`, every block of which is
-Russian's own, the arms and the classes alike, `ruru.codepoints`, and the
-records `ruru.statements` gives ы, ё, ю, ь, ъ, ш and ж, the rules of
-`rules/it_strss.up`, and `dictionary/words` with the `main.dic` made of it,
-which is a list written here and taken from no dictionary. What those name is
-still IBM's numbering, as it is for Polish. `make EVVLANG=lang/ruru census
-TEMPLATE=plpl` says how much of it is still Polish's.
+`lang/ruru` says Russian and is US English's module. It was made by copying
+`lang/enus`'s text forms and renaming them, so every rule and every table in
+it is IBM's US English, with what ETI's 6.1 and this project have changed in
+`lang/enus`, until something written for Russian has replaced it, and what is
+said of `lang/enus` above is said of it. What is written for Russian is ours:
+the Russian half of `lang/ruru/letters`, the classes and the blocks alike,
+`ruru.codepoints`, the rules of `rules/et_strss.up` and the one added to
+`rules/et_norm.up`, and `dictionary/words` with the `main.dic` made of it,
+which is a list written here and taken from no dictionary. The edits those
+needed in IBM's rules -- the calls that reach them in `rules/et_symb.dr`,
+`rules/u_integ.dr` and `rules/et_phone.dr`, and the records
+`ruru.statements` gives Russian's letters -- are edits to IBM's text, and
+the rest of that text is IBM's as it was. What Russian's rules name is IBM's
+numbering, as it is for Polish.
 
 Names
 -----

@@ -1,260 +1,273 @@
-# Russian letter-to-sound.
+# US English letter-to-sound.
 #
-# One block a letter and its arms in order, the first that matches winning,
-# the last arm of a block the bare letter. The letters are Russian's own; each
-# arrives as a byte of the alphabet the module brought, which
-# lang/ruru/ruru.codepoints names, and a block whose letter took a Latin byte
-# says which rule it stands in for with `as': т is read as t.
+# One block a letter and its arms in order, the first that matches winning.
+# The last arm of a block is the bare letter: what it says when nothing else
+# applies. An arm may also say what must stand to its left and right without
+# swallowing it -- `after', `before', and `vowel', `consonant' or `glide' in
+# either place -- and `at start' or `at end' for a run that has to begin or
+# end where the piece of the word does.
 #
-# The phones are the module's, which it brought from Polish, and several are
-# named for the Polish sounds they took over, so the lines above the letters
-# let an arm name them by Russian spelling: ш is Polish's sz, the retroflex,
-# and ж its ż; ч is Polish's ć, which is the same soft affricate Russian's ч
-# is; щ is ś, the long soft sibilant said short; ц is ts and х the velar
-# fricative. The vowels keep the engine's names: а says a, о says c, the open
-# o Polish's took over, е and э say E, и says i and ы says e, the close-mid
-# vowel Polish's ɨ took over, which is what Russian's ы is nearest to.
-#
-# A consonant is soft before е, ё, и, ю, я and ь. Before е, ё, ю and я the
-# softness is the glide y laid after it, and the vowel letter then says its
-# vowel alone; before и the i is soft enough; before ь, which says nothing,
-# т, д, с, з and н take the soft consonants the module has -- ć, dź, ś, ź and
-# ń -- and the rest are said as they are. ж, ш and ц are hard whatever
-# follows, and ч and щ soft. After a vowel, at the start of a word and after
-# ь or ъ, е, ё, ю and я are the glide and the vowel: ель, моё, вьюга, съел.
-#
-# A voiced consonant is voiceless before a voiceless one and at the end of a
-# word -- хлеб is хлеп, лодка лотка -- and a voiceless one voiced before a
-# voiced one: сделать is зделать, вокзал вогзал. в is voiceless where it is
-# devoiced but voices nothing, so it is not in `voiced': твой keeps its т.
-# The end of a word is not voiceless when the next word begins with a voiced
-# obstruent, which is `unless voiced follows', and a voiceless consonant at
-# the end of a word then takes the voice: к дому, брат был.
-#
-# Where the stress falls is not here: rules/it_strss.up reads it from the
-# letters once these have spoken, and reduces the unstressed vowels after.
+# The letters are the language's own characters and the phones are the ETI
+# phone letters, the same ones enus.dict uses. tools/rules/letters.py writes
+# rules/et_phone.up out of this, and test/words.sh says whether any of 24,318
+# words moved.
 
-rules in it_phone.obj named apply_pol_%s_rules
-a piece runs from 864 to 872
-a word runs from 704 to 712
+rules in et_phone.obj named %s_rules
+a piece runs from 876 to 884
+gmute means b c d f j k m p q s t v x z
 
+# Russian's, which the second half of this file is: see there.
 voiceless means п т к ф с ш щ х ц ч and the end of the word unless voiced follows
 voiced means б д г з ж unless voiceless follows
 iot means е ё ю я
-ж ч щ ь э я ́ come through q
+а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я ́ come through q
 
-phone ш is L
-phone ж is R
-phone щ is S
-phone ч is C
-phone ть is C
-phone дь is J
-phone ц is T
-phone х is A
-phone нь is N
-phone сь is S
-phone зь is Z
+letter b
+  bt at end   says t     # debt
+  b    says b
 
-# ---- vowels -----------------------------------------------------------
+letter w
+  wr at start   says r   # write, wrong
+  w    says w
 
-letter а as a
+letter d
+  dg   says J     # judge, badge
+  dj   says J     # adjust
+  dt at end   says t   # Ahrendt, Schmidt
+  d    says d
+
+letter m
+  mech          says m E k # mechanic, mechanism
+  mn at start   says n     # mnemonic
+  mn at end     says m     # autumn, column, damn
+  mb at end     says m     # lamb, comb
+  m             says m
+
+letter n
+  ng at end               says G   # sing, singing
+  ng before n at end      says G
+  ng before then at end   says G   # strengthen
+  ng before ton at end    says G
+  ng before th            says G   # length, strength
+  ngh before am           says G   # Bingham, gingham
+  ng before gmute         says G   # Lexingtonian, Gangtok, Helsingborg
+  n                       says n
+
+letter q
+  qu after i before et  says k     # etiquette, tourniquet
+  qu before ette        says k     # Arquette, croquette
+  qu before e at end    says k     # antique, clique
+  qu before vowel       says k w   # quick, queen
+  q                     says k     # Iraq
+
+
+
+
+
+# ---- Russian ------------------------------------------------------------
+#
+# Everything above is US English's, and reads a word in Latin letters as
+# English. Everything below is Russian's. Its letters have bytes of their
+# own, which lang/ruru/ruru.codepoints names, and no link of their own in the
+# dispatcher, so they come through q's: their blocks are arms of the rule
+# standing where q's stood, and q's own arms, above, come after them.
+#
+# The phones are US English's, and Russian is said with the nearest of them.
+# ы is X, the vowel of roses. р is F, the flap, alone before a vowel and with
+# r after it anywhere else, where a flap has nothing to release into. ц is t
+# and s, ч is C, ж and ш are Z and S, щ is S and the glide before a vowel and
+# S and C elsewhere, and х is h before a vowel and Q elsewhere, the velar
+# fricative English declares and never says, with a k before it in front of
+# л, р, м, н and в.
+#
+# A consonant is soft before е, ё, ю and я, and English has no soft
+# consonants, so the softness is the glide y laid before the vowel, which is
+# how an English voice comes nearest. ж, ш and ц are hard whatever follows,
+# and ч, щ and й soft already, so no glide follows those. After a vowel, at
+# the start of a word and after ь or ъ the glide is the letter's own: ель,
+# моё, вьюга, съел.
+#
+# A voiced consonant is voiceless before a voiceless one and at the end of a
+# word, and a voiceless one voiced before a voiced one: хлеб is хлеп, сделать
+# зделать. в loses its voice and gives none, so it is not in `voiced'.
+#
+# The vowels here are the stressed ones. Where the stress falls, and what an
+# unstressed vowel becomes, is rules/et_strss.up's to say once these have
+# spoken.
+
+# The classes those arms ask for and the letters that come through q are
+# named above the first letter, where the file's other such lines are.
+
+# ---- vowels
+
+letter а
   а    says a
 
-letter о as o
-  ё after ь  says y c      # бельё
-  ё after ъ  says y c      # объём
-  ё after consonant  says c
-  ё    says y c            # ёж, моё
-  о    says c
+letter о
+  о    says o
 
-letter у as u
-  ю after ь  says y u      # вьюга
-  ю after ъ  says y u
-  ю after consonant  says u
-  ю    says y u            # юг, мою
+letter у
   у    says u
 
-letter ы as y
-  ы    says e
+letter ы
+  ы    says X
 
 letter э
   э    says E
 
-letter и as i
-  и after ж  says e        # жить
-  и after ш  says e        # шило
-  и after ц  says e        # цирк
+letter и
+  и after ж  says X        # жить
+  и after ш  says X        # шило
+  и after ц  says X        # цирк
   и after ь  says y i      # соловьи
   и    says i
 
-letter е as e
-  е after ь  says y E      # семье
-  е after ъ  says y E      # съел
-  е after consonant  says E
-  е    says y E            # ель, поет
+letter е
+  е after ж  says E
+  е after ш  says E
+  е after ц  says E
+  е after ч  says E
+  е after щ  says E
+  е    says y E            # нет, ель, поет, семье, съел
 
+letter ё
+  ё after ж  says o
+  ё after ш  says o
+  ё after ч  says o
+  ё after щ  says o
+  ё    says y o            # ёж, моё, бельё, нёс
 
+letter ю
+  ю after ж  says u
+  ю after ш  says u
+  ю after ч  says u
+  ю after щ  says u
+  ю    says y u
 
 letter я
-  я after ь  says y a      # семья
-  я after ъ  says y a      # объявление
-  я after consonant  says a
-  я    says y a            # яма, моя
+  я after ч  says a
+  я after щ  says a
+  я    says y a
 
-letter й as j
+letter й
   й    says y
 
-# ---- signs ------------------------------------------------------------
+# ---- signs, and the stress mark, which say nothing
 
-# Each says nothing: what ь does is in the consonant before it, and what both
-# do to a vowel after them is in the vowel.
 letter ь
-  ь    says nothing
+  ь    is left alone
 
-letter ъ as x
-  ъ    says nothing
+letter ъ
+  ъ    is left alone
 
-# The stress mark after a vowel, which says nothing either: where the stress
-# falls is ru_primary_stress's to read, from the letters.
 letter ́
-  ́    says nothing
+  ́    is left alone
 
-# ---- consonants -------------------------------------------------------
+# ---- consonants
 
-letter б as b
+letter б
   б before voiceless   says p      # хлеб, обхват
-  б before iot         says b y    # бег
   б    says b
 
-letter п as p
-  п before voiced word says b      # суп был
+letter п
+  п before voiced word says b
   п before voiced      says b
-  п before iot         says p y    # пёс
   п    says p
 
-letter в as v
+letter в
   вств                 says s t v  # чувство, здравствуйте
   в before voiceless   says f      # вторник, кровь
-  в before iot         says v y    # ветер
   в    says v
 
-letter ф as f
+letter ф
   ф before voiced word says v
   ф before voiced      says v
-  ф before iot         says f y
   ф    says f
 
-letter м as m
-  м before iot         says m y    # мясо
+letter м
   м    says m
 
-# -ого and -его, the genitive, say в for their г: его, сегодня, нового.
-letter г as g
-  г after о before о at word end  says v     # нового, его
-  г after е before о at word end  says v     # его, моего
-  г after е before од  says v               # сегодня
-  гк                   says х k    # лёгкий, мягкий, легко
+letter г
+  г after о before о at end  says v      # нового
+  г after е before о at end  says v      # его, моего
+  г after е before од  says v            # сегодня
+  гк                   says Q k    # лёгкий, мягкий, легко
   г before voiceless   says k      # друг, ногти
-  г before iot         says g y
   г    says g
 
-letter к as k
+letter к
   к before voiced word says g      # так быстро
   к before voiced      says g      # вокзал
-  к before iot         says k y
   к    says k
 
-letter х as h
-  х before voiced      says A
-  х before iot         says A y
-  х    says A
+letter х
+  х before vowel       says h      # хорошо
+  х before л           says k Q    # хлеб
+  х before р           says k Q
+  х before м           says k Q
+  х before н           says k Q
+  х before в           says k Q
+  х    says Q                      # них, вход
 
-letter д as d
-  дц                   says ц      # двадцать, тринадцать
-  дь before voiceless  says C      # грудь
-  дь                   says дь     # дьяк
+letter д
+  дц                   says t s    # двадцать
   д before voiceless   says t      # сад, лодка
-  д before iot         says d y    # дети
   д    says d
 
-# Russian leaves a consonant unsaid in the middle of some clusters, and each
-# is an arm that swallows the cluster: стн is сн, здн зн, лнц нц, рдц рц,
-# вств ств, and дц is ц, гк хк.
-#
-# -тся and -ться at the end of a verb are one ц and an a.
-letter т as t
-  ться at word end     says ц a    # учиться
-  тся at word end      says ц a    # учится
-  ть before voiced word  says дь   # мать была
-  ть                   says ть     # мать
+letter т
+  ться at end          says t s a  # учиться
+  тся at end           says t s a  # учится
   т before voiced word says d      # брат был
   т before voiced      says d      # отдать
-  т before iot         says t y    # тело
   т    says t
 
-letter з as z
+letter з
+  зч                   says S C    # извозчик
   здн                  says z n    # поздно, праздник
-  зч                   says щ      # извозчик
-  зь before voiceless  says сь
-  зь                   says зь
   з before voiceless   says s      # раз, сказка
-  з before iot         says z y    # зеленый
   з    says z
 
-letter с as s
-  стн                  says s n    # шестнадцать, честный, известно
-  сч                   says щ      # счастье
-  сь before voiced     says зь     # просьба
-  сь                   says сь     # весь
-  с before voiced word says z      # нас дома
+letter с
+  сч                   says S C    # счастье
+  стн                  says s n    # честный, известно
+  с before voiced word says z
   с before voiced      says z      # сделать
-  с before iot         says s y    # сено
   с    says s
 
-letter н as n
-  нь                   says нь     # конь
-  н before iot         says нь     # нет, няня
+letter н
   н    says n
 
-letter л as l
-  лнц                  says n ц    # солнце
-  ль                   says l      # соль
-  л before iot         says l y    # лес
+letter л
+  лнц                  says n t s  # солнце
   л    says l
 
-letter р as r
-  рдц                  says r ц    # сердце
-  рь                   says r      # царь
-  р before iot         says r y    # река
-  р    says r
+letter р
+  рдц                  says F r t s  # сердце
+  р before vowel       says F      # река
+  р before ь+vowel     says F      # рьяно
+  р    says F r                    # март, царь
 
 letter ж
-  жь before voiceless  says ш      # рожь
-  жь                   says ж
-  ж before voiceless   says ш      # нож, ложка
-  ж    says ж
+  ж before voiceless   says S      # нож, ложка
+  ж    says Z
 
-letter ш as w
-  шь before voiced     says ж
-  шь                   says ш      # мышь
-  ш before voiced word says ж
-  ш before voiced      says ж
-  ш    says ш
+letter ш
+  ш before voiced word says Z
+  ш before voiced      says Z
+  ш    says S
 
-# что and its kin say ш for their ч.
 letter ч
-  чт before о at word start  says ш t   # что, чтобы, что-то
-  чт before о at word end  says ш t     # что, ничто
-  чь before voiced     says дь          # дочь была
-  чь                   says ч           # ночь
-  ч before voiced word says дь
-  ч before voiced      says дь
-  ч    says ч
+  чт before о at start  says S t   # что, чтобы
+  чт before о at end    says S t   # ничто
+  ч before voiced word says J
+  ч before voiced      says J
+  ч    says C
 
 letter щ
-  щь                   says щ      # вещь
-  щ    says щ
+  щ before и           says S
+  щ before е           says S
+  щ before vowel       says S y    # щука
+  щ    says S C                    # борщ, вещь
 
-letter ц as c
-  ц before voiced      says d z
-  ц    says ц
+letter ц
+  ц    says t s

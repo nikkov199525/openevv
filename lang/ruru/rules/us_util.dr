@@ -133,8 +133,8 @@ label L0 was _callInternalSynthesizer
   popreg r1
   popreg r1
   branch je to L4
-  load movl state 2556 into r7
-  load movl state 2552 into r3
+  load movl state 2716 into r7
+  load movl state 2712 into r3
 label L1 was at_0xfa
   push reg r6
   call ZZstarttest2 arity 1 depth 1
@@ -179,35 +179,35 @@ label L1 was at_0xfa
   push reg r3
   load movl slotaddr -24 into r0
   push slotaddr -24
-  addk 2548 reg r6 into r0
+  addk 2708 reg r6 into r0
   push reg r0
   load movl slotaddr -4 into r0
   push slotaddr -4
-  addk 2544 reg r6 into r0
+  addk 2704 reg r6 into r0
   push reg r0
   load movl slotaddr -8 into r0
   push slotaddr -8
-  addk 2540 reg r6 into r0
+  addk 2700 reg r6 into r0
   push reg r0
   load movl slotaddr -16 into r0
   push slotaddr -16
-  addk 2576 reg r6 into r0
+  addk 2736 reg r6 into r0
   push reg r0
-  addk 2572 reg r6 into r0
+  addk 2732 reg r6 into r0
   push reg r0
-  addk 2564 reg r6 into r0
+  addk 2724 reg r6 into r0
   push reg r0
-  addk 2568 reg r6 into r0
+  addk 2728 reg r6 into r0
   push reg r0
-  addk 2560 reg r6 into r0
+  addk 2720 reg r6 into r0
   push reg r0
-  addk 2532 reg r6 into r0
+  addk 2692 reg r6 into r0
   push reg r0
-  addk 2364 reg r6 into r0
+  addk 2524 reg r6 into r0
   push reg r0
-  addk 2528 reg r6 into r0
+  addk 2688 reg r6 into r0
   push reg r0
-  addk 2508 reg r6 into r0
+  addk 2668 reg r6 into r0
   push reg r0
   load movl slotaddr -56 into r0
   push slotaddr -56
