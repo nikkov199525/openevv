@@ -1,7 +1,40 @@
-rule pol_primary_stress takes 3 from it_strss.obj
+# Where a Russian word is stressed, and what its unstressed vowels become.
+#
+# Russian stress is the word's own and no rule finds it, so this takes what
+# the writing says and guesses the rest. In order:
+#
+#   the stress mark, the combining acute after a vowel, which a writer puts
+#   where a word would be misread and a dictionary puts in every word it has;
+#
+#   ё, which is stressed wherever it stands, the first of them if there are
+#   several;
+#
+#   a number word, each of which is listed whole with its syllable, since
+#   the number rules write them after any dictionary has been asked;
+#
+#   the ending. An infinitive is stressed on the vowel before its ть and a
+#   past tense on the one before its л, and -ист, -изм, -ант, -ент, -ок, -ец
+#   and -ой carry the stress themselves, so those are stressed on the last
+#   syllable. An adjective's ending of two vowels -- -ая, -ое, -ые, -ую --
+#   and -ыми, -ого, -ому and their soft forms, and a noun's -ия and -ие,
+#   leave it on the last vowel of the stem, which is two syllables before
+#   the last;
+#
+#   and failing all of that the syllable before the last, which is the
+#   commonest place.
+#
+# A vowel letter is a syllable in Russian, every one and nothing else, so the
+# place is counted in letters and marked in syllables: the letters are walked
+# from the start of the word, the vowels counted, and the count kept at a ё
+# or a stress mark.
+#
+# It stands where Polish's pol_primary_stress stood, in assign_ital_stress.
+rule ru_primary_stress takes 3 from it_strss.obj
   local left bytes 8
   local right bytes 8
   local count
+  local vowels
+  local target
   local togo
   call ZZget_parm_ptr2 addr left arg 1 addr right arg 2
   call ZZfence_null
@@ -19,17 +52,93 @@ rule pol_primary_stress takes 3 from it_strss.obj
       leave
     end
   end
-  # And then again from the start, to the syllable before the penultimate:
-  # what the mark covers begins after its left end, so it lands on the
-  # penultimate, which is where Polish stress is and where it always is.
-  # The phoneme report says where the mark went and a pitch peak does not:
-  # Italian's statement accent peaks on the syllable before its mark.
+  decrement count
+  # The letters: which vowel, counted from one, the writing says.
+  set vowels to 0
+  set target to 0
+  call lpta_loadp addr left
+  call setscan_r 1
+  if answer is 0
+    while 1
+      call pol_is_vowel
+      if answer is 0
+        increment vowels
+        call testFldeq 1 0 100                   # ё
+        if answer is 0
+          if target is 0
+            set target to vowels
+          end
+        end
+      else
+        call testFldeq 1 0 211                   # the stress mark
+        if answer is 0
+          set target to vowels
+        else
+          call pol_is_letter
+          if answer is not 0
+            leave
+          end
+        end
+      end
+      call advance_tok
+      if answer is not 0
+        leave
+      end
+    end
+  end
+  # A number word, and then the ending, where the writing says nothing.
+  if target is 0
+    call ru_word_first arg 1 arg 2
+    if answer is 0
+      set target to 1
+    end
+  end
+  if target is 0
+    call ru_word_second arg 1 arg 2
+    if answer is 0
+      set target to 2
+    end
+  end
+  if target is 0
+    call ru_word_third arg 1 arg 2
+    if answer is 0
+      set target to 3
+    end
+  end
+  if target is 0
+    call ru_word_last arg 1 arg 2
+    if answer is 0
+      set target to count
+    end
+  end
+
+  if target is 0
+    set target to count
+    decrement target
+    call ru_ends_stressed arg 2
+    if answer is 0
+      set target to count
+    else
+      call ru_ends_stem_stressed arg 2
+      if answer is 0
+        decrement target
+      end
+    end
+  end
+  if target is more than count
+    set target to count
+  end
+  if target is less than 1
+    set target to 1
+  end
+  # And the mark, over the syllable that many in: what it covers begins
+  # after its left end.
   call ZZlpta_load__setscan_r__7 addr left
   if answer is not 0
     give up
   end
-  set togo to count
-  subtract 3 from togo
+  set togo to target
+  decrement togo
   while togo is more than 0
     call advance_tok
     decrement togo
@@ -39,7 +148,728 @@ rule pol_primary_stress takes 3 from it_strss.obj
   if answer is 0
     call savescptr 2 addr right
     call ZZlprp_load__insert_2pt_i_7_2_ZZstring3 addr left addr right
+    call ru_reduce arg 1 arg 2
     match
+  end
+  give up
+end
+
+# What an unstressed vowel becomes. Russian says its о as а wherever the
+# stress is not, its е as и, and its я as и too when a consonant stands before
+# it and the word goes on after it: молоко is малако, река рика, пятно
+# питно, and время keeps the а it ends in.
+#
+# It walks the phones of the word once the stress is marked, asks of each о,
+# е and а which syllable it is in and whether that one is stressed, and lays
+# the other vowel down in its place. An а is only я's when the letter that
+# begins where it does is я, which is so after a consonant and not after the
+# glide.
+rule ru_reduce takes 3 from it_strss.obj
+  afresh
+  local pl bytes 8
+  local pr bytes 8
+  local kind
+  local final
+  call ZZfence_null
+  call lpta_loadp arg 1
+  call setscan_r 2
+  if answer is not 0
+    give up
+  end
+  while 1
+    call savescptr 1 addr pl
+    set kind to 0
+    call testFldeq 2 0 33                      # о
+    if answer is 0
+      set kind to 1
+    end
+    call testFldeq 2 0 29                      # е
+    if answer is 0
+      set kind to 2
+    end
+    call testFldeq 2 0 30                      # а
+    if answer is 0
+      set kind to 3
+    end
+    call advance_tok
+    if answer is not 0
+      leave
+    end
+    call savescptr 2 addr pr
+    set final to 0
+    call lpta_loadp arg 2
+    call test_ptr
+    if answer is 0
+      set final to 1
+    end
+    if kind is 3
+      # Only я's а, and not the one a word ends in.
+      set kind to 0
+      if final is 0
+        call lpta_loadp addr pl
+        call setscan_r 1
+        if answer is 0
+          call testFldeq 1 0 207
+          if answer is 0
+            set kind to 3
+          end
+        end
+      end
+    end
+    if kind is not 0
+      call lpta_loadp addr pl
+      call lpta_tstctxtl 7
+      if answer is 0
+        call setscan_r 7
+        if answer is 0
+          call testFldeq 7 0 0
+          if answer is 0
+            call lpta_rpta_loadp addr pl addr pr
+            if kind is 1
+              call insert_2pt_s 2 1 sym ru_ph_a 0
+            else
+              call insert_2pt_s 2 1 sym ru_ph_i 0
+            end
+          end
+        end
+      end
+    end
+    if final is not 0
+      leave
+    end
+    # Back to the phones, after this one: asking about the letters and the
+    # syllables moved the scan off them.
+    call lpta_loadp addr pr
+    call setscan_r 2
+    if answer is not 0
+      leave
+    end
+  end
+  match
+end
+
+# Whether the word that ends at this point ends in one of the endings stressed on the last syllable.
+# The letters are read leftwards from the end, nearest first, so each
+# ending is written backwards in rules/constants.
+rule ru_ends_stressed takes 2 from it_strss.obj
+  afresh
+  call ZZfence_null
+  call lpta_loadp arg 1                 # ать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_011ad2
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ять
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_cf1ad2
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ить
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_031ad2
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # еть
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_021ad2
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # уть
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_051ad2
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ыть
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_1e1ad2
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # оть
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_041ad2
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ал
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0113
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ял
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_cf13
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ил
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0313
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ел
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0213
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ист
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_03191a
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # изм
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_031f14
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ант
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_01151a
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ент
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_02151a
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ок
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0412
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ец
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_020c
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ой
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0411
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # сот
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_19041a
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # десят
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 5 sym ru_end_0d0219cf1a
+    if answer is 0
+      match
+    end
+  end
+  give up
+end
+
+# Whether the word that ends at this point ends in one of the endings that leave the stress on the stem.
+# The letters are read leftwards from the end, nearest first, so each
+# ending is written backwards in rules/constants.
+rule ru_ends_stem_stressed takes 2 from it_strss.obj
+  afresh
+  call ZZfence_null
+  call lpta_loadp arg 1                 # ая
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_01cf
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # яя
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_cfcf
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ое
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0402
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ее
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0202
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ые
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_1e02
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ие
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0302
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ую
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0565
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # юю
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_6565
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ия
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_03cf
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ию
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0365
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ии
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 2 sym ru_end_0303
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ыми
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_1e1403
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ими
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_031403
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ого
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_040f04
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # его
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_020f04
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ому
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_041405
+    if answer is 0
+      match
+    end
+  end
+  call lpta_loadp arg 1                 # ему
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 3 sym ru_end_021405
+    if answer is 0
+      match
+    end
+  end
+  give up
+end
+
+# Whether the word between the two points is one of the number words
+# stressed on the first syllable. Read leftwards from its end, and then
+# asked whether that was the whole of it.
+rule ru_word_first takes 3 from it_strss.obj
+  afresh
+  call ZZfence_null
+  call lpta_loadp arg 2                 # тысяча
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_1a1e19cfd001
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # тысячи
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_1a1e19cfd003
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # десять
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_0d0219cf1ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # девять
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_0d021bcf1ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восемь
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_1b04190214d2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # семьдесят
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_190214d20d0219cf1a
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восемьдесят
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 11 sym ru_end_1b04190214d20d0219cf1a
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # двацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_0d1b010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # трицать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_1a18030c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  give up
+end
+
+# Whether the word between the two points is one of the number words
+# stressed on the second syllable. Read leftwards from its end, and then
+# asked whether that was the whole of it.
+rule ru_word_second takes 3 from it_strss.obj
+  afresh
+  call ZZfence_null
+  call lpta_loadp arg 2                 # одинацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_040d0315010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # двенацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_0d1b0215010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # тринацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_1a180315010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # четырнацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 11 sym ru_end_d0021a1e1815010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # пятнацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_16cf1a15010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шеснацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_1c021915010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # семнацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_19021415010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # четыреста
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_d0021a1e1802191a01
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  give up
+end
+
+# Whether the word between the two points is one of the number words
+# stressed on the third syllable. Read leftwards from its end, and then
+# asked whether that was the whole of it.
+rule ru_word_third takes 3 from it_strss.obj
+  afresh
+  call ZZfence_null
+  call lpta_loadp arg 2                 # восемнацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 11 sym ru_end_1b0419021415010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # девятнацать
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 11 sym ru_end_0d021bcf1a15010c011ad2
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  give up
+end
+
+# Whether the word between the two points is one of the number words
+# stressed on the last syllable. Read leftwards from its end, and then
+# asked whether that was the whole of it.
+rule ru_word_last takes 3 from it_strss.obj
+  afresh
+  call ZZfence_null
+  call lpta_loadp arg 2                 # один
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 4 sym ru_end_040d0315
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # одна
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 4 sym ru_end_040d1501
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # милион
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_140313030415
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # милиард
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_1403130301180d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
   end
   give up
 end

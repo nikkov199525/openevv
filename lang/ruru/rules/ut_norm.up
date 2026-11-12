@@ -1,23 +1,24 @@
-# w and z are the two Polish prepositions with no vowel, and Polish says each
-# as part of the word after it: w domu is one word stressed where domu is,
-# and w polu is f polu, since a consonant takes its voice from the one after
-# it. Italian has no word of one consonant, so a token that is one is spelled
-# out by name, which is what a lone letter is. Joined to the next word before
-# anything reads the token, the pair is an ordinary word and the letter rules
-# do the rest.
+# в, к and с are the three Russian prepositions with no vowel, and Russian
+# says each as part of the word after it: в доме is one word stressed where
+# доме is, and в парке is ф парке, since a consonant takes its voice from the
+# one after it. Italian has no word of one consonant, so a token that is one
+# is spelled out by name, which is what a lone letter is. Joined to the next
+# word before anything reads the token, the pair is an ordinary word and the
+# letter rules do the rest.
 #
-# Only where a word of two letters or more follows. Litera w i litera z means
-# the letters, and so does a w at the end of a sentence or before a number.
+# Only where a word of two letters or more follows. Буква в и буква с means
+# the letters, and so does a в at the end of a sentence or before a number.
 #
-# And nie before a word of one syllable is one word with it, stressed where
-# a word of two syllables is: NIE wiem, NIE ma, NIE chcę, as niewiem would be.
-# Not before one of the words Polish never stresses, nie na stole, which
-# pol_funct_words leaves nie unstressed before, nor before a longer word.
+# The word after it is looked up in the dictionaries before the two are
+# joined, since Russian's stress is in a dictionary and the joined word is in
+# none.
 #
 # It stands where tok_lookup stood in normalize_text and hands over to it
 # either way. The join is the machine's way of taking a character out: the
 # letter and the space after it are one range, and the letter alone is laid
-# back down over it.
+# back down over it. It keeps the name Polish gave it, and what it has of
+# Polish's nie is never reached: those three letters are ние in Russian's
+# bytes.
 rule pol_tok_lookup takes 2 from ut_norm.obj
   afresh
   local here bytes 8
@@ -31,26 +32,40 @@ rule pol_tok_lookup takes 2 from ut_norm.obj
     go to lookup
   end
   set letter to 0
-  call test_string_s 1 1 sym pol_letter_w
-  if answer is 0
-    set letter to sym pol_letter_w
-  end
   if letter is 0
-    call test_string_s 1 1 sym pol_letter_z
+    call test_string_s 1 1 sym ru_join_v           # в
     if answer is 0
-      set letter to sym pol_letter_z
+      set letter to sym ru_join_v
     end
   end
   if letter is 0
-    call test_string_s 1 1 sym pol_capital_w
+    call test_string_s 1 1 sym ru_join_k           # к
     if answer is 0
-      set letter to sym pol_capital_w
+      set letter to sym ru_join_k
     end
   end
   if letter is 0
-    call test_string_s 1 1 sym pol_capital_z
+    call test_string_s 1 1 sym ru_join_s           # с
     if answer is 0
-      set letter to sym pol_capital_z
+      set letter to sym ru_join_s
+    end
+  end
+  if letter is 0
+    call test_string_s 1 1 sym ru_join_cap_v           # В
+    if answer is 0
+      set letter to sym ru_join_cap_v
+    end
+  end
+  if letter is 0
+    call test_string_s 1 1 sym ru_join_cap_k           # К
+    if answer is 0
+      set letter to sym ru_join_cap_k
+    end
+  end
+  if letter is 0
+    call test_string_s 1 1 sym ru_join_cap_s           # С
+    if answer is 0
+      set letter to sym ru_join_cap_s
     end
   end
   if letter is 0
@@ -80,6 +95,10 @@ rule pol_tok_lookup takes 2 from ut_norm.obj
   if answer is not 0
     go to lookup
   end
+  # The word after it first, while it is still a word of its own: joined,
+  # no dictionary would know it, and a dictionary is where Russian keeps
+  # its stress.
+  call tok_lookup addr right
   call lpta_rpta_loadp addr here addr right
   call insert_2pt_s 1 1 letter 0
   go to lookup

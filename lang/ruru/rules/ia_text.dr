@@ -1983,15 +1983,15 @@ label L181 was $X172$91374
   jump to L20
 label L182 was $L92124
 label L183 was pol_name_cacute
-  load movl imm 259 into r2
+  load movl imm 258 into r2
   load movl sym pol_name_cacute into r7
   jump to L174
 label L184 was pol_name_lstroke
-  load movl imm 258 into r2
+  load movl imm 267 into r2
   load movl sym pol_name_lstroke into r7
   jump to L174
 label L185 was pol_name_nacute
-  load movl imm 258 into r2
+  load movl imm 264 into r2
   load movl sym pol_name_nacute into r7
   jump to L174
 label L186 was pol_name_sacute
@@ -2003,7 +2003,7 @@ label L187 was pol_name_zacute
   load movl sym pol_name_zacute into r7
   jump to L174
 label L188 was pol_name_zdot
-  load movl imm 259 into r2
+  load movl imm 258 into r2
   load movl sym pol_name_zdot into r7
   jump to L174
 label L189 was pol_name_a
@@ -2031,7 +2031,7 @@ label L194 was pol_name_f
   load movl sym pol_name_f into r7
   jump to L174
 label L195 was pol_name_g
-  load movl imm 259 into r2
+  load movl imm 258 into r2
   load movl sym pol_name_g into r7
   jump to L174
 label L196 was pol_name_h
@@ -2043,7 +2043,7 @@ label L197 was pol_name_i
   load movl sym pol_name_i into r7
   jump to L174
 label L198 was pol_name_j
-  load movl imm 259 into r2
+  load movl imm 265 into r2
   load movl sym pol_name_j into r7
   jump to L174
 label L199 was pol_name_k
@@ -2051,7 +2051,7 @@ label L199 was pol_name_k
   load movl sym pol_name_k into r7
   jump to L174
 label L200 was pol_name_l
-  load movl imm 258 into r2
+  load movl imm 259 into r2
   load movl sym pol_name_l into r7
   jump to L174
 label L201 was pol_name_m
@@ -2091,7 +2091,7 @@ label L209 was pol_name_u
   load movl sym pol_name_u into r7
   jump to L174
 label L210 was pol_name_v
-  load movl imm 259 into r2
+  load movl imm 258 into r2
   load movl sym pol_name_v into r7
   jump to L174
 label L211 was pol_name_w
@@ -2099,15 +2099,15 @@ label L211 was pol_name_w
   load movl sym pol_name_w into r7
   jump to L174
 label L212 was pol_name_x
-  load movl imm 259 into r2
+  load movl imm 268 into r2
   load movl sym pol_name_x into r7
   jump to L174
 label L213 was pol_name_y
-  load movl imm 261 into r2
+  load movl imm 257 into r2
   load movl sym pol_name_y into r7
   jump to L174
 label L214 was pol_name_z
-  load movl imm 259 into r2
+  load movl imm 258 into r2
   load movl sym pol_name_z into r7
   jump to L174
 end

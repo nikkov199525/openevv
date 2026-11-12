@@ -85,3 +85,10 @@
 042d 84   # Э, as its lowercase
 042e f9   # Ю, as its lowercase
 042f 82   # Я, as its lowercase
+
+# The stress mark, the combining acute a writer puts after the vowel a word is
+# stressed on: за́мок and замо́к. It takes the byte Polish gave its ń, which
+# Russian left free, and is a letter that says nothing: ru_primary_stress in
+# rules/it_strss.up reads it where it stands among the letters. It is how a
+# dictionary says where a word is stressed, too.
+0301 87   # the stress mark

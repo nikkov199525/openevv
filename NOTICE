@@ -278,7 +278,9 @@ Italian here too, and what is said of `lang/plpl` above is said of it. What
 is ours in it is what was ours in Polish's and came with the copy, and what
 was written for Russian: `lang/ruru/letters`, every block of which is
 Russian's own, the arms and the classes alike, `ruru.codepoints`, and the
-records `ruru.statements` gives ы, ё, ю, ь, ъ, ш and ж. What those name is
+records `ruru.statements` gives ы, ё, ю, ь, ъ, ш and ж, the rules of
+`rules/it_strss.up`, and `dictionary/words` with the `main.dic` made of it,
+which is a list written here and taken from no dictionary. What those name is
 still IBM's numbering, as it is for Polish. `make EVVLANG=lang/ruru census
 TEMPLATE=plpl` says how much of it is still Polish's.
 

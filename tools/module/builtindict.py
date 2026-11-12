@@ -11,7 +11,8 @@ lang/<tag>/dictionary holds it as text:
 
   main.dic, root.dic, abbr.dic
       the three volumes, in UTF-8, one entry a line; a line starting # is a
-      remark. US English's began as the community's IBMTTSDictionaries and
+      remark. A character the language's <tag>.codepoints declares is written
+      as the byte it arrives as, and the rest in the Windows Western set. US English's began as the community's IBMTTSDictionaries and
       each file says how it is laid out
   split
       if it is there, a word with a capital inside it that no dictionary
@@ -64,6 +65,38 @@ def parse(raw):
     return word[:WORD_MAX], says[:SAYS_MAX]
 
 
+def own_bytes(lang):
+    """The bytes a language's own characters arrive as, from its
+    <tag>.codepoints, or nothing for a language that has none. The engine
+    converts a caller's text with that table before any dictionary is
+    asked, so a word of such a language is filed under those bytes and what
+    is said in its place is written in them."""
+    tag = os.path.basename(os.path.normpath(lang))
+    path = os.path.join(lang, "%s.codepoints" % tag)
+    out = {}
+    if os.path.exists(path):
+        for line in open(path, encoding="utf-8"):
+            f = line.split("#", 1)[0].split()
+            if len(f) == 2:
+                out[chr(int(f[0], 16))] = int(f[1], 16)
+    return out
+
+
+def western(text, lang):
+    """Text in the bytes the engine reads it in: the language's own for a
+    character it declares, and the Windows Western set for the rest."""
+    own = own_bytes(lang)
+    if not own:
+        return text.encode("cp1252")
+    out = bytearray()
+    for ch in text:
+        if ch in own:
+            out.append(own[ch])
+        else:
+            out += ch.encode("cp1252")
+    return bytes(out)
+
+
 def read_fold(here):
     """What the normaliser writes for each letter lang/<tag>/dictionary/fold
     names, as (letter, written) pairs in the Western set."""
@@ -78,7 +111,8 @@ def read_fold(here):
         if len(f) != 2:
             sys.exit("builtindict: %s line %d is not a letter and what is "
                      "written for it" % (path, n))
-        out.append((f[0].encode("cp1252"), f[1].encode("cp1252")))
+        lang = os.path.dirname(here)
+        out.append((western(f[0], lang), western(f[1], lang)))
     return out
 
 
@@ -95,7 +129,8 @@ def read_dic(path):
             if raw.startswith(b"#"):
                 continue
             try:
-                raw = raw.decode("utf-8").encode("cp1252")
+                raw = western(raw.decode("utf-8"),
+                              os.path.dirname(os.path.dirname(path)))
             except (UnicodeDecodeError, UnicodeEncodeError) as e:
                 sys.exit("builtindict: %s line %d: %s" % (path, n, e))
             entry = parse(raw)
@@ -204,7 +239,7 @@ def read_split(lang):
             if not line or line.startswith(b"#"):
                 continue
             try:
-                out.append(line.decode("utf-8").encode("cp1252"))
+                out.append(western(line.decode("utf-8"), lang))
             except (UnicodeDecodeError, UnicodeEncodeError) as e:
                 sys.exit("builtindict: %s line %d: %s" % (path, n, e))
     return out

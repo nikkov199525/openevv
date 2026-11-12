@@ -31,9 +31,8 @@
 # obstruent, which is `unless voiced follows', and a voiceless consonant at
 # the end of a word then takes the voice: к дому, брат был.
 #
-# Not here yet, and wanting more than letters: where the stress falls, which
-# is penultimate as Polish's is until a dictionary says otherwise, and with
-# it the unstressed vowels Russian reduces.
+# Where the stress falls is not here: rules/it_strss.up reads it from the
+# letters once these have spoken, and reduces the unstressed vowels after.
 
 rules in it_phone.obj named apply_pol_%s_rules
 a piece runs from 864 to 872
@@ -42,7 +41,7 @@ a word runs from 704 to 712
 voiceless means п т к ф с ш щ х ц ч and the end of the word unless voiced follows
 voiced means б д г з ж unless voiceless follows
 iot means е ё ю я
-ж ч щ ь э я come through q
+ж ч щ ь э я ́ come through q
 
 phone ш is L
 phone ж is R
@@ -115,6 +114,11 @@ letter ь
 letter ъ as x
   ъ    says nothing
 
+# The stress mark after a vowel, which says nothing either: where the stress
+# falls is ru_primary_stress's to read, from the letters.
+letter ́
+  ́    says nothing
+
 # ---- consonants -------------------------------------------------------
 
 letter б as b
@@ -129,6 +133,7 @@ letter п as p
   п    says p
 
 letter в as v
+  вств                 says s t v  # чувство, здравствуйте
   в before voiceless   says f      # вторник, кровь
   в before iot         says v y    # ветер
   в    says v
@@ -148,6 +153,7 @@ letter г as g
   г after о before о at word end  says v     # нового, его
   г after е before о at word end  says v     # его, моего
   г after е before од  says v               # сегодня
+  гк                   says х k    # лёгкий, мягкий, легко
   г before voiceless   says k      # друг, ногти
   г before iot         says g y
   г    says g
@@ -164,12 +170,17 @@ letter х as h
   х    says A
 
 letter д as d
+  дц                   says ц      # двадцать, тринадцать
   дь before voiceless  says C      # грудь
   дь                   says дь     # дьяк
   д before voiceless   says t      # сад, лодка
   д before iot         says d y    # дети
   д    says d
 
+# Russian leaves a consonant unsaid in the middle of some clusters, and each
+# is an arm that swallows the cluster: стн is сн, здн зн, лнц нц, рдц рц,
+# вств ств, and дц is ц, гк хк.
+#
 # -тся and -ться at the end of a verb are one ц and an a.
 letter т as t
   ться at word end     says ц a    # учиться
@@ -182,6 +193,7 @@ letter т as t
   т    says t
 
 letter з as z
+  здн                  says z n    # поздно, праздник
   зч                   says щ      # извозчик
   зь before voiceless  says сь
   зь                   says зь
@@ -190,6 +202,7 @@ letter з as z
   з    says z
 
 letter с as s
+  стн                  says s n    # шестнадцать, честный, известно
   сч                   says щ      # счастье
   сь before voiced     says зь     # просьба
   сь                   says сь     # весь
@@ -204,11 +217,13 @@ letter н as n
   н    says n
 
 letter л as l
+  лнц                  says n ц    # солнце
   ль                   says l      # соль
   л before iot         says l y    # лес
   л    says l
 
 letter р as r
+  рдц                  says r ц    # сердце
   рь                   says r      # царь
   р before iot         says r y    # река
   р    says r
@@ -228,6 +243,7 @@ letter ш as w
 
 # что and its kin say ш for their ч.
 letter ч
+  чт before о at word start  says ш t   # что, чтобы, что-то
   чт before о at word end  says ш t     # что, ничто
   чь before voiced     says дь          # дочь была
   чь                   says ч           # ночь
