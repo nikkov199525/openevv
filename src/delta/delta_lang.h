@@ -210,6 +210,17 @@ typedef struct delta_builtin_dict {
     delta_wordset           coda;
     delta_wordset           kept;
     delta_wordset           pieces;
+    /* The lookup sets that hold the language's compound halves, by number:
+       first halves, second halves and the words never divided. A word with
+       a capital inside it whose two parts these recognise is left whole for
+       the rules. Nought for a language that names none. With them, the
+       second halves the rules say weak, ending in a null, before which a
+       capital is still a cut, and the dictionary of prefixes the rules
+       stress the root after, by number, or less than nought for none: a
+       first part that is one is cut as well. */
+    int32_t                 compound[3];
+    const char *const      *weak;
+    int32_t                 prefixes;
 } delta_builtin_dict;
 
 /* Every language linked into this program, ending with a null, and the
@@ -261,6 +272,11 @@ const delta_language *delta_lang_of(const struct delta_state *d);
    the language in force is set, and put back afterwards. */
 int32_t delta_run_rule(void *state, const delta_rule *r,
                        const int32_t *args, int nargs);
+
+/* Saying that the run on this thread is being given up rather than
+   finished, and asking afterwards whether it was, answered once. */
+void delta_run_give_up(void);
+int  delta_run_abandoned(void);
 const delta_rule *delta_find_rule(const char *name);
 
 /* A machine of one language, and giving it back. The size is the language's,

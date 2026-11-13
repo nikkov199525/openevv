@@ -16,7 +16,12 @@ The dictionary also splits a word with a capital inside it that nothing
 holds into the words it is made of, NixOS as Nix OS. That is held to reading
 exactly as the parts written apart do, with a name beginning such as Mc, a
 plural of capitals and a word a root volume holds left whole, and British
-English, which carries no entries, splitting all the same.
+English, which carries only two titles, splitting all the same. A compound
+whose halves the compound lists hold, PowerShell, is held to being left
+whole for the rules, and to being cut all the same before a weak half,
+after a prefix the rules stress the root after, where the lists divide it
+elsewhere too, where a part is too short and where a dictionary holds a
+part.
 
 A main entry is a whole word, and one written in phones used to leave a
 possessive's ending outside its brackets to be spelled out. The possessive
@@ -36,7 +41,17 @@ winning over the cut.
 A reading that ends in a letter said by name, nginx's engine X among them,
 is held to keeping the dot of a file name after it, nginx.conf as engine X
 dot conf, and to reading a sentence's full stop and a comma after it as the
-same reading written out does.
+same reading written out does, a stop with a space after it included.
+
+A main entry written with its full stop, as Mr., Mrs. and Ms. are in both
+Englishes, is held to taking the stop that follows the word with a space
+after it, so that Mr. Darcy reads as a caller's entry for Mr does with the
+stop not there at all, and to leaving a stop that ends the text alone; and
+ms, whose small letters would answer Ms, is held to milliseconds.
+
+A word written with an accent is held to reading as its main entry does,
+which a root entry for it never could, and its accented capital at the
+start of a sentence to finding the entry in small letters.
 
 What a word is read as is asked of eciGeneratePhonemes, which says it plainly;
 one check holds the samples as well, so that what the synthesiser is handed
@@ -69,7 +84,7 @@ PHONEME_BUFFER = 1
 
 #: Words the dictionary US English carries holds, each with the entry it
 #: holds, written the way a caller would load it.
-CARRIED_ROOT = (b"teamtalk", b"`[.1tim.2tck]")
+CARRIED_ROOT = (b"debian", b"`[.1dE.0bi.0Xn]")
 CARRIED_MAIN = (b"Allrecipes", b"all recipes")
 CARRIED_PHONES = (b"TeX", b"`[.1tEk]")
 CARRIED_ABBR = (b"WWII", b"world war two")
@@ -235,7 +250,7 @@ def reading_checks(dll):
           and on == read(dll, abbr, builtin=0, abbreviations=True,
                          entries=[(ABBR, abbr, means)]))
 
-    sentence = b"We met on teamtalk and talked."
+    sentence = b"We use debian and like it."
     r = Reader(dll)
     first = r.read(sentence)
     dll.eciSetParam(r.h, BUILTIN, 0)
@@ -258,19 +273,44 @@ def split_checks(dll, have):
         check("%s is left whole" % word.decode(),
               read(dll, word) == read(dll, word, builtin=0))
     check("a word a root volume holds is left for the root lookup",
-          read(dll, b"TeamTalk") == read(dll, CARRIED_ROOT[0])
-          and read(dll, b"TeamTalk") != read(dll, b"Team Talk"))
+          read(dll, b"FedEx") == read(dll, b"fedex")
+          and read(dll, b"FedEx") != read(dll, b"Fed Ex"))
     mine = [(ROOT, b"zorbfoo", b"door")]
     check("and so is one the caller's root volume holds",
           read(dll, b"ZorbFoo", entries=mine)
           == read(dll, b"zorbfoo", entries=mine)
           and read(dll, b"ZorbFoo") == read(dll, b"Zorb Foo"))
+    for word in (b"PowerShell", b"PowerShells", b"PowerShell's"):
+        check("%s, whose halves the compound lists hold, is left whole for "
+              "the rules" % word.decode(),
+              read(dll, word) == read(dll, word, builtin=0)
+              and read(dll, word) != read(dll, word[:5] + b" " + word[5:]))
+    for word, parts, why in (
+            (b"SpiderMan", b"Spider Man", "before a weak half"),
+            (b"BioWare", b"Bio Ware", "after a prefix the rules stress the "
+                                      "root after"),
+            (b"DeathKnight", b"Death Knight", "where the lists divide it "
+                                              "elsewhere too"),
+            (b"toString", b"to String", "where a part is shorter than any "
+                                        "half")):
+        check("but %s is cut %s" % (word.decode(), why),
+              read(dll, word) == read(dll, parts))
+    mine = [(ROOT, b"zorb", b"door")]
+    check("and so is one with a part a dictionary holds",
+          read(dll, b"SoundZorb", entries=mine)
+          == read(dll, b"Sound Zorb", entries=mine)
+          and read(dll, b"SoundZorb") == read(dll, b"SoundZorb", builtin=0))
     if BRITISH in have:
         check("British English, which carries no entries, splits as well",
               read(dll, b"NixOS", lang=BRITISH)
               == read(dll, b"Nix OS", lang=BRITISH)
               and read(dll, b"NixOS", lang=BRITISH)
               != read(dll, b"NixOS", lang=BRITISH, builtin=0))
+        check("and leaves a compound whole as well",
+              read(dll, b"PowerShell", lang=BRITISH)
+              == read(dll, b"PowerShell", lang=BRITISH, builtin=0)
+              and read(dll, b"PowerShell", lang=BRITISH)
+              != read(dll, b"Power Shell", lang=BRITISH))
 
 
 def cut_checks(dll, have):
@@ -316,6 +356,57 @@ def dot_checks(dll):
     mine = [(MAIN, b"zorbq", b"zorb Q")]
     check("and so does a caller's entry",
           b"`[.1dat]" in read(dll, b"zorbq.conf", entries=mine))
+    # Only a file name's dot, with a letter or digit after it: before a
+    # space the rules still tell an initial from a sentence's end.
+    check("and a stop with a space after it is left to the rules",
+          read(dll, b"We run nginx. Bennet left.")
+          == read(dll, b"We run engine X. Bennet left."))
+
+
+def title_checks(dll, have):
+    # An entry written with its stop takes the stop: compared with a
+    # caller's entry for the word and the text without the stop.
+    for text, word, says in (
+            (b"Mr. Darcy bowed.", b"Mr", b"mister"),
+            (b"I saw Mr. and Mrs. Jones.", b"Mrs", b"`[.1mI.0sxz]"),
+            (b"Mr. Darcy met Ms. Bennet.", b"Ms", b"`[.1mIz]")):
+        mine = [(MAIN, b"Mr", b"mister"), (MAIN, word, says)]
+        check("%s reads without a sentence's end" % text.decode(),
+              read(dll, text)
+              == read(dll, text.replace(b". ", b" "), builtin=0,
+                      entries=mine)
+              and read(dll, text) != read(dll, text, builtin=0))
+    mine = [(MAIN, b"Mrs", b"`[.1mI.0sxz]")]
+    check("and a stop that ends the text is left to end it",
+          read(dll, b"Ask the Mrs.")
+          == read(dll, b"Ask the Mrs.", builtin=0, entries=mine))
+    check("and Mr without a stop is mister too",
+          read(dll, b"Mr Darcy bowed.")
+          == read(dll, b"Mr Darcy bowed.", builtin=0,
+                  entries=[(MAIN, b"Mr", b"mister")]))
+    check("and ms is still milliseconds",
+          read(dll, b"It took 5 ms.")
+          == read(dll, b"It took 5 milliseconds.", builtin=0))
+    if BRITISH in have:
+        check("British English reads its titles as well",
+              read(dll, b"Mr. Darcy bowed.", lang=BRITISH)
+              == read(dll, b"Mr Darcy bowed.", lang=BRITISH, builtin=0,
+                      entries=[(MAIN, b"Mr", b"mister")]))
+
+
+def accent_checks(dll):
+    # A main entry is matched before the normaliser makes an accented letter
+    # plain, which a root entry never is; and its accented capital at the
+    # front of a sentence is the small letter's.
+    word, says = "affich\u00e9".encode("cp1252"), b"`[.2A.0fX.1Se]"
+    check("affich\u00e9 reads as its main entry loaded by a caller",
+          read(dll, word) == read(dll, word, builtin=0,
+                                  entries=[(MAIN, word, says)])
+          and read(dll, word) != read(dll, word, builtin=0))
+    low, cap = "\u00e9cole".encode("cp1252"), "\u00c9cole".encode("cp1252")
+    check("and \u00c9cole as \u00e9cole",
+          read(dll, cap) == read(dll, low)
+          and read(dll, cap) != read(dll, cap, builtin=0))
 
 
 def possessive_checks(dll):
@@ -336,7 +427,7 @@ def possessive_checks(dll):
 
 
 def sample_checks(dll):
-    text = "We met on teamtalk."
+    text = "We use debian."
 
     def said(builtin, entries=()):
         v = langs.Voice(dll, ENGLISH)
@@ -378,11 +469,13 @@ def main(path):
     possessive_checks(dll)
     cut_checks(dll, have)
     dot_checks(dll)
+    title_checks(dll, have)
+    accent_checks(dll)
     sample_checks(dll)
     if BRITISH in have:
         word = CARRIED_ROOT[0]
-        check("British English carries no entries, and reads one the same"
-              " either way",
+        check("British English carries no root entries, and reads one the"
+              " same either way",
               read(dll, word, lang=BRITISH)
               == read(dll, word, lang=BRITISH, builtin=0))
 

@@ -125,6 +125,10 @@ extern int   sync_in_stm(delta_state *d, int8_t f, int32_t at);
 extern int   del_two_point(delta_state *d, int8_t f, int32_t l, int32_t r);
 extern char *extract_string(delta_state *d, int8_t f, int32_t l, int32_t r,
                             char *out, int32_t max);
+extern char *peek_string(delta_state *d, int8_t f, int32_t at, char *out,
+                         int32_t max);
+extern int   put_char(delta_state *d, int8_t f, int32_t at, char c);
+extern int32_t sync_to_right(delta_state *d, int8_t f, int32_t at);
 extern int   insert_string(delta_state *d, int8_t f, int32_t at,
                            const char *s);
 extern int   non_unique_value(delta_state *d, int8_t f, int32_t fld,
@@ -132,19 +136,28 @@ extern int   non_unique_value(delta_state *d, int8_t f, int32_t fld,
                               void **out_value);
 
 /* A reading that ends in a letter said by name is put in with a space after
-   it. The rules take a lone letter before a full stop for an initial and say
-   nothing for the stop, so nginx.conf was engine X conf and kubectl.yaml kube
-   C T L yaml; with the space the stop is the dot it is. Before a stop that
-   ends a sentence, or before a comma, the space changes nothing. */
+   it where a file name's dot follows, a stop with a letter or a digit
+   straight after it. The rules take a lone letter before a full stop for an
+   initial and say nothing for the stop, so nginx.conf was engine X conf and
+   kubectl.yaml kube C T L yaml; with the space the stop is the dot it is.
+   Before a stop with a space after it the reading goes in as it is, so that
+   the rules still tell an initial from the end of a sentence: Ms. Bennet is
+   not cut in two, and Ask the CPU. It knows. is. */
 static int insert_reading(delta_state *d, int8_t stream, int32_t at,
                           const char *text)
 {
     char   spaced[0x240];
+    char   after[3];
     size_t n = strlen(text);
     char   c = n ? text[n - 1] : 0;
 
+    peek_string(d, stream, at, after, sizeof after);
     if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-        || (n > 1 && text[n - 2] != ' ') || n + 2 > sizeof spaced)
+        || (n > 1 && text[n - 2] != ' ') || n + 2 > sizeof spaced
+        || after[0] != '.'
+        || !((after[1] >= 'A' && after[1] <= 'Z')
+             || (after[1] >= 'a' && after[1] <= 'z')
+             || (after[1] >= '0' && after[1] <= '9')))
         return insert_string(d, stream, at, text);
     memcpy(spaced, text, n);
     spaced[n] = ' ';
@@ -765,6 +778,22 @@ static const delta_dict_entry *builtin_find(const delta_builtin_dict *b,
     return 0;
 }
 
+/* A capital of the code page the entries are written in, as its small
+   letter, or nought for anything else: the accented capitals as well as
+   A to Z, so that École starting a sentence finds école. */
+static unsigned char builtin_small(unsigned char c)
+{
+    if (c >= 'A' && c <= 'Z')
+        return (unsigned char)(c - 'A' + 'a');
+    if (c >= 0xc0 && c <= 0xde && c != 0xd7)
+        return (unsigned char)(c + 0x20);
+    if (c == 0x8a || c == 0x8c || c == 0x8e)
+        return (unsigned char)(c + 0x10);
+    if (c == 0x9f)
+        return 0xff;
+    return 0;
+}
+
 /* The first word of a sentence arrives with a capital nobody wrote into its
    entry, so a main entry written in small letters is found for a word whose
    only capital is its first letter: Kubectl starting a sentence is kubectl.
@@ -778,13 +807,13 @@ static const delta_dict_entry *builtin_find_main(const delta_builtin_dict *b,
     char                    low[UD_LAST_ROOM];
     size_t                  n;
 
-    if (e != 0 || word[0] < 'A' || word[0] > 'Z')
+    if (e != 0 || builtin_small((unsigned char)word[0]) == 0)
         return e;
     for (n = 1; word[n] != 0; n++)
-        if ((word[n] >= 'A' && word[n] <= 'Z') || n + 1 >= sizeof low)
+        if (builtin_small((unsigned char)word[n]) != 0 || n + 1 >= sizeof low)
             return 0;
     memcpy(low, word, n + 1);
-    low[0] = (char)(low[0] - 'A' + 'a');
+    low[0] = (char)builtin_small((unsigned char)low[0]);
     return builtin_find(b, UD_MAIN, low);
 }
 
@@ -827,9 +856,32 @@ static int32_t builtin_lookupAndTranslate(delta_state *d, int32_t vol,
                         UD_LAST_ROOM))
         return UD_NO_SPINE;
 
-    e = vol == UD_MAIN
-        ? builtin_find_main(of->builtin_dict, lang->builtin_last[vol])
-        : builtin_find(of->builtin_dict, vol, lang->builtin_last[vol]);
+    /* A main entry written with its full stop is the word where a stop and
+       a space follow it, and takes the stop: Mr. Darcy is mister Darcy, and
+       the stop that would otherwise end the sentence there is a space. */
+    e = 0;
+    if (vol == UD_MAIN) {
+        char   after[3];
+        char   dotted[UD_LAST_ROOM + 1];
+        size_t n = strlen(lang->builtin_last[vol]);
+
+        peek_string(d, stream, r, after, sizeof after);
+        if (after[0] == '.' && after[1] == ' ' && n + 2 <= sizeof dotted) {
+            memcpy(dotted, lang->builtin_last[vol], n);
+            dotted[n]     = '.';
+            dotted[n + 1] = 0;
+            e = builtin_find_main(of->builtin_dict, dotted);
+            if (e != 0 && !builtin_sayable(d, stream, e->says))
+                e = 0;
+            if (e != 0
+                && !put_char(d, stream, sync_to_right(d, stream, r), ' '))
+                return UD_NO_SPINE;
+        }
+    }
+    if (e == 0)
+        e = vol == UD_MAIN
+            ? builtin_find_main(of->builtin_dict, lang->builtin_last[vol])
+            : builtin_find(of->builtin_dict, vol, lang->builtin_last[vol]);
     if (e == 0 || !builtin_sayable(d, stream, e->says))
         return UD_NOT_FOUND;
 
@@ -1028,6 +1080,119 @@ static int split_held(delta_state *d, const delta_builtin_dict *b,
     return 0;
 }
 
+/* Whether the compound lists recognise a division of a word in small
+   letters before its letter at: the part before it as a first half, or the
+   part from it, or that part less a plural s, as a second. */
+static int split_divides(delta_state *d, const delta_builtin_dict *b,
+                         char *low, size_t at, size_t end)
+{
+    char c = low[at];
+    int  yes;
+
+    if (set_has_text(d, b->compound[1], low + at))
+        return 1;
+    if (low[end - 1] == 's' && end - at > 3) {
+        low[end - 1] = 0;
+        yes = set_has_text(d, b->compound[1], low + at);
+        low[end - 1] = 's';
+        if (yes)
+            return 1;
+    }
+    low[at] = 0;
+    yes = set_has_text(d, b->compound[0], low);
+    low[at] = c;
+    return yes;
+}
+
+/* Whether a dictionary has a word for one part, in small letters, as it is
+   or less a plural s. The rules read a compound's halves by their letters
+   alone, so a part the dictionary says for them -- leather, garage,
+   research -- would lose that inside one. */
+static int split_part_held(delta_state *d, const delta_builtin_dict *b,
+                           char *part, size_t n)
+{
+    int held;
+
+    if (main_says(d, part) != 0 || split_rooted(d, b, part))
+        return 1;
+    if (n < 4 || part[n - 1] != 's')
+        return 0;
+    part[n - 1] = 0;
+    held = main_says(d, part) != 0 || split_rooted(d, b, part);
+    part[n - 1] = 's';
+    return held;
+}
+
+/* A word of two parts, each a capital or small letter and then small
+   letters, is a compound written with a capital at the join when the
+   language's compound lists recognise it there -- SoundCloud, PowerShell,
+   WordPress -- and is left whole for the rules, which divide it at the
+   capital and stress it as one word, as they do the same word in small
+   letters. One part found in its list is enough, as it is for the rules. It
+   is cut as before where the rules might divide it elsewhere: where a list
+   recognises another division too, which made DeathKnight deathk night;
+   where a part is shorter than any half the lists hold, which made toString
+   one word said tah-string; where the rules never divide the word; where
+   the second part is one the language names as said weak at the end of a
+   compound, so that SpiderMan keeps its man; where a dictionary says
+   either part; and where the first part is a prefix the rules stress the
+   root after, which made BioWare bio-WARE. A plural or possessive ending is
+   looked through. */
+static int split_compound(delta_state *d, const delta_builtin_dict *b,
+                          const char *w)
+{
+    char   low[UD_LAST_ROOM];
+    size_t n = strlen(w), end = n, at = 0, i;
+    const char *const *p;
+
+    if (b->compound[0] == 0 || n >= sizeof low)
+        return 0;
+    if (n > 2 && w[n - 2] == '\'' && w[n - 1] == 's')
+        end = n - 2;
+    for (i = 0; i < end; i++) {
+        unsigned char c = (unsigned char)w[i];
+
+        if (split_upper(c)) {
+            if (i > 0 && at != 0)
+                return 0;
+            if (i > 0)
+                at = i;
+            low[i] = (char)(c + 0x20);
+        } else if (split_lower(c))
+            low[i] = (char)c;
+        else
+            return 0;
+    }
+    low[end] = 0;
+    if (at < 3 || end - at < 3)
+        return 0;
+
+    for (p = b->weak; p != 0 && *p != 0; p++)
+        if (strcmp(low + at, *p) == 0
+            || (strncmp(low + at, *p, end - at - 1) == 0
+                && strlen(*p) == end - at - 1 && low[end - 1] == 's'))
+            return 0;
+    if (set_has_text(d, b->compound[2], low))
+        return 0;
+    if (low[end - 1] == 's') {
+        low[end - 1] = 0;
+        i = set_has_text(d, b->compound[2], low);
+        low[end - 1] = 's';
+        if (i)
+            return 0;
+    }
+    if (!split_divides(d, b, low, at, end))
+        return 0;
+    for (i = 3; i + 3 <= end; i++)
+        if (i != at && split_divides(d, b, low, i, end))
+            return 0;
+    if (split_part_held(d, b, low + at, end - at))
+        return 0;
+    low[at] = 0;
+    return !split_part_held(d, b, low, at)
+           && !act_has_text(d, b->prefixes, low);
+}
+
 static int32_t builtin_split(delta_state *d, int32_t l, int32_t r)
 {
     DeltaLang                *lang = DT_LANG(d);
@@ -1095,7 +1260,7 @@ static int32_t builtin_split(delta_state *d, int32_t l, int32_t r)
         out[k++] = w[i];
     }
     out[k] = 0;
-    if (cuts == 0 || i < n || split_held(d, b, w))
+    if (cuts == 0 || i < n || split_held(d, b, w) || split_compound(d, b, w))
         return UD_NOT_FOUND;
 
 cut:

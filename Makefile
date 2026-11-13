@@ -333,8 +333,14 @@ say-test: $(BUILD)/evv $(BUILD)/openevv-say
 
 probe: $(BUILD)/probe$(SUF)
 
+# Android's C library has the threads in it and no libpthread to link, and
+# docs/android.md builds the probe with the NDK's clang to hold an Android
+# build to the recorded answers. The compiler says which it is building for.
+ANDROID_TARGET := $(shell echo __ANDROID__ | $(CC) -E -P - 2>/dev/null | tail -1)
+LIBPTHREAD     := $(if $(filter 1,$(ANDROID_TARGET)),,-lpthread)
+
 $(BUILD)/probe$(SUF): cli/probe.c $(BUILD)/libevv$(SUF).a
-	@$(CC) $(ALL_CFLAGS) cli/probe.c $(BUILD)/libevv$(SUF).a -lpthread -lm -o $@
+	@$(CC) $(ALL_CFLAGS) cli/probe.c $(BUILD)/libevv$(SUF).a $(LIBPTHREAD) -lm -o $@
 	@echo "built $@"
 
 # The engine as a shared library, under the names IBM published: the same
@@ -383,6 +389,22 @@ $(BUILD)/$(SONAME): lib/eci_api.c $(OBJECTSPIC) $(RULESTAMP)
 	   lib/eci_api.c $(OBJECTSPIC) -lpthread -lm -o $@
 	@ln -sf $(SONAME) $(BUILD)/libeci$(LIBSUF).so
 	@echo "built $@ and the libeci$(LIBSUF).so beside it"
+
+# The same objects for a program that links them into a shared object of its
+# own, which is the Android voice in android/: android/native/build-native.sh
+# runs this with the NDK's clang as CC and links what it names beside its JNI
+# bridge, as the library above is linked. The names go in a file rather than
+# on a command line, since a Windows host's command line is shorter than the
+# list, and the file names exactly this build's objects, so one left behind by
+# a source since taken away is not linked in.
+.PHONY: android-objects
+android-objects: $(OBJECTSPIC) $(OBJDIRPIC)/eci_api.o
+	$(file >$(OBJDIRPIC)/objects.rsp,$(OBJECTSPIC) $(OBJDIRPIC)/eci_api.o)
+	@echo $(OBJDIRPIC)/objects.rsp
+
+$(OBJDIRPIC)/eci_api.o: lib/eci_api.c $(HEADERS)
+	@mkdir -p $(OBJDIRPIC)
+	@$(CCACHE) $(CC) $(CFLAGSPIC) -c $< -o $@
 
 # And the harness that proves it: it links against nothing, loads the library
 # by name, asks for each published name by string and speaks. Being the same
@@ -808,7 +830,8 @@ codepoints:
 #
 # `tables-check' writes the C from each text into a directory of its own and
 # holds it against the tree, byte for byte. That is the one to believe, and it
-# wants no objects. `tables-write' does it for real, which is how a language
+# wants no objects. Where a language has its sets as words too, <tag>.words,
+# it holds those to the C as well. `tables-write' does it for real, which is how a language
 # that was authored rather than lifted gets built.
 TEMPLATE ?= itit
 
@@ -828,6 +851,8 @@ tables-check:
 	    python3 tools/module/settings.py regenerate $$t && \
 	    python3 tools/module/link.py regenerate $$t && \
 	    python3 tools/module/sets.py regenerate $$t && \
+	    { [ ! -f lang/$$t/$$t.words ] || \
+	      python3 tools/module/setwords.py check $$t; } && \
 	    python3 tools/rules/consts.py regenerate $$t || exit 1; \
 	done
 
@@ -936,7 +961,8 @@ define builtin_for
 $(1)/delta_builtin_$(notdir $(1)).c: tools/module/builtindict.py \
     $(wildcard $(1)/dictionary $(1)/dictionary/*.dic \
                $(1)/dictionary/split $(1)/dictionary/fold \
-               $(1)/dictionary/sayable $(1)/dictionary/pieces)
+               $(1)/dictionary/sayable $(1)/dictionary/pieces \
+               $(1)/dictionary/compound $(1)/$(notdir $(1)).sets)
 	@python3 tools/module/builtindict.py write $(1)
 	@touch $$@
 endef
