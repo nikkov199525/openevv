@@ -17,7 +17,7 @@ a piece runs from 876 to 884
 gmute means b c d f j k m p q s t v x z
 
 # Russian's, which the second half of this file is: see there.
-voiceless means п т к ф с ш щ х ц ч and the end of the word unless voiced follows
+voiceless means п т к ф с ш щ х ц ч and the end of the word
 voiced means б д г з ж unless voiceless follows
 iot means е ё ю я
 а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я ́ come through q
@@ -90,6 +90,7 @@ letter q
 # A voiced consonant is voiceless before a voiceless one and at the end of a
 # word, and a voiceless one voiced before a voiced one: хлеб is хлеп, сделать
 # зделать. в loses its voice and gives none, so it is not in `voiced'.
+# A word's last consonant does not take the voice of the next word's first.
 #
 # The vowels here are the stressed ones. Where the stress falls, and what an
 # unstressed vowel becomes, is rules/et_strss.up's to say once these have
@@ -170,7 +171,6 @@ letter б
   б    says b
 
 letter п
-  п before voiced word says b
   п before voiced      says b
   п    says p
 
@@ -180,7 +180,6 @@ letter в
   в    says v
 
 letter ф
-  ф before voiced word says v
   ф before voiced      says v
   ф    says f
 
@@ -196,7 +195,6 @@ letter г
   г    says g
 
 letter к
-  к before voiced word says g      # так быстро
   к before voiced      says g      # вокзал
   к    says k
 
@@ -217,7 +215,6 @@ letter д
 letter т
   ться at end          says t s a  # учиться
   тся at end           says t s a  # учится
-  т before voiced word says d      # брат был
   т before voiced      says d      # отдать
   т    says t
 
@@ -230,7 +227,6 @@ letter з
 letter с
   сч                   says S C    # счастье
   стн                  says s n    # честный, известно
-  с before voiced word says z
   с before voiced      says z      # сделать
   с    says s
 
@@ -252,14 +248,12 @@ letter ж
   ж    says Z
 
 letter ш
-  ш before voiced word says Z
   ш before voiced      says Z
   ш    says S
 
 letter ч
   чт before о at start  says S t   # что, чтобы
   чт before о at end    says S t   # ничто
-  ч before voiced word says J
   ч before voiced      says J
   ч    says C
 

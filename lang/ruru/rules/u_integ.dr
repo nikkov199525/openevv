@@ -349,7 +349,7 @@ label L0 was _char_name
   load movl slotaddr -20 into r0
   push slotaddr -20
   push state 0
-  call eng_char_name arity 3 depth 5
+  call ru_char_name arity 3 depth 5
   popn 5
   cmp testl reg r0 reg r0
   branch jne to L1
@@ -816,7 +816,7 @@ label L2 was at_0x56
   load movl slotaddr -20 into r0
   push slotaddr -20
   push reg r6
-  call convert_eng_digits_to_words arity 3 depth 4
+  call ru_digits_to_words arity 3 depth 4
   popn 4
 label L3 was at_0xa1
   push reg r6

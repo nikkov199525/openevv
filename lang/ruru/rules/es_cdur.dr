@@ -8328,7 +8328,7 @@ label L21 was $X30$99616
   popreg r1
   branch jne to L22
   push reg r6
-  call ZZtest_string_s_2_1_ZZstring34 arity 1 depth 1
+  call ru_test_th_or_x arity 1 depth 1
   cmp testl reg r0 reg r0
   popreg r1
   branch jne to L22

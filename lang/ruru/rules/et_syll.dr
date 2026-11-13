@@ -489,7 +489,7 @@ label L51 was $X43$99882
   push reg r6
   call ZZbspush_ca_scan__44 arity 1 depth 1
   push reg r6
-  call ZZtest_string_s_2_1_ZZstring34 arity 1 depth 2
+  call ru_test_th_or_x arity 1 depth 2
   popreg r1
   jump to L53
 label L52 was $X44$99885

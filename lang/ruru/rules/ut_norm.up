@@ -4376,7 +4376,7 @@ rule normalize_text takes 3
   end
   place t2e47c_15 on 15
   set h_rsi to addr c130
-  call tok_lookup h_rsi
+  call ru_tok_lookup h_rsi
   set h_rax to answer
   if h_rax is 0
     go to p2e684
@@ -8913,4 +8913,1083 @@ rule shortdash takes 3
   end
   place p3c770
   go to p3c447
+end
+
+# в, к and с are the three Russian prepositions with no vowel, and Russian
+# says each as part of the word after it: в доме is one word stressed where
+# доме is, and в парке is ф парке, since a consonant takes its voice from the
+# one after it. A token of one letter is otherwise said by the letter's name.
+# Joined to the next word before anything reads the token, the pair is an
+# ordinary word and the letter rules do the rest.
+#
+# Only where a Russian word of two letters or more follows: буква в и буква с
+# means the letters, and so does a в at the end of a sentence or before a
+# number or an English word.
+#
+# The word after it is looked up in the dictionaries before the two are
+# joined, since Russian's stress is in a dictionary and the joined word is in
+# none. It stands where tok_lookup stood in normalize_text and hands over to
+# it either way. The join is the machine's way of taking a character out: the
+# letter and the space after it are one range, and the letter alone is laid
+# back down over it.
+rule ru_tok_lookup takes 2 from ut_norm.obj
+  afresh
+  local here bytes 8
+  local right bytes 8
+  local letter
+  call ZZget_parmPTR addr here arg 1
+  call ZZfence_null
+  call ZZlpta_load__setscan_r__1 addr here
+  if answer is not 0
+    go to lookup
+  end
+  set letter to 0
+  if letter is 0
+    call test_string_s 1 1 sym ru_lt_75           # в
+    if answer is 0
+      set letter to sym ru_lt_75
+    end
+  end
+  if letter is 0
+    call test_string_s 1 1 sym ru_lt_84           # к
+    if answer is 0
+      set letter to sym ru_lt_84
+    end
+  end
+  if letter is 0
+    call test_string_s 1 1 sym ru_lt_6e           # с
+    if answer is 0
+      set letter to sym ru_lt_6e
+    end
+  end
+  if letter is 0
+    go to lookup
+  end
+  call test_string_s 1 1 sym ru_space           # a space after it
+  if answer is not 0
+    go to lookup
+  end
+  call savescptr 1 addr right
+  while 1
+    call test_string_s 1 1 sym ru_space         # and any more
+    if answer is not 0
+      leave
+    end
+    call savescptr 1 addr right
+  end
+  call ru_is_russian                            # then a Russian letter
+  if answer is not 0
+    go to lookup
+  end
+  call advance_tok
+  if answer is not 0
+    go to lookup
+  end
+  call ru_is_russian                            # and another
+  if answer is not 0
+    go to lookup
+  end
+  call tok_lookup addr right
+  call lpta_rpta_loadp addr here addr right
+  call insert_2pt_s 1 1 letter 0
+place lookup
+  call tok_lookup arg 1
+  if answer is 0
+    match
+  end
+  give up
+end
+
+# ---- Russian numbers ------------------------------------------------------
+#
+# English reads a number in English, and its number rules are thirteen
+# thousand lines that know nothing of Russian. So a run of digits at the
+# start of a token is written out as Russian words before any of them sees
+# it: normalize_text asks ru_digits_to_words before it asks tok_lookup, where
+# English's dates, times and money begin.
+#
+# English has one place where a run of digits becomes words, the language's
+# convert_lang_digits_to_words, which every number comes to whatever else it
+# is part of, and ru_digits_to_words stands where convert_eng_digits_to_words
+# stood in it. The digits are read into twelve places, a space is laid over
+# them, each word is laid over the space the text so far ends in with a
+# space on either side of it, and the first space is taken out again.
+#
+# A number is said in groups of three: the hundreds, then a teen or the tens
+# and the units, then the group's name -- тысяча, миллион, миллиард -- in the
+# form its last two digits ask for. One and two are одна and две before
+# тысяча. A number that begins with a nought is said a digit at a time, and
+# one of more than twelve digits is left to English.
+#
+# One word laid down at the end of what has been said so far. The text
+# before the point ends in a space, and the word goes over that space with
+# one before it and one after, so it ends in a space again.
+rule ru_say takes 4 from ut_norm.obj
+  afresh
+  local last bytes 8
+  call ZZfence_null
+  call lpta_loadp arg 1
+  call setscan_l 1
+  if answer is not 0
+    give up
+  end
+  call advance_tok
+  call savescptr 1 addr last
+  call lpta_rpta_loadp addr last arg 1
+  call insert_2pt_s 1 arg 3 arg 2 0
+  match
+end
+
+# The words Russian counts with, one rule a word.
+# восемнадцать
+rule ru_say_75856e8d6d776183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d776183656178a0 14
+  match
+end
+
+# восемь
+rule ru_say_75856e8d6da0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6da0 8
+  match
+end
+
+# восемьдесят
+rule ru_say_75856e8d6da0838d6e9178 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6da0838d6e9178 13
+  match
+end
+
+# восемьсот
+rule ru_say_75856e8d6da06e8578 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6da06e8578 11
+  match
+end
+
+# два
+rule ru_say_837561 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837561 5
+  match
+end
+
+# двадцать
+rule ru_say_83756183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83756183656178a0 10
+  match
+end
+
+# две
+rule ru_say_83758d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d 5
+  match
+end
+
+# двенадцать
+rule ru_say_83758d776183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d776183656178a0 12
+  match
+end
+
+# двести
+rule ru_say_83758d6e786c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d6e786c 8
+  match
+end
+
+# девяносто
+rule ru_say_838d759177856e7885 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e7885 11
+  match
+end
+
+# девятнадцать
+rule ru_say_838d759178776183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178776183656178a0 14
+  match
+end
+
+# девять
+rule ru_say_838d759178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178a0 8
+  match
+end
+
+# девятьсот
+rule ru_say_838d759178a06e8578 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178a06e8578 11
+  match
+end
+
+# десять
+rule ru_say_838d6e9178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e9178a0 8
+  match
+end
+
+# запятая
+rule ru_say_62619991786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_62619991786191 9
+  match
+end
+
+# миллиард
+rule ru_say_6d6c63636c616483 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6d6c63636c616483 10
+  match
+end
+
+# миллиарда
+rule ru_say_6d6c63636c61648361 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6d6c63636c61648361 11
+  match
+end
+
+# миллиардов
+rule ru_say_6d6c63636c6164838575 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6d6c63636c6164838575 12
+  match
+end
+
+# миллион
+rule ru_say_6d6c63636c8577 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6d6c63636c8577 9
+  match
+end
+
+# миллиона
+rule ru_say_6d6c63636c857761 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6d6c63636c857761 10
+  match
+end
+
+# миллионов
+rule ru_say_6d6c63636c85778575 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6d6c63636c85778575 11
+  match
+end
+
+# ноль
+rule ru_say_778563a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_778563a0 6
+  match
+end
+
+# один
+rule ru_say_85836c77 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c77 6
+  match
+end
+
+# одиннадцать
+rule ru_say_85836c77776183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c77776183656178a0 13
+  match
+end
+
+# одна
+rule ru_say_85837761 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85837761 6
+  match
+end
+
+# процент
+rule ru_say_996485658d7778 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_996485658d7778 9
+  match
+end
+
+# процента
+rule ru_say_996485658d777861 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_996485658d777861 10
+  match
+end
+
+# процентов
+rule ru_say_996485658d77788575 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_996485658d77788575 11
+  match
+end
+
+# пятнадцать
+rule ru_say_999178776183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178776183656178a0 12
+  match
+end
+
+# пять
+rule ru_say_999178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178a0 6
+  match
+end
+
+# пятьдесят
+rule ru_say_999178a0838d6e9178 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178a0838d6e9178 11
+  match
+end
+
+# пятьсот
+rule ru_say_999178a06e8578 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178a06e8578 9
+  match
+end
+
+# семнадцать
+rule ru_say_6e8d6d776183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d776183656178a0 12
+  match
+end
+
+# семь
+rule ru_say_6e8d6da0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6da0 6
+  match
+end
+
+# семьдесят
+rule ru_say_6e8d6da0838d6e9178 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6da0838d6e9178 11
+  match
+end
+
+# семьсот
+rule ru_say_6e8d6da06e8578 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6da06e8578 9
+  match
+end
+
+# сорок
+rule ru_say_6e85648584 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e85648584 7
+  match
+end
+
+# сто
+rule ru_say_6e7885 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e7885 5
+  match
+end
+
+# три
+rule ru_say_78646c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c 5
+  match
+end
+
+# тридцать
+rule ru_say_78646c83656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c83656178a0 10
+  match
+end
+
+# тринадцать
+rule ru_say_78646c776183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c776183656178a0 12
+  match
+end
+
+# триста
+rule ru_say_78646c6e7861 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c6e7861 8
+  match
+end
+
+# тысяч
+rule ru_say_78956e916f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f 7
+  match
+end
+
+# тысяча
+rule ru_say_78956e916f61 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f61 8
+  match
+end
+
+# тысячи
+rule ru_say_78956e916f6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f6c 8
+  match
+end
+
+# четыре
+rule ru_say_6f8d7895648d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648d 8
+  match
+end
+
+# четыреста
+rule ru_say_6f8d7895648d6e7861 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648d6e7861 11
+  match
+end
+
+# четырнадцать
+rule ru_say_6f8d789564776183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d789564776183656178a0 14
+  match
+end
+
+# шестнадцать
+rule ru_say_798d6e78776183656178a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78776183656178a0 13
+  match
+end
+
+# шесть
+rule ru_say_798d6e78a0 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78a0 7
+  match
+end
+
+# шестьдесят
+rule ru_say_798d6e78a0838d6e9178 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78a0838d6e9178 12
+  match
+end
+
+# шестьсот
+rule ru_say_798d6e78a06e8578 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78a06e8578 10
+  match
+end
+
+# One digit by its name.
+rule ru_digit takes 3 from ut_norm.obj
+  afresh
+  if arg 2 is 0
+    call ru_say_778563a0 arg 1
+  end
+  if arg 2 is 1
+    call ru_say_85836c77 arg 1
+  end
+  if arg 2 is 2
+    call ru_say_837561 arg 1
+  end
+  if arg 2 is 3
+    call ru_say_78646c arg 1
+  end
+  if arg 2 is 4
+    call ru_say_6f8d7895648d arg 1
+  end
+  if arg 2 is 5
+    call ru_say_999178a0 arg 1
+  end
+  if arg 2 is 6
+    call ru_say_798d6e78a0 arg 1
+  end
+  if arg 2 is 7
+    call ru_say_6e8d6da0 arg 1
+  end
+  if arg 2 is 8
+    call ru_say_75856e8d6da0 arg 1
+  end
+  if arg 2 is 9
+    call ru_say_838d759178a0 arg 1
+  end
+  match
+end
+
+# One group of three digits and the name of the group: 0 for the units, 1
+# for the thousands, 2 for the millions, 3 for the thousand millions.
+rule ru_group takes 6 from ut_norm.obj
+  afresh
+  local form
+  if arg 2 is 0
+    if arg 3 is 0
+      if arg 4 is 0
+        match
+      end
+    end
+  end
+  # The form of the group's name: 1 after one, 2 after two to four, 3 after
+  # anything else and after every teen.
+  set form to 3
+  if arg 3 is not 1
+    if arg 4 is 1
+      set form to 1
+    end
+    if arg 4 is 2
+      set form to 2
+    end
+    if arg 4 is 3
+      set form to 2
+    end
+    if arg 4 is 4
+      set form to 2
+    end
+  end
+  if arg 2 is 1
+    call ru_say_6e7885 arg 1
+  end
+  if arg 2 is 2
+    call ru_say_83758d6e786c arg 1
+  end
+  if arg 2 is 3
+    call ru_say_78646c6e7861 arg 1
+  end
+  if arg 2 is 4
+    call ru_say_6f8d7895648d6e7861 arg 1
+  end
+  if arg 2 is 5
+    call ru_say_999178a06e8578 arg 1
+  end
+  if arg 2 is 6
+    call ru_say_798d6e78a06e8578 arg 1
+  end
+  if arg 2 is 7
+    call ru_say_6e8d6da06e8578 arg 1
+  end
+  if arg 2 is 8
+    call ru_say_75856e8d6da06e8578 arg 1
+  end
+  if arg 2 is 9
+    call ru_say_838d759178a06e8578 arg 1
+  end
+  if arg 3 is 1
+    if arg 4 is 0
+      call ru_say_838d6e9178a0 arg 1
+    end
+    if arg 4 is 1
+      call ru_say_85836c77776183656178a0 arg 1
+    end
+    if arg 4 is 2
+      call ru_say_83758d776183656178a0 arg 1
+    end
+    if arg 4 is 3
+      call ru_say_78646c776183656178a0 arg 1
+    end
+    if arg 4 is 4
+      call ru_say_6f8d789564776183656178a0 arg 1
+    end
+    if arg 4 is 5
+      call ru_say_999178776183656178a0 arg 1
+    end
+    if arg 4 is 6
+      call ru_say_798d6e78776183656178a0 arg 1
+    end
+    if arg 4 is 7
+      call ru_say_6e8d6d776183656178a0 arg 1
+    end
+    if arg 4 is 8
+      call ru_say_75856e8d6d776183656178a0 arg 1
+    end
+    if arg 4 is 9
+      call ru_say_838d759178776183656178a0 arg 1
+    end
+  else
+    if arg 3 is 2
+      call ru_say_83756183656178a0 arg 1
+    end
+    if arg 3 is 3
+      call ru_say_78646c83656178a0 arg 1
+    end
+    if arg 3 is 4
+      call ru_say_6e85648584 arg 1
+    end
+    if arg 3 is 5
+      call ru_say_999178a0838d6e9178 arg 1
+    end
+    if arg 3 is 6
+      call ru_say_798d6e78a0838d6e9178 arg 1
+    end
+    if arg 3 is 7
+      call ru_say_6e8d6da0838d6e9178 arg 1
+    end
+    if arg 3 is 8
+      call ru_say_75856e8d6da0838d6e9178 arg 1
+    end
+    if arg 3 is 9
+      call ru_say_838d759177856e7885 arg 1
+    end
+    if arg 5 is 1
+      if arg 4 is 1
+        call ru_say_85837761 arg 1
+      end
+      if arg 4 is 2
+        call ru_say_83758d arg 1
+      end
+    else
+      if arg 4 is 1
+        call ru_say_85836c77 arg 1
+      end
+      if arg 4 is 2
+        call ru_say_837561 arg 1
+      end
+    end
+    if arg 4 is 3
+      call ru_say_78646c arg 1
+    end
+    if arg 4 is 4
+      call ru_say_6f8d7895648d arg 1
+    end
+    if arg 4 is 5
+      call ru_say_999178a0 arg 1
+    end
+    if arg 4 is 6
+      call ru_say_798d6e78a0 arg 1
+    end
+    if arg 4 is 7
+      call ru_say_6e8d6da0 arg 1
+    end
+    if arg 4 is 8
+      call ru_say_75856e8d6da0 arg 1
+    end
+    if arg 4 is 9
+      call ru_say_838d759178a0 arg 1
+    end
+  end
+  if arg 5 is 1
+    if form is 1
+      call ru_say_78956e916f61 arg 1
+    end
+    if form is 2
+      call ru_say_78956e916f6c arg 1
+    end
+    if form is 3
+      call ru_say_78956e916f arg 1
+    end
+  end
+  if arg 5 is 2
+    if form is 1
+      call ru_say_6d6c63636c8577 arg 1
+    end
+    if form is 2
+      call ru_say_6d6c63636c857761 arg 1
+    end
+    if form is 3
+      call ru_say_6d6c63636c85778575 arg 1
+    end
+  end
+  if arg 5 is 3
+    if form is 1
+      call ru_say_6d6c63636c616483 arg 1
+    end
+    if form is 2
+      call ru_say_6d6c63636c61648361 arg 1
+    end
+    if form is 3
+      call ru_say_6d6c63636c6164838575 arg 1
+    end
+  end
+  match
+end
+
+rule ru_digits_to_words takes 3 from ut_norm.obj
+  afresh
+  local p bytes 8
+  local end bytes 8
+  local n
+  local k
+  local form
+  local v
+  local zero
+  local d1
+  local d2
+  local d3
+  local d4
+  local d5
+  local d6
+  local d7
+  local d8
+  local d9
+  local d10
+  local d11
+  local d12
+  call ZZfence_null
+  call lpta_loadp arg 1
+  call setscan_r 1
+  if answer is not 0
+    go to english
+  end
+  set n to 0
+  set d1 to 0
+  set d2 to 0
+  set d3 to 0
+  set d4 to 0
+  set d5 to 0
+  set d6 to 0
+  set d7 to 0
+  set d8 to 0
+  set d9 to 0
+  set d10 to 0
+  set d11 to 0
+  set d12 to 0
+  while 1
+    set v to 10
+    if v is 10
+      call test_string_s 1 1 sym ru_d0
+      if answer is 0
+        set v to 0
+      end
+    end
+    if v is 10
+      call test_string_s 1 1 sym ru_d1
+      if answer is 0
+        set v to 1
+      end
+    end
+    if v is 10
+      call test_string_s 1 1 sym ru_d2
+      if answer is 0
+        set v to 2
+      end
+    end
+    if v is 10
+      call test_string_s 1 1 sym ru_d3
+      if answer is 0
+        set v to 3
+      end
+    end
+    if v is 10
+      call test_string_s 1 1 sym ru_d4
+      if answer is 0
+        set v to 4
+      end
+    end
+    if v is 10
+      call test_string_s 1 1 sym ru_d5
+      if answer is 0
+        set v to 5
+      end
+    end
+    if v is 10
+      call test_string_s 1 1 sym ru_d6
+      if answer is 0
+        set v to 6
+      end
+    end
+    if v is 10
+      call test_string_s 1 1 sym ru_d7
+      if answer is 0
+        set v to 7
+      end
+    end
+    if v is 10
+      call test_string_s 1 1 sym ru_d8
+      if answer is 0
+        set v to 8
+      end
+    end
+    if v is 10
+      call test_string_s 1 1 sym ru_d9
+      if answer is 0
+        set v to 9
+      end
+    end
+    if v is 10
+      leave
+    end
+    set d12 to d11
+    set d11 to d10
+    set d10 to d9
+    set d9 to d8
+    set d8 to d7
+    set d7 to d6
+    set d6 to d5
+    set d5 to d4
+    set d4 to d3
+    set d3 to d2
+    set d2 to d1
+    set d1 to v
+    increment n
+  end
+  if n is 0
+    go to english
+  end
+  if n is more than 12
+    go to english
+  end
+  # The end of the digits, walked to from the first of them a digit at a
+  # time. It is not the caller's right point, which stands after the first
+  # digit only, and not the place the scan stopped at, which at the end of
+  # the text is nowhere.
+  call lpta_loadp arg 1
+  call setscan_r 1
+  set k to n
+  while k is more than 0
+    call advance_tok
+    decrement k
+  end
+  call savescptr 1 addr end
+  call lpta_rpta_loadp arg 1 addr end
+  call insert_2pt_s 1 1 sym ru_space 0
+  # A number that begins with a nought, 007, is said a digit at a time.
+  set zero to 0
+  if n is 2
+    if d2 is 0
+      set zero to 1
+    end
+  end
+  if n is 3
+    if d3 is 0
+      set zero to 1
+    end
+  end
+  if n is 4
+    if d4 is 0
+      set zero to 1
+    end
+  end
+  if n is 5
+    if d5 is 0
+      set zero to 1
+    end
+  end
+  if n is 6
+    if d6 is 0
+      set zero to 1
+    end
+  end
+  if n is 7
+    if d7 is 0
+      set zero to 1
+    end
+  end
+  if n is 8
+    if d8 is 0
+      set zero to 1
+    end
+  end
+  if n is 9
+    if d9 is 0
+      set zero to 1
+    end
+  end
+  if n is 10
+    if d10 is 0
+      set zero to 1
+    end
+  end
+  if n is 11
+    if d11 is 0
+      set zero to 1
+    end
+  end
+  if n is 12
+    if d12 is 0
+      set zero to 1
+    end
+  end
+  if zero is 1
+    if n is at least 12
+      call ru_digit addr end d12
+    end
+    if n is at least 11
+      call ru_digit addr end d11
+    end
+    if n is at least 10
+      call ru_digit addr end d10
+    end
+    if n is at least 9
+      call ru_digit addr end d9
+    end
+    if n is at least 8
+      call ru_digit addr end d8
+    end
+    if n is at least 7
+      call ru_digit addr end d7
+    end
+    if n is at least 6
+      call ru_digit addr end d6
+    end
+    if n is at least 5
+      call ru_digit addr end d5
+    end
+    if n is at least 4
+      call ru_digit addr end d4
+    end
+    if n is at least 3
+      call ru_digit addr end d3
+    end
+    if n is at least 2
+      call ru_digit addr end d2
+    end
+    if n is at least 1
+      call ru_digit addr end d1
+    end
+  else
+    if n is 1
+      if d1 is 0
+        call ru_digit addr end 0
+      end
+    end
+    call ru_group addr end d12 d11 d10 3
+    call ru_group addr end d9 d8 d7 2
+    call ru_group addr end d6 d5 d4 1
+    call ru_group addr end d3 d2 d1 0
+  end
+  # A percent sign is said, in the form the last two digits ask for.
+  call lpta_loadp addr end
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_percent
+    if answer is 0
+      call lpta_loadp addr end
+      call setscan_r 1
+      call advance_tok
+      call savescptr 2 addr p
+      set form to 3
+      if d2 is not 1
+        if d1 is 1
+          set form to 1
+        end
+        if d1 is 2
+          set form to 2
+        end
+        if d1 is 3
+          set form to 2
+        end
+        if d1 is 4
+          set form to 2
+        end
+      end
+      if form is 1
+        call ru_say_996485658d7778 addr end
+      end
+      if form is 2
+        call ru_say_996485658d777861 addr end
+      end
+      if form is 3
+        call ru_say_996485658d77788575 addr end
+      end
+      call lpta_rpta_loadp addr end addr p
+      call mark_s 1 0 72 0
+      call lpta_rpta_loadp addr end addr p
+      call mark_s 1 1 0 0
+      call lpta_rpta_loadp addr end addr p
+      call mark_s 1 3 5 0
+      call lpta_rpta_loadp addr end addr p
+      call mark_s 1 4 0 0
+    end
+  end
+  # A colon or a comma between two numbers is made a space, so that what
+  # follows is a number of its own, and the comma is said: 3,5 is три запятая
+  # пять and 19:45 is девятнадцать сорок пять. English's time and decimal
+  # rules are left nothing to read.
+  call lpta_loadp addr end
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_colon
+    if answer is 0
+      call testFldeq 1 3 2
+      if answer is 0
+        call lpta_loadp addr end
+        call setscan_r 1
+        call advance_tok
+        call savescptr 2 addr p
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 0 72 0
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 1 0 0
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 3 5 0
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 4 0 0
+      end
+    end
+  end
+  call lpta_loadp addr end
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_dot
+    if answer is 0
+      call testFldeq 1 3 2
+      if answer is 0
+        call lpta_loadp addr end
+        call setscan_r 1
+        call advance_tok
+        call savescptr 2 addr p
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 0 72 0
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 1 0 0
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 3 5 0
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 4 0 0
+      end
+    end
+  end
+  call lpta_loadp addr end
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_comma
+    if answer is 0
+      call testFldeq 1 3 2
+      if answer is 0
+        call ru_say_62619991786191 addr end
+        call lpta_loadp addr end
+        call setscan_r 1
+        call advance_tok
+        call savescptr 2 addr p
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 0 72 0
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 1 0 0
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 3 5 0
+        call lpta_rpta_loadp addr end addr p
+        call mark_s 1 4 0 0
+      end
+    end
+  end
+  match
+place english
+  call convert_eng_digits_to_words arg 1 arg 2
+  if answer is 0
+    match
+  end
+  give up
 end

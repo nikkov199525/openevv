@@ -2555,10 +2555,10 @@ label L0 was _ga_ph_o
   push state 0
   call ZZfenceZZstring468 arity 1 depth 1
   push state 0
-  store movw imm 550 statefld 3078
-  store movw imm 400 statefld 3082
-  store movw imm 1100 statefld 3086
-  store movw imm 850 statefld 3090
+  store movw imm 500 statefld 3078
+  store movw imm 470 statefld 3082
+  store movw imm 950 statefld 3086
+  store movw imm 900 statefld 3090
   store movw imm 2400 statefld 3094
   store movw imm 2400 statefld 3098
   call ZZstarttest1 arity 1 depth 2
@@ -3887,7 +3887,7 @@ label L4 was at_0xb7
   push reg r6
   call ZZstarttest4 arity 1 depth 1
   push reg r6
-  call eng_ret_Fv arity 1 depth 2
+  call ru_trill_Fv arity 1 depth 2
   popreg r1
   popreg r1
 label L5 was at_0xc5
