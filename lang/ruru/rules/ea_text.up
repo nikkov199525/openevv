@@ -42,7 +42,8 @@ end
 # of eng_char_name, which knows the bytes Russian's letters took as the
 # accented letters they were -- в alone was a circumflex -- so the call
 # that reached it reaches this, which lays the letter's own name down in
-# its place for a Russian letter and hands any other character on. The
+# its place for a Russian letter, and a symbol's Russian name for a symbol,
+# and hands any other character on. The
 # name is letters, read back as a word; a vowel's name is the vowel.
 rule ru_char_name takes 3 from ea_text.obj
   afresh
@@ -463,6 +464,333 @@ rule ru_char_name takes 3 from ea_text.obj
       give up
     end
   end
+  # ---- symbols, by their Russian names
+  call lpta_loadp arg 1                 # '%': процент
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_57
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 7 sym ru_symname_57 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '+': плюс
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_56
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 4 sym ru_symname_56 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '=': равно
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_59
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 5 sym ru_symname_59 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '@': собака
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_4f
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 6 sym ru_symname_4f 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '#': решётка
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_4a
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 7 sym ru_symname_4a 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '$': доллар
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_55
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 6 sym ru_symname_55 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '\x80': евро
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_a2
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 4 sym ru_symname_a2 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '&': амперсанд
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_5b
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 9 sym ru_symname_5b 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '*': звёздочка
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_4e
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 9 sym ru_symname_4e 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '/': слэш
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_58
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 4 sym ru_symname_58 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '\\': обратный слэш
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_5d
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 13 sym ru_symname_5d 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '|': вертикальная черта
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_5c
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 18 sym ru_symname_5c 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '~': тильда
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_4d
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 6 sym ru_symname_4d 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '^': крышка
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_5a
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 6 sym ru_symname_5a 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '_': подчёркивание
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_4b
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 13 sym ru_symname_4b 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '<': меньше
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_5e
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 6 sym ru_symname_5e 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '>': больше
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_5f
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 6 sym ru_symname_5f 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '§': параграф
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_c7
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 8 sym ru_symname_c7 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '°': градус
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_b5
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 6 sym ru_symname_b5 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '©': копирайт
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_c8
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 8 sym ru_symname_c8 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '®': зарегистрированный знак
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_cb
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 23 sym ru_symname_cb 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '\x99': торговая марка
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_c2
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 14 sym ru_symname_c2 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '\x95': точка списка
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_c1
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 12 sym ru_symname_c1 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '¦': номер
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_c6
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 5 sym ru_symname_c6 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  call lpta_loadp arg 1                 # '¤': рубль
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_sym_c5
+    if answer is 0
+      call lpta_rpta_loadp arg 1 arg 2
+      call insert_2pt_s 1 5 sym ru_symname_c5 0
+      if answer is 0
+        match
+      end
+      give up
+    end
+  end
+  # ---- end of symbols
   call eng_char_name arg 1 arg 2
   if answer is 0
     match

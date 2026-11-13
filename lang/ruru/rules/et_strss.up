@@ -128,6 +128,12 @@ rule ru_assign_stress takes 3 from et_strss.obj
     end
   end
   if target is 0
+    call ru_word_fourth arg 1 arg 2
+    if answer is 0
+      set target to 4
+    end
+  end
+  if target is 0
     set target to count
     decrement target
     call ru_ends_stressed arg 2
@@ -1537,6 +1543,438 @@ rule ru_word_second takes 3 from et_strss.obj
       end
     end
   end
+  call lpta_loadp arg 2                 # второй
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_757885648576
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # вторая
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_757885646191
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # второе
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_75788564858d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # второго
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_75788564857f85
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # второму
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_75788564856d80
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # вторыми
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_75788564956d6c
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # втором
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_75788564856d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # вторых
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_757885649593
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # вторую
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_75788564809f
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шестой
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_798d6e788576
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шестая
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_798d6e786191
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шестое
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_798d6e78858d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шестого
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_798d6e78857f85
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шестому
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_798d6e78856d80
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шестыми
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_798d6e78956d6c
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шестом
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_798d6e78856d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шестых
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_798d6e789593
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # шестую
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 6 sym ru_end_798d6e78809f
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # седьмой
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_6e8d83a06d8576
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # седьмая
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_6e8d83a06d6191
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # седьмое
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_6e8d83a06d858d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # седьмого
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 8 sym ru_end_6e8d83a06d857f85
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # седьмому
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 8 sym ru_end_6e8d83a06d856d80
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # седьмыми
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 8 sym ru_end_6e8d83a06d956d6c
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # седьмом
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_6e8d83a06d856d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # седьмых
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_6e8d83a06d9593
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # седьмую
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_6e8d83a06d809f
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восьмой
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_75856ea06d8576
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восьмая
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_75856ea06d6191
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восьмое
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_75856ea06d858d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восьмого
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 8 sym ru_end_75856ea06d857f85
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восьмому
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 8 sym ru_end_75856ea06d856d80
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восьмыми
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 8 sym ru_end_75856ea06d956d6c
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восьмом
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_75856ea06d856d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восьмых
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_75856ea06d9593
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # восьмую
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 7 sym ru_end_75856ea06d809f
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
   give up
 end
 
@@ -1631,6 +2069,147 @@ rule ru_word_last takes 3 from et_strss.obj
   call setscan_l 1
   if answer is 0
     call test_string_s 1 8 sym ru_end_6d6c63636c616483
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # равно
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 5 sym ru_end_6461757785
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # амперсанд
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_616d998d646e617783
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  give up
+end
+
+# Whether the word between the two points is one of the number words
+# stressed on the fourth syllable. Read leftwards from its end, and then
+# asked whether that was the whole of it.
+rule ru_word_fourth takes 3 from et_strss.obj
+  afresh
+  call ZZfence_null
+  call lpta_loadp arg 2                 # сороковой
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_6e8564858485758576
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # сороковая
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_6e8564858485756191
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # сороковое
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_6e856485848575858d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # сорокового
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 10 sym ru_end_6e856485848575857f85
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # сороковому
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 10 sym ru_end_6e856485848575856d80
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # сороковыми
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 10 sym ru_end_6e856485848575956d6c
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # сороковом
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_6e856485848575856d
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # сороковых
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_6e8564858485759593
+    if answer is 0
+      call lpta_loadp arg 1
+      call test_ptr
+      if answer is 0
+        match
+      end
+    end
+  end
+  call lpta_loadp arg 2                 # сороковую
+  call setscan_l 1
+  if answer is 0
+    call test_string_s 1 9 sym ru_end_6e856485848575809f
     if answer is 0
       call lpta_loadp arg 1
       call test_ptr

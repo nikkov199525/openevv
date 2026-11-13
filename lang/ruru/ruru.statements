@@ -64,6 +64,8 @@ statement inp
   variants 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   variants 00 00 00 00 00 00 00 05 00 00 05 00 00 05 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05
   variants 00 00 05 00 00 00 00 00 00 00 00 00 00 00 00 00
+  variants 00 00 00
+  variants 00 00 00
   field name
     where 3 3 1
     what -1 1 0
@@ -275,6 +277,8 @@ statement inp
     value ¯
     value µ
     value ¶
+    value 
+    value 
     end
   field letcase
     where 0 0 1

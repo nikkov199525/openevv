@@ -93,3 +93,8 @@
 # word is stressed, too.
 0301 9a   # the stress mark
 
+# Two signs a Russian text writes that the Western set has not got, given
+# the bytes of two signs no Russian text writes, and named by ru_char_name.
+2116 a6   # №, the numero sign, as the broken bar
+20bd a4   # ₽, the rouble sign, as the currency sign
+

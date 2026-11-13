@@ -9041,6 +9041,69 @@ rule ru_say takes 4 from ut_norm.obj
 end
 
 # The words Russian counts with, one rule a word.
+# восемнадцатая
+rule ru_say_75856e8d6d7761836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d7761836561786191 15
+  match
+end
+
+# восемнадцатого
+rule ru_say_75856e8d6d776183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d776183656178857f85 16
+  match
+end
+
+# восемнадцатое
+rule ru_say_75856e8d6d776183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d776183656178858d 15
+  match
+end
+
+# восемнадцатом
+rule ru_say_75856e8d6d776183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d776183656178856d 15
+  match
+end
+
+# восемнадцатому
+rule ru_say_75856e8d6d776183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d776183656178856d80 16
+  match
+end
+
+# восемнадцатую
+rule ru_say_75856e8d6d776183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d776183656178809f 15
+  match
+end
+
+# восемнадцатый
+rule ru_say_75856e8d6d7761836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d7761836561789576 15
+  match
+end
+
+# восемнадцатыми
+rule ru_say_75856e8d6d776183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d776183656178956d6c 16
+  match
+end
+
+# восемнадцатых
+rule ru_say_75856e8d6d7761836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856e8d6d7761836561789593 15
+  match
+end
+
 # восемнадцать
 rule ru_say_75856e8d6d776183656178a0 takes 2 from ut_norm.obj
   afresh
@@ -9069,10 +9132,325 @@ rule ru_say_75856e8d6da06e8578 takes 2 from ut_norm.obj
   match
 end
 
+# восьмая
+rule ru_say_75856ea06d6191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6191 9
+  match
+end
+
+# восьмидесятая
+rule ru_say_75856ea06d6c838d6e91786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c838d6e91786191 15
+  match
+end
+
+# восьмидесятого
+rule ru_say_75856ea06d6c838d6e9178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c838d6e9178857f85 16
+  match
+end
+
+# восьмидесятое
+rule ru_say_75856ea06d6c838d6e9178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c838d6e9178858d 15
+  match
+end
+
+# восьмидесятом
+rule ru_say_75856ea06d6c838d6e9178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c838d6e9178856d 15
+  match
+end
+
+# восьмидесятому
+rule ru_say_75856ea06d6c838d6e9178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c838d6e9178856d80 16
+  match
+end
+
+# восьмидесятую
+rule ru_say_75856ea06d6c838d6e9178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c838d6e9178809f 15
+  match
+end
+
+# восьмидесятый
+rule ru_say_75856ea06d6c838d6e91789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c838d6e91789576 15
+  match
+end
+
+# восьмидесятыми
+rule ru_say_75856ea06d6c838d6e9178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c838d6e9178956d6c 16
+  match
+end
+
+# восьмидесятых
+rule ru_say_75856ea06d6c838d6e91789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c838d6e91789593 15
+  match
+end
+
+# восьмисотая
+rule ru_say_75856ea06d6c6e85786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c6e85786191 13
+  match
+end
+
+# восьмисотого
+rule ru_say_75856ea06d6c6e8578857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c6e8578857f85 14
+  match
+end
+
+# восьмисотое
+rule ru_say_75856ea06d6c6e8578858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c6e8578858d 13
+  match
+end
+
+# восьмисотом
+rule ru_say_75856ea06d6c6e8578856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c6e8578856d 13
+  match
+end
+
+# восьмисотому
+rule ru_say_75856ea06d6c6e8578856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c6e8578856d80 14
+  match
+end
+
+# восьмисотую
+rule ru_say_75856ea06d6c6e8578809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c6e8578809f 13
+  match
+end
+
+# восьмисотый
+rule ru_say_75856ea06d6c6e85789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c6e85789576 13
+  match
+end
+
+# восьмисотыми
+rule ru_say_75856ea06d6c6e8578956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c6e8578956d6c 14
+  match
+end
+
+# восьмисотых
+rule ru_say_75856ea06d6c6e85789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d6c6e85789593 13
+  match
+end
+
+# восьмого
+rule ru_say_75856ea06d857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d857f85 10
+  match
+end
+
+# восьмое
+rule ru_say_75856ea06d858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d858d 9
+  match
+end
+
+# восьмой
+rule ru_say_75856ea06d8576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d8576 9
+  match
+end
+
+# восьмом
+rule ru_say_75856ea06d856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d856d 9
+  match
+end
+
+# восьмому
+rule ru_say_75856ea06d856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d856d80 10
+  match
+end
+
+# восьмую
+rule ru_say_75856ea06d809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d809f 9
+  match
+end
+
+# восьмыми
+rule ru_say_75856ea06d956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d956d6c 10
+  match
+end
+
+# восьмых
+rule ru_say_75856ea06d9593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75856ea06d9593 9
+  match
+end
+
+# вторая
+rule ru_say_757885646191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_757885646191 8
+  match
+end
+
+# второго
+rule ru_say_75788564857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75788564857f85 9
+  match
+end
+
+# второе
+rule ru_say_75788564858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75788564858d 8
+  match
+end
+
+# второй
+rule ru_say_757885648576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_757885648576 8
+  match
+end
+
+# втором
+rule ru_say_75788564856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75788564856d 8
+  match
+end
+
+# второму
+rule ru_say_75788564856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75788564856d80 9
+  match
+end
+
+# вторую
+rule ru_say_75788564809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75788564809f 8
+  match
+end
+
+# вторыми
+rule ru_say_75788564956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_75788564956d6c 9
+  match
+end
+
+# вторых
+rule ru_say_757885649593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_757885649593 8
+  match
+end
+
 # два
 rule ru_say_837561 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_837561 5
+  match
+end
+
+# двадцатая
+rule ru_say_837561836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837561836561786191 11
+  match
+end
+
+# двадцатого
+rule ru_say_83756183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83756183656178857f85 12
+  match
+end
+
+# двадцатое
+rule ru_say_83756183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83756183656178858d 11
+  match
+end
+
+# двадцатом
+rule ru_say_83756183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83756183656178856d 11
+  match
+end
+
+# двадцатому
+rule ru_say_83756183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83756183656178856d80 12
+  match
+end
+
+# двадцатую
+rule ru_say_83756183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83756183656178809f 11
+  match
+end
+
+# двадцатый
+rule ru_say_837561836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837561836561789576 11
+  match
+end
+
+# двадцатыми
+rule ru_say_83756183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83756183656178956d6c 12
+  match
+end
+
+# двадцатых
+rule ru_say_837561836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837561836561789593 11
   match
 end
 
@@ -9090,6 +9468,69 @@ rule ru_say_83758d takes 2 from ut_norm.obj
   match
 end
 
+# двенадцатая
+rule ru_say_83758d7761836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d7761836561786191 13
+  match
+end
+
+# двенадцатого
+rule ru_say_83758d776183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d776183656178857f85 14
+  match
+end
+
+# двенадцатое
+rule ru_say_83758d776183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d776183656178858d 13
+  match
+end
+
+# двенадцатом
+rule ru_say_83758d776183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d776183656178856d 13
+  match
+end
+
+# двенадцатому
+rule ru_say_83758d776183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d776183656178856d80 14
+  match
+end
+
+# двенадцатую
+rule ru_say_83758d776183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d776183656178809f 13
+  match
+end
+
+# двенадцатый
+rule ru_say_83758d7761836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d7761836561789576 13
+  match
+end
+
+# двенадцатыми
+rule ru_say_83758d776183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d776183656178956d6c 14
+  match
+end
+
+# двенадцатых
+rule ru_say_83758d7761836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_83758d7761836561789593 13
+  match
+end
+
 # двенадцать
 rule ru_say_83758d776183656178a0 takes 2 from ut_norm.obj
   afresh
@@ -9104,6 +9545,76 @@ rule ru_say_83758d6e786c takes 2 from ut_norm.obj
   match
 end
 
+# двухсотая
+rule ru_say_837580936e85786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837580936e85786191 11
+  match
+end
+
+# двухсотого
+rule ru_say_837580936e8578857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837580936e8578857f85 12
+  match
+end
+
+# двухсотое
+rule ru_say_837580936e8578858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837580936e8578858d 11
+  match
+end
+
+# двухсотом
+rule ru_say_837580936e8578856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837580936e8578856d 11
+  match
+end
+
+# двухсотому
+rule ru_say_837580936e8578856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837580936e8578856d80 12
+  match
+end
+
+# двухсотую
+rule ru_say_837580936e8578809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837580936e8578809f 11
+  match
+end
+
+# двухсотый
+rule ru_say_837580936e85789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837580936e85789576 11
+  match
+end
+
+# двухсотыми
+rule ru_say_837580936e8578956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837580936e8578956d6c 12
+  match
+end
+
+# двухсотых
+rule ru_say_837580936e85789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_837580936e85789593 11
+  match
+end
+
+# девяностая
+rule ru_say_838d759177856e786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e786191 12
+  match
+end
+
 # девяносто
 rule ru_say_838d759177856e7885 takes 2 from ut_norm.obj
   afresh
@@ -9111,10 +9622,255 @@ rule ru_say_838d759177856e7885 takes 2 from ut_norm.obj
   match
 end
 
+# девяностого
+rule ru_say_838d759177856e78857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e78857f85 13
+  match
+end
+
+# девяностое
+rule ru_say_838d759177856e78858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e78858d 12
+  match
+end
+
+# девяностом
+rule ru_say_838d759177856e78856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e78856d 12
+  match
+end
+
+# девяностому
+rule ru_say_838d759177856e78856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e78856d80 13
+  match
+end
+
+# девяностую
+rule ru_say_838d759177856e78809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e78809f 12
+  match
+end
+
+# девяностый
+rule ru_say_838d759177856e789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e789576 12
+  match
+end
+
+# девяностыми
+rule ru_say_838d759177856e78956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e78956d6c 13
+  match
+end
+
+# девяностых
+rule ru_say_838d759177856e789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759177856e789593 12
+  match
+end
+
+# девятая
+rule ru_say_838d7591786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786191 9
+  match
+end
+
+# девятисотая
+rule ru_say_838d7591786c6e85786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786c6e85786191 13
+  match
+end
+
+# девятисотого
+rule ru_say_838d7591786c6e8578857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786c6e8578857f85 14
+  match
+end
+
+# девятисотое
+rule ru_say_838d7591786c6e8578858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786c6e8578858d 13
+  match
+end
+
+# девятисотом
+rule ru_say_838d7591786c6e8578856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786c6e8578856d 13
+  match
+end
+
+# девятисотому
+rule ru_say_838d7591786c6e8578856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786c6e8578856d80 14
+  match
+end
+
+# девятисотую
+rule ru_say_838d7591786c6e8578809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786c6e8578809f 13
+  match
+end
+
+# девятисотый
+rule ru_say_838d7591786c6e85789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786c6e85789576 13
+  match
+end
+
+# девятисотыми
+rule ru_say_838d7591786c6e8578956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786c6e8578956d6c 14
+  match
+end
+
+# девятисотых
+rule ru_say_838d7591786c6e85789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591786c6e85789593 13
+  match
+end
+
+# девятнадцатая
+rule ru_say_838d7591787761836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591787761836561786191 15
+  match
+end
+
+# девятнадцатого
+rule ru_say_838d759178776183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178776183656178857f85 16
+  match
+end
+
+# девятнадцатое
+rule ru_say_838d759178776183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178776183656178858d 15
+  match
+end
+
+# девятнадцатом
+rule ru_say_838d759178776183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178776183656178856d 15
+  match
+end
+
+# девятнадцатому
+rule ru_say_838d759178776183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178776183656178856d80 16
+  match
+end
+
+# девятнадцатую
+rule ru_say_838d759178776183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178776183656178809f 15
+  match
+end
+
+# девятнадцатый
+rule ru_say_838d7591787761836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591787761836561789576 15
+  match
+end
+
+# девятнадцатыми
+rule ru_say_838d759178776183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178776183656178956d6c 16
+  match
+end
+
+# девятнадцатых
+rule ru_say_838d7591787761836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591787761836561789593 15
+  match
+end
+
 # девятнадцать
 rule ru_say_838d759178776183656178a0 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_838d759178776183656178a0 14
+  match
+end
+
+# девятого
+rule ru_say_838d759178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178857f85 10
+  match
+end
+
+# девятое
+rule ru_say_838d759178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178858d 9
+  match
+end
+
+# девятом
+rule ru_say_838d759178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178856d 9
+  match
+end
+
+# девятому
+rule ru_say_838d759178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178856d80 10
+  match
+end
+
+# девятую
+rule ru_say_838d759178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178809f 9
+  match
+end
+
+# девятый
+rule ru_say_838d7591789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591789576 9
+  match
+end
+
+# девятыми
+rule ru_say_838d759178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d759178956d6c 10
+  match
+end
+
+# девятых
+rule ru_say_838d7591789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d7591789593 9
   match
 end
 
@@ -9129,6 +9885,69 @@ end
 rule ru_say_838d759178a06e8578 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_838d759178a06e8578 11
+  match
+end
+
+# десятая
+rule ru_say_838d6e91786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e91786191 9
+  match
+end
+
+# десятого
+rule ru_say_838d6e9178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e9178857f85 10
+  match
+end
+
+# десятое
+rule ru_say_838d6e9178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e9178858d 9
+  match
+end
+
+# десятом
+rule ru_say_838d6e9178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e9178856d 9
+  match
+end
+
+# десятому
+rule ru_say_838d6e9178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e9178856d80 10
+  match
+end
+
+# десятую
+rule ru_say_838d6e9178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e9178809f 9
+  match
+end
+
+# десятый
+rule ru_say_838d6e91789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e91789576 9
+  match
+end
+
+# десятыми
+rule ru_say_838d6e9178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e9178956d6c 10
+  match
+end
+
+# десятых
+rule ru_say_838d6e91789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_838d6e91789593 9
   match
 end
 
@@ -9195,10 +10014,136 @@ rule ru_say_778563a0 takes 2 from ut_norm.obj
   match
 end
 
+# нулевая
+rule ru_say_7780638d756191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_7780638d756191 9
+  match
+end
+
+# нулевого
+rule ru_say_7780638d75857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_7780638d75857f85 10
+  match
+end
+
+# нулевое
+rule ru_say_7780638d75858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_7780638d75858d 9
+  match
+end
+
+# нулевом
+rule ru_say_7780638d75856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_7780638d75856d 9
+  match
+end
+
+# нулевому
+rule ru_say_7780638d75856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_7780638d75856d80 10
+  match
+end
+
+# нулевую
+rule ru_say_7780638d75809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_7780638d75809f 9
+  match
+end
+
+# нулевый
+rule ru_say_7780638d759576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_7780638d759576 9
+  match
+end
+
+# нулевыми
+rule ru_say_7780638d75956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_7780638d75956d6c 10
+  match
+end
+
+# нулевых
+rule ru_say_7780638d759593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_7780638d759593 9
+  match
+end
+
 # один
 rule ru_say_85836c77 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_85836c77 6
+  match
+end
+
+# одиннадцатая
+rule ru_say_85836c777761836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c777761836561786191 14
+  match
+end
+
+# одиннадцатого
+rule ru_say_85836c77776183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c77776183656178857f85 15
+  match
+end
+
+# одиннадцатое
+rule ru_say_85836c77776183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c77776183656178858d 14
+  match
+end
+
+# одиннадцатом
+rule ru_say_85836c77776183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c77776183656178856d 14
+  match
+end
+
+# одиннадцатому
+rule ru_say_85836c77776183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c77776183656178856d80 15
+  match
+end
+
+# одиннадцатую
+rule ru_say_85836c77776183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c77776183656178809f 14
+  match
+end
+
+# одиннадцатый
+rule ru_say_85836c777761836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c777761836561789576 14
+  match
+end
+
+# одиннадцатыми
+rule ru_say_85836c77776183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c77776183656178956d6c 15
+  match
+end
+
+# одиннадцатых
+rule ru_say_85836c777761836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_85836c777761836561789593 14
   match
 end
 
@@ -9213,6 +10158,69 @@ end
 rule ru_say_85837761 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_85837761 6
+  match
+end
+
+# первая
+rule ru_say_998d64756191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_998d64756191 8
+  match
+end
+
+# первого
+rule ru_say_998d6475857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_998d6475857f85 9
+  match
+end
+
+# первое
+rule ru_say_998d6475858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_998d6475858d 8
+  match
+end
+
+# первом
+rule ru_say_998d6475856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_998d6475856d 8
+  match
+end
+
+# первому
+rule ru_say_998d6475856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_998d6475856d80 9
+  match
+end
+
+# первую
+rule ru_say_998d6475809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_998d6475809f 8
+  match
+end
+
+# первый
+rule ru_say_998d64759576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_998d64759576 8
+  match
+end
+
+# первыми
+rule ru_say_998d6475956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_998d6475956d6c 9
+  match
+end
+
+# первых
+rule ru_say_998d64759593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_998d64759593 8
   match
 end
 
@@ -9237,10 +10245,262 @@ rule ru_say_996485658d77788575 takes 2 from ut_norm.obj
   match
 end
 
+# пятая
+rule ru_say_9991786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786191 7
+  match
+end
+
+# пятидесятая
+rule ru_say_9991786c838d6e91786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c838d6e91786191 13
+  match
+end
+
+# пятидесятого
+rule ru_say_9991786c838d6e9178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c838d6e9178857f85 14
+  match
+end
+
+# пятидесятое
+rule ru_say_9991786c838d6e9178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c838d6e9178858d 13
+  match
+end
+
+# пятидесятом
+rule ru_say_9991786c838d6e9178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c838d6e9178856d 13
+  match
+end
+
+# пятидесятому
+rule ru_say_9991786c838d6e9178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c838d6e9178856d80 14
+  match
+end
+
+# пятидесятую
+rule ru_say_9991786c838d6e9178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c838d6e9178809f 13
+  match
+end
+
+# пятидесятый
+rule ru_say_9991786c838d6e91789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c838d6e91789576 13
+  match
+end
+
+# пятидесятыми
+rule ru_say_9991786c838d6e9178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c838d6e9178956d6c 14
+  match
+end
+
+# пятидесятых
+rule ru_say_9991786c838d6e91789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c838d6e91789593 13
+  match
+end
+
+# пятисотая
+rule ru_say_9991786c6e85786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c6e85786191 11
+  match
+end
+
+# пятисотого
+rule ru_say_9991786c6e8578857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c6e8578857f85 12
+  match
+end
+
+# пятисотое
+rule ru_say_9991786c6e8578858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c6e8578858d 11
+  match
+end
+
+# пятисотом
+rule ru_say_9991786c6e8578856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c6e8578856d 11
+  match
+end
+
+# пятисотому
+rule ru_say_9991786c6e8578856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c6e8578856d80 12
+  match
+end
+
+# пятисотую
+rule ru_say_9991786c6e8578809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c6e8578809f 11
+  match
+end
+
+# пятисотый
+rule ru_say_9991786c6e85789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c6e85789576 11
+  match
+end
+
+# пятисотыми
+rule ru_say_9991786c6e8578956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c6e8578956d6c 12
+  match
+end
+
+# пятисотых
+rule ru_say_9991786c6e85789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991786c6e85789593 11
+  match
+end
+
+# пятнадцатая
+rule ru_say_9991787761836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991787761836561786191 13
+  match
+end
+
+# пятнадцатого
+rule ru_say_999178776183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178776183656178857f85 14
+  match
+end
+
+# пятнадцатое
+rule ru_say_999178776183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178776183656178858d 13
+  match
+end
+
+# пятнадцатом
+rule ru_say_999178776183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178776183656178856d 13
+  match
+end
+
+# пятнадцатому
+rule ru_say_999178776183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178776183656178856d80 14
+  match
+end
+
+# пятнадцатую
+rule ru_say_999178776183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178776183656178809f 13
+  match
+end
+
+# пятнадцатый
+rule ru_say_9991787761836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991787761836561789576 13
+  match
+end
+
+# пятнадцатыми
+rule ru_say_999178776183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178776183656178956d6c 14
+  match
+end
+
+# пятнадцатых
+rule ru_say_9991787761836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991787761836561789593 13
+  match
+end
+
 # пятнадцать
 rule ru_say_999178776183656178a0 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_999178776183656178a0 12
+  match
+end
+
+# пятого
+rule ru_say_999178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178857f85 8
+  match
+end
+
+# пятое
+rule ru_say_999178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178858d 7
+  match
+end
+
+# пятом
+rule ru_say_999178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178856d 7
+  match
+end
+
+# пятому
+rule ru_say_999178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178856d80 8
+  match
+end
+
+# пятую
+rule ru_say_999178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178809f 7
+  match
+end
+
+# пятый
+rule ru_say_9991789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991789576 7
+  match
+end
+
+# пятыми
+rule ru_say_999178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_999178956d6c 8
+  match
+end
+
+# пятых
+rule ru_say_9991789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_9991789593 7
   match
 end
 
@@ -9262,6 +10522,258 @@ end
 rule ru_say_999178a06e8578 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_999178a06e8578 9
+  match
+end
+
+# седьмая
+rule ru_say_6e8d83a06d6191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d83a06d6191 9
+  match
+end
+
+# седьмого
+rule ru_say_6e8d83a06d857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d83a06d857f85 10
+  match
+end
+
+# седьмое
+rule ru_say_6e8d83a06d858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d83a06d858d 9
+  match
+end
+
+# седьмой
+rule ru_say_6e8d83a06d8576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d83a06d8576 9
+  match
+end
+
+# седьмом
+rule ru_say_6e8d83a06d856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d83a06d856d 9
+  match
+end
+
+# седьмому
+rule ru_say_6e8d83a06d856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d83a06d856d80 10
+  match
+end
+
+# седьмую
+rule ru_say_6e8d83a06d809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d83a06d809f 9
+  match
+end
+
+# седьмыми
+rule ru_say_6e8d83a06d956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d83a06d956d6c 10
+  match
+end
+
+# седьмых
+rule ru_say_6e8d83a06d9593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d83a06d9593 9
+  match
+end
+
+# семидесятая
+rule ru_say_6e8d6d6c838d6e91786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c838d6e91786191 13
+  match
+end
+
+# семидесятого
+rule ru_say_6e8d6d6c838d6e9178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c838d6e9178857f85 14
+  match
+end
+
+# семидесятое
+rule ru_say_6e8d6d6c838d6e9178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c838d6e9178858d 13
+  match
+end
+
+# семидесятом
+rule ru_say_6e8d6d6c838d6e9178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c838d6e9178856d 13
+  match
+end
+
+# семидесятому
+rule ru_say_6e8d6d6c838d6e9178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c838d6e9178856d80 14
+  match
+end
+
+# семидесятую
+rule ru_say_6e8d6d6c838d6e9178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c838d6e9178809f 13
+  match
+end
+
+# семидесятый
+rule ru_say_6e8d6d6c838d6e91789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c838d6e91789576 13
+  match
+end
+
+# семидесятыми
+rule ru_say_6e8d6d6c838d6e9178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c838d6e9178956d6c 14
+  match
+end
+
+# семидесятых
+rule ru_say_6e8d6d6c838d6e91789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c838d6e91789593 13
+  match
+end
+
+# семисотая
+rule ru_say_6e8d6d6c6e85786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c6e85786191 11
+  match
+end
+
+# семисотого
+rule ru_say_6e8d6d6c6e8578857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c6e8578857f85 12
+  match
+end
+
+# семисотое
+rule ru_say_6e8d6d6c6e8578858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c6e8578858d 11
+  match
+end
+
+# семисотом
+rule ru_say_6e8d6d6c6e8578856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c6e8578856d 11
+  match
+end
+
+# семисотому
+rule ru_say_6e8d6d6c6e8578856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c6e8578856d80 12
+  match
+end
+
+# семисотую
+rule ru_say_6e8d6d6c6e8578809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c6e8578809f 11
+  match
+end
+
+# семисотый
+rule ru_say_6e8d6d6c6e85789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c6e85789576 11
+  match
+end
+
+# семисотыми
+rule ru_say_6e8d6d6c6e8578956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c6e8578956d6c 12
+  match
+end
+
+# семисотых
+rule ru_say_6e8d6d6c6e85789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d6c6e85789593 11
+  match
+end
+
+# семнадцатая
+rule ru_say_6e8d6d7761836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d7761836561786191 13
+  match
+end
+
+# семнадцатого
+rule ru_say_6e8d6d776183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d776183656178857f85 14
+  match
+end
+
+# семнадцатое
+rule ru_say_6e8d6d776183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d776183656178858d 13
+  match
+end
+
+# семнадцатом
+rule ru_say_6e8d6d776183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d776183656178856d 13
+  match
+end
+
+# семнадцатому
+rule ru_say_6e8d6d776183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d776183656178856d80 14
+  match
+end
+
+# семнадцатую
+rule ru_say_6e8d6d776183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d776183656178809f 13
+  match
+end
+
+# семнадцатый
+rule ru_say_6e8d6d7761836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d7761836561789576 13
+  match
+end
+
+# семнадцатыми
+rule ru_say_6e8d6d776183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d776183656178956d6c 14
+  match
+end
+
+# семнадцатых
+rule ru_say_6e8d6d7761836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8d6d7761836561789593 13
   match
 end
 
@@ -9300,10 +10812,199 @@ rule ru_say_6e85648584 takes 2 from ut_norm.obj
   match
 end
 
+# сороковая
+rule ru_say_6e8564858485756191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8564858485756191 11
+  match
+end
+
+# сорокового
+rule ru_say_6e856485848575857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e856485848575857f85 12
+  match
+end
+
+# сороковое
+rule ru_say_6e856485848575858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e856485848575858d 11
+  match
+end
+
+# сороковой
+rule ru_say_6e8564858485758576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8564858485758576 11
+  match
+end
+
+# сороковом
+rule ru_say_6e856485848575856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e856485848575856d 11
+  match
+end
+
+# сороковому
+rule ru_say_6e856485848575856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e856485848575856d80 12
+  match
+end
+
+# сороковую
+rule ru_say_6e856485848575809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e856485848575809f 11
+  match
+end
+
+# сороковыми
+rule ru_say_6e856485848575956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e856485848575956d6c 12
+  match
+end
+
+# сороковых
+rule ru_say_6e8564858485759593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8564858485759593 11
+  match
+end
+
+# сотая
+rule ru_say_6e85786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e85786191 7
+  match
+end
+
+# сотого
+rule ru_say_6e8578857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8578857f85 8
+  match
+end
+
+# сотое
+rule ru_say_6e8578858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8578858d 7
+  match
+end
+
+# сотом
+rule ru_say_6e8578856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8578856d 7
+  match
+end
+
+# сотому
+rule ru_say_6e8578856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8578856d80 8
+  match
+end
+
+# сотую
+rule ru_say_6e8578809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8578809f 7
+  match
+end
+
+# сотый
+rule ru_say_6e85789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e85789576 7
+  match
+end
+
+# сотыми
+rule ru_say_6e8578956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e8578956d6c 8
+  match
+end
+
+# сотых
+rule ru_say_6e85789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6e85789593 7
+  match
+end
+
 # сто
 rule ru_say_6e7885 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_6e7885 5
+  match
+end
+
+# третий
+rule ru_say_78648d786c76 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648d786c76 8
+  match
+end
+
+# третье
+rule ru_say_78648d78a08d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648d78a08d 8
+  match
+end
+
+# третьего
+rule ru_say_78648d78a08d7f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648d78a08d7f85 10
+  match
+end
+
+# третьем
+rule ru_say_78648d78a08d6d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648d78a08d6d 9
+  match
+end
+
+# третьему
+rule ru_say_78648d78a08d6d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648d78a08d6d80 10
+  match
+end
+
+# третьими
+rule ru_say_78648d78a06c6d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648d78a06c6d6c 10
+  match
+end
+
+# третьих
+rule ru_say_78648d78a06c93 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648d78a06c93 9
+  match
+end
+
+# третью
+rule ru_say_78648d78a09f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648d78a09f 8
+  match
+end
+
+# третья
+rule ru_say_78648d78a091 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648d78a091 8
   match
 end
 
@@ -9314,10 +11015,136 @@ rule ru_say_78646c takes 2 from ut_norm.obj
   match
 end
 
+# тридцатая
+rule ru_say_78646c836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c836561786191 11
+  match
+end
+
+# тридцатого
+rule ru_say_78646c83656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c83656178857f85 12
+  match
+end
+
+# тридцатое
+rule ru_say_78646c83656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c83656178858d 11
+  match
+end
+
+# тридцатом
+rule ru_say_78646c83656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c83656178856d 11
+  match
+end
+
+# тридцатому
+rule ru_say_78646c83656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c83656178856d80 12
+  match
+end
+
+# тридцатую
+rule ru_say_78646c83656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c83656178809f 11
+  match
+end
+
+# тридцатый
+rule ru_say_78646c836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c836561789576 11
+  match
+end
+
+# тридцатыми
+rule ru_say_78646c83656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c83656178956d6c 12
+  match
+end
+
+# тридцатых
+rule ru_say_78646c836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c836561789593 11
+  match
+end
+
 # тридцать
 rule ru_say_78646c83656178a0 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_78646c83656178a0 10
+  match
+end
+
+# тринадцатая
+rule ru_say_78646c7761836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c7761836561786191 13
+  match
+end
+
+# тринадцатого
+rule ru_say_78646c776183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c776183656178857f85 14
+  match
+end
+
+# тринадцатое
+rule ru_say_78646c776183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c776183656178858d 13
+  match
+end
+
+# тринадцатом
+rule ru_say_78646c776183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c776183656178856d 13
+  match
+end
+
+# тринадцатому
+rule ru_say_78646c776183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c776183656178856d80 14
+  match
+end
+
+# тринадцатую
+rule ru_say_78646c776183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c776183656178809f 13
+  match
+end
+
+# тринадцатый
+rule ru_say_78646c7761836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c7761836561789576 13
+  match
+end
+
+# тринадцатыми
+rule ru_say_78646c776183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c776183656178956d6c 14
+  match
+end
+
+# тринадцатых
+rule ru_say_78646c7761836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78646c7761836561789593 13
   match
 end
 
@@ -9332,6 +11159,69 @@ end
 rule ru_say_78646c6e7861 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_78646c6e7861 8
+  match
+end
+
+# трёхсотая
+rule ru_say_78648f936e85786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648f936e85786191 11
+  match
+end
+
+# трёхсотого
+rule ru_say_78648f936e8578857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648f936e8578857f85 12
+  match
+end
+
+# трёхсотое
+rule ru_say_78648f936e8578858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648f936e8578858d 11
+  match
+end
+
+# трёхсотом
+rule ru_say_78648f936e8578856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648f936e8578856d 11
+  match
+end
+
+# трёхсотому
+rule ru_say_78648f936e8578856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648f936e8578856d80 12
+  match
+end
+
+# трёхсотую
+rule ru_say_78648f936e8578809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648f936e8578809f 11
+  match
+end
+
+# трёхсотый
+rule ru_say_78648f936e85789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648f936e85789576 11
+  match
+end
+
+# трёхсотыми
+rule ru_say_78648f936e8578956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648f936e8578956d6c 12
+  match
+end
+
+# трёхсотых
+rule ru_say_78648f936e85789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78648f936e85789593 11
   match
 end
 
@@ -9356,6 +11246,132 @@ rule ru_say_78956e916f6c takes 2 from ut_norm.obj
   match
 end
 
+# тысячная
+rule ru_say_78956e916f776191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f776191 10
+  match
+end
+
+# тысячного
+rule ru_say_78956e916f77857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f77857f85 11
+  match
+end
+
+# тысячное
+rule ru_say_78956e916f77858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f77858d 10
+  match
+end
+
+# тысячном
+rule ru_say_78956e916f77856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f77856d 10
+  match
+end
+
+# тысячному
+rule ru_say_78956e916f77856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f77856d80 11
+  match
+end
+
+# тысячную
+rule ru_say_78956e916f77809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f77809f 10
+  match
+end
+
+# тысячный
+rule ru_say_78956e916f779576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f779576 10
+  match
+end
+
+# тысячными
+rule ru_say_78956e916f77956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f77956d6c 11
+  match
+end
+
+# тысячных
+rule ru_say_78956e916f779593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_78956e916f779593 10
+  match
+end
+
+# четвёртая
+rule ru_say_6f8d78758f64786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d78758f64786191 11
+  match
+end
+
+# четвёртого
+rule ru_say_6f8d78758f6478857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d78758f6478857f85 12
+  match
+end
+
+# четвёртое
+rule ru_say_6f8d78758f6478858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d78758f6478858d 11
+  match
+end
+
+# четвёртом
+rule ru_say_6f8d78758f6478856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d78758f6478856d 11
+  match
+end
+
+# четвёртому
+rule ru_say_6f8d78758f6478856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d78758f6478856d80 12
+  match
+end
+
+# четвёртую
+rule ru_say_6f8d78758f6478809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d78758f6478809f 11
+  match
+end
+
+# четвёртый
+rule ru_say_6f8d78758f64789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d78758f64789576 11
+  match
+end
+
+# четвёртыми
+rule ru_say_6f8d78758f6478956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d78758f6478956d6c 12
+  match
+end
+
+# четвёртых
+rule ru_say_6f8d78758f64789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d78758f64789593 11
+  match
+end
+
 # четыре
 rule ru_say_6f8d7895648d takes 2 from ut_norm.obj
   afresh
@@ -9370,6 +11386,69 @@ rule ru_say_6f8d7895648d6e7861 takes 2 from ut_norm.obj
   match
 end
 
+# четырнадцатая
+rule ru_say_6f8d7895647761836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895647761836561786191 15
+  match
+end
+
+# четырнадцатого
+rule ru_say_6f8d789564776183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d789564776183656178857f85 16
+  match
+end
+
+# четырнадцатое
+rule ru_say_6f8d789564776183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d789564776183656178858d 15
+  match
+end
+
+# четырнадцатом
+rule ru_say_6f8d789564776183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d789564776183656178856d 15
+  match
+end
+
+# четырнадцатому
+rule ru_say_6f8d789564776183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d789564776183656178856d80 16
+  match
+end
+
+# четырнадцатую
+rule ru_say_6f8d789564776183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d789564776183656178809f 15
+  match
+end
+
+# четырнадцатый
+rule ru_say_6f8d7895647761836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895647761836561789576 15
+  match
+end
+
+# четырнадцатыми
+rule ru_say_6f8d789564776183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d789564776183656178956d6c 16
+  match
+end
+
+# четырнадцатых
+rule ru_say_6f8d7895647761836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895647761836561789593 15
+  match
+end
+
 # четырнадцать
 rule ru_say_6f8d789564776183656178a0 takes 2 from ut_norm.obj
   afresh
@@ -9377,10 +11456,325 @@ rule ru_say_6f8d789564776183656178a0 takes 2 from ut_norm.obj
   match
 end
 
+# четырёхсотая
+rule ru_say_6f8d7895648f936e85786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648f936e85786191 14
+  match
+end
+
+# четырёхсотого
+rule ru_say_6f8d7895648f936e8578857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648f936e8578857f85 15
+  match
+end
+
+# четырёхсотое
+rule ru_say_6f8d7895648f936e8578858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648f936e8578858d 14
+  match
+end
+
+# четырёхсотом
+rule ru_say_6f8d7895648f936e8578856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648f936e8578856d 14
+  match
+end
+
+# четырёхсотому
+rule ru_say_6f8d7895648f936e8578856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648f936e8578856d80 15
+  match
+end
+
+# четырёхсотую
+rule ru_say_6f8d7895648f936e8578809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648f936e8578809f 14
+  match
+end
+
+# четырёхсотый
+rule ru_say_6f8d7895648f936e85789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648f936e85789576 14
+  match
+end
+
+# четырёхсотыми
+rule ru_say_6f8d7895648f936e8578956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648f936e8578956d6c 15
+  match
+end
+
+# четырёхсотых
+rule ru_say_6f8d7895648f936e85789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_6f8d7895648f936e85789593 14
+  match
+end
+
+# шестая
+rule ru_say_798d6e786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786191 8
+  match
+end
+
+# шестидесятая
+rule ru_say_798d6e786c838d6e91786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c838d6e91786191 14
+  match
+end
+
+# шестидесятого
+rule ru_say_798d6e786c838d6e9178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c838d6e9178857f85 15
+  match
+end
+
+# шестидесятое
+rule ru_say_798d6e786c838d6e9178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c838d6e9178858d 14
+  match
+end
+
+# шестидесятом
+rule ru_say_798d6e786c838d6e9178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c838d6e9178856d 14
+  match
+end
+
+# шестидесятому
+rule ru_say_798d6e786c838d6e9178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c838d6e9178856d80 15
+  match
+end
+
+# шестидесятую
+rule ru_say_798d6e786c838d6e9178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c838d6e9178809f 14
+  match
+end
+
+# шестидесятый
+rule ru_say_798d6e786c838d6e91789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c838d6e91789576 14
+  match
+end
+
+# шестидесятыми
+rule ru_say_798d6e786c838d6e9178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c838d6e9178956d6c 15
+  match
+end
+
+# шестидесятых
+rule ru_say_798d6e786c838d6e91789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c838d6e91789593 14
+  match
+end
+
+# шестисотая
+rule ru_say_798d6e786c6e85786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c6e85786191 12
+  match
+end
+
+# шестисотого
+rule ru_say_798d6e786c6e8578857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c6e8578857f85 13
+  match
+end
+
+# шестисотое
+rule ru_say_798d6e786c6e8578858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c6e8578858d 12
+  match
+end
+
+# шестисотом
+rule ru_say_798d6e786c6e8578856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c6e8578856d 12
+  match
+end
+
+# шестисотому
+rule ru_say_798d6e786c6e8578856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c6e8578856d80 13
+  match
+end
+
+# шестисотую
+rule ru_say_798d6e786c6e8578809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c6e8578809f 12
+  match
+end
+
+# шестисотый
+rule ru_say_798d6e786c6e85789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c6e85789576 12
+  match
+end
+
+# шестисотыми
+rule ru_say_798d6e786c6e8578956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c6e8578956d6c 13
+  match
+end
+
+# шестисотых
+rule ru_say_798d6e786c6e85789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e786c6e85789593 12
+  match
+end
+
+# шестнадцатая
+rule ru_say_798d6e787761836561786191 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e787761836561786191 14
+  match
+end
+
+# шестнадцатого
+rule ru_say_798d6e78776183656178857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78776183656178857f85 15
+  match
+end
+
+# шестнадцатое
+rule ru_say_798d6e78776183656178858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78776183656178858d 14
+  match
+end
+
+# шестнадцатом
+rule ru_say_798d6e78776183656178856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78776183656178856d 14
+  match
+end
+
+# шестнадцатому
+rule ru_say_798d6e78776183656178856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78776183656178856d80 15
+  match
+end
+
+# шестнадцатую
+rule ru_say_798d6e78776183656178809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78776183656178809f 14
+  match
+end
+
+# шестнадцатый
+rule ru_say_798d6e787761836561789576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e787761836561789576 14
+  match
+end
+
+# шестнадцатыми
+rule ru_say_798d6e78776183656178956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78776183656178956d6c 15
+  match
+end
+
+# шестнадцатых
+rule ru_say_798d6e787761836561789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e787761836561789593 14
+  match
+end
+
 # шестнадцать
 rule ru_say_798d6e78776183656178a0 takes 2 from ut_norm.obj
   afresh
   call ru_say arg 1 sym ru_w_798d6e78776183656178a0 13
+  match
+end
+
+# шестого
+rule ru_say_798d6e78857f85 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78857f85 9
+  match
+end
+
+# шестое
+rule ru_say_798d6e78858d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78858d 8
+  match
+end
+
+# шестой
+rule ru_say_798d6e788576 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e788576 8
+  match
+end
+
+# шестом
+rule ru_say_798d6e78856d takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78856d 8
+  match
+end
+
+# шестому
+rule ru_say_798d6e78856d80 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78856d80 9
+  match
+end
+
+# шестую
+rule ru_say_798d6e78809f takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78809f 8
+  match
+end
+
+# шестыми
+rule ru_say_798d6e78956d6c takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e78956d6c 9
+  match
+end
+
+# шестых
+rule ru_say_798d6e789593 takes 2 from ut_norm.obj
+  afresh
+  call ru_say arg 1 sym ru_w_798d6e789593 8
   match
 end
 
@@ -9633,6 +12027,9 @@ rule ru_digits_to_words takes 3 from ut_norm.obj
   local n
   local k
   local form
+  local ord
+  local olen
+  local q bytes 8
   local v
   local zero
   local d1
@@ -9765,6 +12162,1524 @@ rule ru_digits_to_words takes 3 from ut_norm.obj
   call savescptr 1 addr end
   call lpta_rpta_loadp arg 1 addr end
   call insert_2pt_s 1 1 sym ru_space 0
+  # An ordinal: a hyphen and an ending straight after the digits, 1-го, 2-й,
+  # 5-я. Everything but the last word is a cardinal and the last is the
+  # ordinal, in the ending the text wrote; a round thousand is тысячный.
+  set ord to 0
+  set olen to 0
+  call lpta_loadp addr end
+  call setscan_r 1
+  if answer is 0
+    call test_string_s 1 1 sym ru_hyphen
+    if answer is 0
+      call lpta_loadp addr end
+      call setscan_r 1
+      call advance_tok
+      call savescptr 4 addr q
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_6c76
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 1
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_9576
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 1
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_8576
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 1
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 1 sym ru_o_76
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 1
+            set olen to 1
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_6191
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 2
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_a091
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 2
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 1 sym ru_o_91
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 2
+            set olen to 1
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_858d
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 3
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_a08d
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 3
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 1 sym ru_o_8d
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 3
+            set olen to 1
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 3 sym ru_o_857f85
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 4
+            set olen to 3
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 3 sym ru_o_8d7f85
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 4
+            set olen to 3
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_7f85
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 4
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 3 sym ru_o_856d80
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 5
+            set olen to 3
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 3 sym ru_o_8d6d80
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 5
+            set olen to 3
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_6d80
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 5
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 3 sym ru_o_956d6c
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 6
+            set olen to 3
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 3 sym ru_o_6c6d6c
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 6
+            set olen to 3
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_6d6c
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 6
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_856d
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 7
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_8d6d
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 7
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 1 sym ru_o_6d
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 7
+            set olen to 1
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_9593
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 8
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_6c93
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 8
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 1 sym ru_o_93
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 8
+            set olen to 1
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_809f
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 9
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 2 sym ru_o_a09f
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 9
+            set olen to 2
+          end
+        end
+      end
+      if ord is 0
+        call lpta_loadp addr q
+        call setscan_r 1
+        call test_string_s 1 1 sym ru_o_9f
+        if answer is 0
+          call ru_is_russian
+          if answer is not 0
+            set ord to 9
+            set olen to 1
+          end
+        end
+      end
+    end
+  end
+  if ord is not 0
+    set zero to 0
+    if n is more than 3
+      if d1 is 0
+        if d2 is 0
+          if d3 is 0
+            set zero to 1
+          end
+        end
+      end
+    end
+    if zero is 1
+      call ru_group addr end d12 d11 d10 3
+      call ru_group addr end d9 d8 d7 2
+      set k to 0
+      if d6 is 0
+        if d5 is 0
+          if d4 is 1
+            set k to 1
+          end
+        end
+      end
+      if k is 0
+        call ru_group addr end d6 d5 d4 0
+      end
+      if ord is 1
+        call ru_say_78956e916f779576 addr end
+      end
+      if ord is 2
+        call ru_say_78956e916f776191 addr end
+      end
+      if ord is 3
+        call ru_say_78956e916f77858d addr end
+      end
+      if ord is 4
+        call ru_say_78956e916f77857f85 addr end
+      end
+      if ord is 5
+        call ru_say_78956e916f77856d80 addr end
+      end
+      if ord is 6
+        call ru_say_78956e916f77956d6c addr end
+      end
+      if ord is 7
+        call ru_say_78956e916f77856d addr end
+      end
+      if ord is 8
+        call ru_say_78956e916f779593 addr end
+      end
+      if ord is 9
+        call ru_say_78956e916f77809f addr end
+      end
+    else
+      call ru_group addr end d12 d11 d10 3
+      call ru_group addr end d9 d8 d7 2
+      call ru_group addr end d6 d5 d4 1
+      if d2 is 0
+        if d1 is 0
+          if d3 is 1
+            if ord is 1
+              call ru_say_6e85789576 addr end
+            end
+            if ord is 2
+              call ru_say_6e85786191 addr end
+            end
+            if ord is 3
+              call ru_say_6e8578858d addr end
+            end
+            if ord is 4
+              call ru_say_6e8578857f85 addr end
+            end
+            if ord is 5
+              call ru_say_6e8578856d80 addr end
+            end
+            if ord is 6
+              call ru_say_6e8578956d6c addr end
+            end
+            if ord is 7
+              call ru_say_6e8578856d addr end
+            end
+            if ord is 8
+              call ru_say_6e85789593 addr end
+            end
+            if ord is 9
+              call ru_say_6e8578809f addr end
+            end
+          end
+          if d3 is 2
+            if ord is 1
+              call ru_say_837580936e85789576 addr end
+            end
+            if ord is 2
+              call ru_say_837580936e85786191 addr end
+            end
+            if ord is 3
+              call ru_say_837580936e8578858d addr end
+            end
+            if ord is 4
+              call ru_say_837580936e8578857f85 addr end
+            end
+            if ord is 5
+              call ru_say_837580936e8578856d80 addr end
+            end
+            if ord is 6
+              call ru_say_837580936e8578956d6c addr end
+            end
+            if ord is 7
+              call ru_say_837580936e8578856d addr end
+            end
+            if ord is 8
+              call ru_say_837580936e85789593 addr end
+            end
+            if ord is 9
+              call ru_say_837580936e8578809f addr end
+            end
+          end
+          if d3 is 3
+            if ord is 1
+              call ru_say_78648f936e85789576 addr end
+            end
+            if ord is 2
+              call ru_say_78648f936e85786191 addr end
+            end
+            if ord is 3
+              call ru_say_78648f936e8578858d addr end
+            end
+            if ord is 4
+              call ru_say_78648f936e8578857f85 addr end
+            end
+            if ord is 5
+              call ru_say_78648f936e8578856d80 addr end
+            end
+            if ord is 6
+              call ru_say_78648f936e8578956d6c addr end
+            end
+            if ord is 7
+              call ru_say_78648f936e8578856d addr end
+            end
+            if ord is 8
+              call ru_say_78648f936e85789593 addr end
+            end
+            if ord is 9
+              call ru_say_78648f936e8578809f addr end
+            end
+          end
+          if d3 is 4
+            if ord is 1
+              call ru_say_6f8d7895648f936e85789576 addr end
+            end
+            if ord is 2
+              call ru_say_6f8d7895648f936e85786191 addr end
+            end
+            if ord is 3
+              call ru_say_6f8d7895648f936e8578858d addr end
+            end
+            if ord is 4
+              call ru_say_6f8d7895648f936e8578857f85 addr end
+            end
+            if ord is 5
+              call ru_say_6f8d7895648f936e8578856d80 addr end
+            end
+            if ord is 6
+              call ru_say_6f8d7895648f936e8578956d6c addr end
+            end
+            if ord is 7
+              call ru_say_6f8d7895648f936e8578856d addr end
+            end
+            if ord is 8
+              call ru_say_6f8d7895648f936e85789593 addr end
+            end
+            if ord is 9
+              call ru_say_6f8d7895648f936e8578809f addr end
+            end
+          end
+          if d3 is 5
+            if ord is 1
+              call ru_say_9991786c6e85789576 addr end
+            end
+            if ord is 2
+              call ru_say_9991786c6e85786191 addr end
+            end
+            if ord is 3
+              call ru_say_9991786c6e8578858d addr end
+            end
+            if ord is 4
+              call ru_say_9991786c6e8578857f85 addr end
+            end
+            if ord is 5
+              call ru_say_9991786c6e8578856d80 addr end
+            end
+            if ord is 6
+              call ru_say_9991786c6e8578956d6c addr end
+            end
+            if ord is 7
+              call ru_say_9991786c6e8578856d addr end
+            end
+            if ord is 8
+              call ru_say_9991786c6e85789593 addr end
+            end
+            if ord is 9
+              call ru_say_9991786c6e8578809f addr end
+            end
+          end
+          if d3 is 6
+            if ord is 1
+              call ru_say_798d6e786c6e85789576 addr end
+            end
+            if ord is 2
+              call ru_say_798d6e786c6e85786191 addr end
+            end
+            if ord is 3
+              call ru_say_798d6e786c6e8578858d addr end
+            end
+            if ord is 4
+              call ru_say_798d6e786c6e8578857f85 addr end
+            end
+            if ord is 5
+              call ru_say_798d6e786c6e8578856d80 addr end
+            end
+            if ord is 6
+              call ru_say_798d6e786c6e8578956d6c addr end
+            end
+            if ord is 7
+              call ru_say_798d6e786c6e8578856d addr end
+            end
+            if ord is 8
+              call ru_say_798d6e786c6e85789593 addr end
+            end
+            if ord is 9
+              call ru_say_798d6e786c6e8578809f addr end
+            end
+          end
+          if d3 is 7
+            if ord is 1
+              call ru_say_6e8d6d6c6e85789576 addr end
+            end
+            if ord is 2
+              call ru_say_6e8d6d6c6e85786191 addr end
+            end
+            if ord is 3
+              call ru_say_6e8d6d6c6e8578858d addr end
+            end
+            if ord is 4
+              call ru_say_6e8d6d6c6e8578857f85 addr end
+            end
+            if ord is 5
+              call ru_say_6e8d6d6c6e8578856d80 addr end
+            end
+            if ord is 6
+              call ru_say_6e8d6d6c6e8578956d6c addr end
+            end
+            if ord is 7
+              call ru_say_6e8d6d6c6e8578856d addr end
+            end
+            if ord is 8
+              call ru_say_6e8d6d6c6e85789593 addr end
+            end
+            if ord is 9
+              call ru_say_6e8d6d6c6e8578809f addr end
+            end
+          end
+          if d3 is 8
+            if ord is 1
+              call ru_say_75856ea06d6c6e85789576 addr end
+            end
+            if ord is 2
+              call ru_say_75856ea06d6c6e85786191 addr end
+            end
+            if ord is 3
+              call ru_say_75856ea06d6c6e8578858d addr end
+            end
+            if ord is 4
+              call ru_say_75856ea06d6c6e8578857f85 addr end
+            end
+            if ord is 5
+              call ru_say_75856ea06d6c6e8578856d80 addr end
+            end
+            if ord is 6
+              call ru_say_75856ea06d6c6e8578956d6c addr end
+            end
+            if ord is 7
+              call ru_say_75856ea06d6c6e8578856d addr end
+            end
+            if ord is 8
+              call ru_say_75856ea06d6c6e85789593 addr end
+            end
+            if ord is 9
+              call ru_say_75856ea06d6c6e8578809f addr end
+            end
+          end
+          if d3 is 9
+            if ord is 1
+              call ru_say_838d7591786c6e85789576 addr end
+            end
+            if ord is 2
+              call ru_say_838d7591786c6e85786191 addr end
+            end
+            if ord is 3
+              call ru_say_838d7591786c6e8578858d addr end
+            end
+            if ord is 4
+              call ru_say_838d7591786c6e8578857f85 addr end
+            end
+            if ord is 5
+              call ru_say_838d7591786c6e8578856d80 addr end
+            end
+            if ord is 6
+              call ru_say_838d7591786c6e8578956d6c addr end
+            end
+            if ord is 7
+              call ru_say_838d7591786c6e8578856d addr end
+            end
+            if ord is 8
+              call ru_say_838d7591786c6e85789593 addr end
+            end
+            if ord is 9
+              call ru_say_838d7591786c6e8578809f addr end
+            end
+          end
+          if d3 is 0
+            if ord is 1
+              call ru_say_7780638d759576 addr end
+            end
+            if ord is 2
+              call ru_say_7780638d756191 addr end
+            end
+            if ord is 3
+              call ru_say_7780638d75858d addr end
+            end
+            if ord is 4
+              call ru_say_7780638d75857f85 addr end
+            end
+            if ord is 5
+              call ru_say_7780638d75856d80 addr end
+            end
+            if ord is 6
+              call ru_say_7780638d75956d6c addr end
+            end
+            if ord is 7
+              call ru_say_7780638d75856d addr end
+            end
+            if ord is 8
+              call ru_say_7780638d759593 addr end
+            end
+            if ord is 9
+              call ru_say_7780638d75809f addr end
+            end
+          end
+        end
+      end
+      set k to d2
+      add d1 to k
+      if k is not 0
+        call ru_group addr end d3 0 0 0
+        if d2 is 1
+          if d1 is 0
+            if ord is 1
+              call ru_say_838d6e91789576 addr end
+            end
+            if ord is 2
+              call ru_say_838d6e91786191 addr end
+            end
+            if ord is 3
+              call ru_say_838d6e9178858d addr end
+            end
+            if ord is 4
+              call ru_say_838d6e9178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_838d6e9178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_838d6e9178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_838d6e9178856d addr end
+            end
+            if ord is 8
+              call ru_say_838d6e91789593 addr end
+            end
+            if ord is 9
+              call ru_say_838d6e9178809f addr end
+            end
+          end
+          if d1 is 1
+            if ord is 1
+              call ru_say_85836c777761836561789576 addr end
+            end
+            if ord is 2
+              call ru_say_85836c777761836561786191 addr end
+            end
+            if ord is 3
+              call ru_say_85836c77776183656178858d addr end
+            end
+            if ord is 4
+              call ru_say_85836c77776183656178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_85836c77776183656178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_85836c77776183656178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_85836c77776183656178856d addr end
+            end
+            if ord is 8
+              call ru_say_85836c777761836561789593 addr end
+            end
+            if ord is 9
+              call ru_say_85836c77776183656178809f addr end
+            end
+          end
+          if d1 is 2
+            if ord is 1
+              call ru_say_83758d7761836561789576 addr end
+            end
+            if ord is 2
+              call ru_say_83758d7761836561786191 addr end
+            end
+            if ord is 3
+              call ru_say_83758d776183656178858d addr end
+            end
+            if ord is 4
+              call ru_say_83758d776183656178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_83758d776183656178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_83758d776183656178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_83758d776183656178856d addr end
+            end
+            if ord is 8
+              call ru_say_83758d7761836561789593 addr end
+            end
+            if ord is 9
+              call ru_say_83758d776183656178809f addr end
+            end
+          end
+          if d1 is 3
+            if ord is 1
+              call ru_say_78646c7761836561789576 addr end
+            end
+            if ord is 2
+              call ru_say_78646c7761836561786191 addr end
+            end
+            if ord is 3
+              call ru_say_78646c776183656178858d addr end
+            end
+            if ord is 4
+              call ru_say_78646c776183656178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_78646c776183656178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_78646c776183656178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_78646c776183656178856d addr end
+            end
+            if ord is 8
+              call ru_say_78646c7761836561789593 addr end
+            end
+            if ord is 9
+              call ru_say_78646c776183656178809f addr end
+            end
+          end
+          if d1 is 4
+            if ord is 1
+              call ru_say_6f8d7895647761836561789576 addr end
+            end
+            if ord is 2
+              call ru_say_6f8d7895647761836561786191 addr end
+            end
+            if ord is 3
+              call ru_say_6f8d789564776183656178858d addr end
+            end
+            if ord is 4
+              call ru_say_6f8d789564776183656178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_6f8d789564776183656178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_6f8d789564776183656178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_6f8d789564776183656178856d addr end
+            end
+            if ord is 8
+              call ru_say_6f8d7895647761836561789593 addr end
+            end
+            if ord is 9
+              call ru_say_6f8d789564776183656178809f addr end
+            end
+          end
+          if d1 is 5
+            if ord is 1
+              call ru_say_9991787761836561789576 addr end
+            end
+            if ord is 2
+              call ru_say_9991787761836561786191 addr end
+            end
+            if ord is 3
+              call ru_say_999178776183656178858d addr end
+            end
+            if ord is 4
+              call ru_say_999178776183656178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_999178776183656178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_999178776183656178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_999178776183656178856d addr end
+            end
+            if ord is 8
+              call ru_say_9991787761836561789593 addr end
+            end
+            if ord is 9
+              call ru_say_999178776183656178809f addr end
+            end
+          end
+          if d1 is 6
+            if ord is 1
+              call ru_say_798d6e787761836561789576 addr end
+            end
+            if ord is 2
+              call ru_say_798d6e787761836561786191 addr end
+            end
+            if ord is 3
+              call ru_say_798d6e78776183656178858d addr end
+            end
+            if ord is 4
+              call ru_say_798d6e78776183656178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_798d6e78776183656178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_798d6e78776183656178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_798d6e78776183656178856d addr end
+            end
+            if ord is 8
+              call ru_say_798d6e787761836561789593 addr end
+            end
+            if ord is 9
+              call ru_say_798d6e78776183656178809f addr end
+            end
+          end
+          if d1 is 7
+            if ord is 1
+              call ru_say_6e8d6d7761836561789576 addr end
+            end
+            if ord is 2
+              call ru_say_6e8d6d7761836561786191 addr end
+            end
+            if ord is 3
+              call ru_say_6e8d6d776183656178858d addr end
+            end
+            if ord is 4
+              call ru_say_6e8d6d776183656178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_6e8d6d776183656178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_6e8d6d776183656178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_6e8d6d776183656178856d addr end
+            end
+            if ord is 8
+              call ru_say_6e8d6d7761836561789593 addr end
+            end
+            if ord is 9
+              call ru_say_6e8d6d776183656178809f addr end
+            end
+          end
+          if d1 is 8
+            if ord is 1
+              call ru_say_75856e8d6d7761836561789576 addr end
+            end
+            if ord is 2
+              call ru_say_75856e8d6d7761836561786191 addr end
+            end
+            if ord is 3
+              call ru_say_75856e8d6d776183656178858d addr end
+            end
+            if ord is 4
+              call ru_say_75856e8d6d776183656178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_75856e8d6d776183656178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_75856e8d6d776183656178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_75856e8d6d776183656178856d addr end
+            end
+            if ord is 8
+              call ru_say_75856e8d6d7761836561789593 addr end
+            end
+            if ord is 9
+              call ru_say_75856e8d6d776183656178809f addr end
+            end
+          end
+          if d1 is 9
+            if ord is 1
+              call ru_say_838d7591787761836561789576 addr end
+            end
+            if ord is 2
+              call ru_say_838d7591787761836561786191 addr end
+            end
+            if ord is 3
+              call ru_say_838d759178776183656178858d addr end
+            end
+            if ord is 4
+              call ru_say_838d759178776183656178857f85 addr end
+            end
+            if ord is 5
+              call ru_say_838d759178776183656178856d80 addr end
+            end
+            if ord is 6
+              call ru_say_838d759178776183656178956d6c addr end
+            end
+            if ord is 7
+              call ru_say_838d759178776183656178856d addr end
+            end
+            if ord is 8
+              call ru_say_838d7591787761836561789593 addr end
+            end
+            if ord is 9
+              call ru_say_838d759178776183656178809f addr end
+            end
+          end
+        else
+          if d1 is 0
+            if d2 is 2
+              if ord is 1
+                call ru_say_837561836561789576 addr end
+              end
+              if ord is 2
+                call ru_say_837561836561786191 addr end
+              end
+              if ord is 3
+                call ru_say_83756183656178858d addr end
+              end
+              if ord is 4
+                call ru_say_83756183656178857f85 addr end
+              end
+              if ord is 5
+                call ru_say_83756183656178856d80 addr end
+              end
+              if ord is 6
+                call ru_say_83756183656178956d6c addr end
+              end
+              if ord is 7
+                call ru_say_83756183656178856d addr end
+              end
+              if ord is 8
+                call ru_say_837561836561789593 addr end
+              end
+              if ord is 9
+                call ru_say_83756183656178809f addr end
+              end
+            end
+            if d2 is 3
+              if ord is 1
+                call ru_say_78646c836561789576 addr end
+              end
+              if ord is 2
+                call ru_say_78646c836561786191 addr end
+              end
+              if ord is 3
+                call ru_say_78646c83656178858d addr end
+              end
+              if ord is 4
+                call ru_say_78646c83656178857f85 addr end
+              end
+              if ord is 5
+                call ru_say_78646c83656178856d80 addr end
+              end
+              if ord is 6
+                call ru_say_78646c83656178956d6c addr end
+              end
+              if ord is 7
+                call ru_say_78646c83656178856d addr end
+              end
+              if ord is 8
+                call ru_say_78646c836561789593 addr end
+              end
+              if ord is 9
+                call ru_say_78646c83656178809f addr end
+              end
+            end
+            if d2 is 4
+              if ord is 1
+                call ru_say_6e8564858485758576 addr end
+              end
+              if ord is 2
+                call ru_say_6e8564858485756191 addr end
+              end
+              if ord is 3
+                call ru_say_6e856485848575858d addr end
+              end
+              if ord is 4
+                call ru_say_6e856485848575857f85 addr end
+              end
+              if ord is 5
+                call ru_say_6e856485848575856d80 addr end
+              end
+              if ord is 6
+                call ru_say_6e856485848575956d6c addr end
+              end
+              if ord is 7
+                call ru_say_6e856485848575856d addr end
+              end
+              if ord is 8
+                call ru_say_6e8564858485759593 addr end
+              end
+              if ord is 9
+                call ru_say_6e856485848575809f addr end
+              end
+            end
+            if d2 is 5
+              if ord is 1
+                call ru_say_9991786c838d6e91789576 addr end
+              end
+              if ord is 2
+                call ru_say_9991786c838d6e91786191 addr end
+              end
+              if ord is 3
+                call ru_say_9991786c838d6e9178858d addr end
+              end
+              if ord is 4
+                call ru_say_9991786c838d6e9178857f85 addr end
+              end
+              if ord is 5
+                call ru_say_9991786c838d6e9178856d80 addr end
+              end
+              if ord is 6
+                call ru_say_9991786c838d6e9178956d6c addr end
+              end
+              if ord is 7
+                call ru_say_9991786c838d6e9178856d addr end
+              end
+              if ord is 8
+                call ru_say_9991786c838d6e91789593 addr end
+              end
+              if ord is 9
+                call ru_say_9991786c838d6e9178809f addr end
+              end
+            end
+            if d2 is 6
+              if ord is 1
+                call ru_say_798d6e786c838d6e91789576 addr end
+              end
+              if ord is 2
+                call ru_say_798d6e786c838d6e91786191 addr end
+              end
+              if ord is 3
+                call ru_say_798d6e786c838d6e9178858d addr end
+              end
+              if ord is 4
+                call ru_say_798d6e786c838d6e9178857f85 addr end
+              end
+              if ord is 5
+                call ru_say_798d6e786c838d6e9178856d80 addr end
+              end
+              if ord is 6
+                call ru_say_798d6e786c838d6e9178956d6c addr end
+              end
+              if ord is 7
+                call ru_say_798d6e786c838d6e9178856d addr end
+              end
+              if ord is 8
+                call ru_say_798d6e786c838d6e91789593 addr end
+              end
+              if ord is 9
+                call ru_say_798d6e786c838d6e9178809f addr end
+              end
+            end
+            if d2 is 7
+              if ord is 1
+                call ru_say_6e8d6d6c838d6e91789576 addr end
+              end
+              if ord is 2
+                call ru_say_6e8d6d6c838d6e91786191 addr end
+              end
+              if ord is 3
+                call ru_say_6e8d6d6c838d6e9178858d addr end
+              end
+              if ord is 4
+                call ru_say_6e8d6d6c838d6e9178857f85 addr end
+              end
+              if ord is 5
+                call ru_say_6e8d6d6c838d6e9178856d80 addr end
+              end
+              if ord is 6
+                call ru_say_6e8d6d6c838d6e9178956d6c addr end
+              end
+              if ord is 7
+                call ru_say_6e8d6d6c838d6e9178856d addr end
+              end
+              if ord is 8
+                call ru_say_6e8d6d6c838d6e91789593 addr end
+              end
+              if ord is 9
+                call ru_say_6e8d6d6c838d6e9178809f addr end
+              end
+            end
+            if d2 is 8
+              if ord is 1
+                call ru_say_75856ea06d6c838d6e91789576 addr end
+              end
+              if ord is 2
+                call ru_say_75856ea06d6c838d6e91786191 addr end
+              end
+              if ord is 3
+                call ru_say_75856ea06d6c838d6e9178858d addr end
+              end
+              if ord is 4
+                call ru_say_75856ea06d6c838d6e9178857f85 addr end
+              end
+              if ord is 5
+                call ru_say_75856ea06d6c838d6e9178856d80 addr end
+              end
+              if ord is 6
+                call ru_say_75856ea06d6c838d6e9178956d6c addr end
+              end
+              if ord is 7
+                call ru_say_75856ea06d6c838d6e9178856d addr end
+              end
+              if ord is 8
+                call ru_say_75856ea06d6c838d6e91789593 addr end
+              end
+              if ord is 9
+                call ru_say_75856ea06d6c838d6e9178809f addr end
+              end
+            end
+            if d2 is 9
+              if ord is 1
+                call ru_say_838d759177856e789576 addr end
+              end
+              if ord is 2
+                call ru_say_838d759177856e786191 addr end
+              end
+              if ord is 3
+                call ru_say_838d759177856e78858d addr end
+              end
+              if ord is 4
+                call ru_say_838d759177856e78857f85 addr end
+              end
+              if ord is 5
+                call ru_say_838d759177856e78856d80 addr end
+              end
+              if ord is 6
+                call ru_say_838d759177856e78956d6c addr end
+              end
+              if ord is 7
+                call ru_say_838d759177856e78856d addr end
+              end
+              if ord is 8
+                call ru_say_838d759177856e789593 addr end
+              end
+              if ord is 9
+                call ru_say_838d759177856e78809f addr end
+              end
+            end
+          else
+            call ru_group addr end 0 d2 0 0
+            if d1 is 1
+              if ord is 1
+                call ru_say_998d64759576 addr end
+              end
+              if ord is 2
+                call ru_say_998d64756191 addr end
+              end
+              if ord is 3
+                call ru_say_998d6475858d addr end
+              end
+              if ord is 4
+                call ru_say_998d6475857f85 addr end
+              end
+              if ord is 5
+                call ru_say_998d6475856d80 addr end
+              end
+              if ord is 6
+                call ru_say_998d6475956d6c addr end
+              end
+              if ord is 7
+                call ru_say_998d6475856d addr end
+              end
+              if ord is 8
+                call ru_say_998d64759593 addr end
+              end
+              if ord is 9
+                call ru_say_998d6475809f addr end
+              end
+            end
+            if d1 is 2
+              if ord is 1
+                call ru_say_757885648576 addr end
+              end
+              if ord is 2
+                call ru_say_757885646191 addr end
+              end
+              if ord is 3
+                call ru_say_75788564858d addr end
+              end
+              if ord is 4
+                call ru_say_75788564857f85 addr end
+              end
+              if ord is 5
+                call ru_say_75788564856d80 addr end
+              end
+              if ord is 6
+                call ru_say_75788564956d6c addr end
+              end
+              if ord is 7
+                call ru_say_75788564856d addr end
+              end
+              if ord is 8
+                call ru_say_757885649593 addr end
+              end
+              if ord is 9
+                call ru_say_75788564809f addr end
+              end
+            end
+            if d1 is 3
+              if ord is 1
+                call ru_say_78648d786c76 addr end
+              end
+              if ord is 2
+                call ru_say_78648d78a091 addr end
+              end
+              if ord is 3
+                call ru_say_78648d78a08d addr end
+              end
+              if ord is 4
+                call ru_say_78648d78a08d7f85 addr end
+              end
+              if ord is 5
+                call ru_say_78648d78a08d6d80 addr end
+              end
+              if ord is 6
+                call ru_say_78648d78a06c6d6c addr end
+              end
+              if ord is 7
+                call ru_say_78648d78a08d6d addr end
+              end
+              if ord is 8
+                call ru_say_78648d78a06c93 addr end
+              end
+              if ord is 9
+                call ru_say_78648d78a09f addr end
+              end
+            end
+            if d1 is 4
+              if ord is 1
+                call ru_say_6f8d78758f64789576 addr end
+              end
+              if ord is 2
+                call ru_say_6f8d78758f64786191 addr end
+              end
+              if ord is 3
+                call ru_say_6f8d78758f6478858d addr end
+              end
+              if ord is 4
+                call ru_say_6f8d78758f6478857f85 addr end
+              end
+              if ord is 5
+                call ru_say_6f8d78758f6478856d80 addr end
+              end
+              if ord is 6
+                call ru_say_6f8d78758f6478956d6c addr end
+              end
+              if ord is 7
+                call ru_say_6f8d78758f6478856d addr end
+              end
+              if ord is 8
+                call ru_say_6f8d78758f64789593 addr end
+              end
+              if ord is 9
+                call ru_say_6f8d78758f6478809f addr end
+              end
+            end
+            if d1 is 5
+              if ord is 1
+                call ru_say_9991789576 addr end
+              end
+              if ord is 2
+                call ru_say_9991786191 addr end
+              end
+              if ord is 3
+                call ru_say_999178858d addr end
+              end
+              if ord is 4
+                call ru_say_999178857f85 addr end
+              end
+              if ord is 5
+                call ru_say_999178856d80 addr end
+              end
+              if ord is 6
+                call ru_say_999178956d6c addr end
+              end
+              if ord is 7
+                call ru_say_999178856d addr end
+              end
+              if ord is 8
+                call ru_say_9991789593 addr end
+              end
+              if ord is 9
+                call ru_say_999178809f addr end
+              end
+            end
+            if d1 is 6
+              if ord is 1
+                call ru_say_798d6e788576 addr end
+              end
+              if ord is 2
+                call ru_say_798d6e786191 addr end
+              end
+              if ord is 3
+                call ru_say_798d6e78858d addr end
+              end
+              if ord is 4
+                call ru_say_798d6e78857f85 addr end
+              end
+              if ord is 5
+                call ru_say_798d6e78856d80 addr end
+              end
+              if ord is 6
+                call ru_say_798d6e78956d6c addr end
+              end
+              if ord is 7
+                call ru_say_798d6e78856d addr end
+              end
+              if ord is 8
+                call ru_say_798d6e789593 addr end
+              end
+              if ord is 9
+                call ru_say_798d6e78809f addr end
+              end
+            end
+            if d1 is 7
+              if ord is 1
+                call ru_say_6e8d83a06d8576 addr end
+              end
+              if ord is 2
+                call ru_say_6e8d83a06d6191 addr end
+              end
+              if ord is 3
+                call ru_say_6e8d83a06d858d addr end
+              end
+              if ord is 4
+                call ru_say_6e8d83a06d857f85 addr end
+              end
+              if ord is 5
+                call ru_say_6e8d83a06d856d80 addr end
+              end
+              if ord is 6
+                call ru_say_6e8d83a06d956d6c addr end
+              end
+              if ord is 7
+                call ru_say_6e8d83a06d856d addr end
+              end
+              if ord is 8
+                call ru_say_6e8d83a06d9593 addr end
+              end
+              if ord is 9
+                call ru_say_6e8d83a06d809f addr end
+              end
+            end
+            if d1 is 8
+              if ord is 1
+                call ru_say_75856ea06d8576 addr end
+              end
+              if ord is 2
+                call ru_say_75856ea06d6191 addr end
+              end
+              if ord is 3
+                call ru_say_75856ea06d858d addr end
+              end
+              if ord is 4
+                call ru_say_75856ea06d857f85 addr end
+              end
+              if ord is 5
+                call ru_say_75856ea06d856d80 addr end
+              end
+              if ord is 6
+                call ru_say_75856ea06d956d6c addr end
+              end
+              if ord is 7
+                call ru_say_75856ea06d856d addr end
+              end
+              if ord is 8
+                call ru_say_75856ea06d9593 addr end
+              end
+              if ord is 9
+                call ru_say_75856ea06d809f addr end
+              end
+            end
+            if d1 is 9
+              if ord is 1
+                call ru_say_838d7591789576 addr end
+              end
+              if ord is 2
+                call ru_say_838d7591786191 addr end
+              end
+              if ord is 3
+                call ru_say_838d759178858d addr end
+              end
+              if ord is 4
+                call ru_say_838d759178857f85 addr end
+              end
+              if ord is 5
+                call ru_say_838d759178856d80 addr end
+              end
+              if ord is 6
+                call ru_say_838d759178956d6c addr end
+              end
+              if ord is 7
+                call ru_say_838d759178856d addr end
+              end
+              if ord is 8
+                call ru_say_838d7591789593 addr end
+              end
+              if ord is 9
+                call ru_say_838d759178809f addr end
+              end
+            end
+          end
+        end
+      end
+    end
+    # And the hyphen and the ending, made spaces where they stand.
+    call lpta_loadp addr end
+    call setscan_r 1
+    set k to olen
+    increment k
+    while k is more than 0
+      call advance_tok
+      decrement k
+    end
+    call savescptr 5 addr p
+    call lpta_rpta_loadp addr end addr p
+    call mark_s 1 0 72 0
+    call lpta_rpta_loadp addr end addr p
+    call mark_s 1 1 0 0
+    call lpta_rpta_loadp addr end addr p
+    call mark_s 1 3 5 0
+    call lpta_rpta_loadp addr end addr p
+    call mark_s 1 4 0 0
+    match
+  end
   # A number that begins with a nought, 007, is said a digit at a time.
   set zero to 0
   if n is 2

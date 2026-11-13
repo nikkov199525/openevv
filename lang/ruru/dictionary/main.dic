@@ -47,7 +47,6 @@
 всего	всего́
 всему	всему́
 вставить	вста́вить
-вторая	втора́я
 вчера	вчера́
 выбери	вы́бери
 выбрал	вы́брал
@@ -394,3 +393,27 @@
 языке	языке́
 январь	янва́рь
 января	января́
+
+# Written by hand, and copied onto the end of main.dic as it stands by
+# tools/module/stresswords.py. Abbreviations Russian writes with a dot, said
+# in full; the dot stays where it was, so it is read as it would be after
+# the full word.
+руб	рубле́й
+коп	копе́ек
+тыс	ты́сяч
+млн	миллио́нов
+млрд	миллиа́рдов
+ул	у́лица
+стр	страни́ца
+напр	наприме́р
+гг	го́ды
+вв	века́
+кв	кварти́ра
+обл	о́бласть
+т.е	то е́сть
+т.к	так как
+т.д	так да́лее
+т.п	тому́ подо́бное
+т.н	так называ́емый
+т.ч	том числе́
+н.э	на́шей э́ры
