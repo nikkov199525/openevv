@@ -4376,6 +4376,10 @@ rule normalize_text takes 3
   end
   place t2e47c_15 on 15
   set h_rsi to addr c130
+  call ru_dollar_prefix h_rsi
+  if answer is 0
+    go to p2e596
+  end
   call ru_tok_lookup h_rsi
   set h_rax to answer
   if h_rax is 0
@@ -12018,6 +12022,101 @@ rule ru_group takes 6 from ut_norm.obj
     end
   end
   match
+end
+
+# The reference names a dollar sign before the amount.
+rule ru_dollar_prefix takes 2 from ut_norm.obj
+  afresh
+  local left bytes 8
+  local right bytes 8
+  call ZZget_parmPTR addr left arg 1
+  call ZZfence_null
+  call ZZlpta_load__setscan_r__1 addr left
+  if answer is not 0
+    give up
+  end
+  call test_string_s 1 1 sym ru_sym_55
+  if answer is not 0
+    give up
+  end
+  call savescptr 1 addr right
+  call ru_scan_digit
+  if answer is 10
+    give up
+  end
+  call lpta_rpta_loadp addr left addr right
+  call insert_2pt_s 1 7 sym ru_dollar_prefix_text 0
+  if answer is 0
+    match
+  end
+  give up
+end
+
+rule ru_scan_digit takes 0 from ut_norm.obj
+  bare
+  local v
+  set v to 10
+  if v is 10
+    call test_string_s 1 1 sym ru_d0
+    if answer is 0
+      set v to 0
+    end
+  end
+  if v is 10
+    call test_string_s 1 1 sym ru_d1
+    if answer is 0
+      set v to 1
+    end
+  end
+  if v is 10
+    call test_string_s 1 1 sym ru_d2
+    if answer is 0
+      set v to 2
+    end
+  end
+  if v is 10
+    call test_string_s 1 1 sym ru_d3
+    if answer is 0
+      set v to 3
+    end
+  end
+  if v is 10
+    call test_string_s 1 1 sym ru_d4
+    if answer is 0
+      set v to 4
+    end
+  end
+  if v is 10
+    call test_string_s 1 1 sym ru_d5
+    if answer is 0
+      set v to 5
+    end
+  end
+  if v is 10
+    call test_string_s 1 1 sym ru_d6
+    if answer is 0
+      set v to 6
+    end
+  end
+  if v is 10
+    call test_string_s 1 1 sym ru_d7
+    if answer is 0
+      set v to 7
+    end
+  end
+  if v is 10
+    call test_string_s 1 1 sym ru_d8
+    if answer is 0
+      set v to 8
+    end
+  end
+  if v is 10
+    call test_string_s 1 1 sym ru_d9
+    if answer is 0
+      set v to 9
+    end
+  end
+  answer v
 end
 
 rule ru_digits_to_words takes 3 from ut_norm.obj

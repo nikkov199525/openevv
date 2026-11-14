@@ -946,3 +946,4 @@ bytes ru_ph_x  24   # the schwa, an unstressed а or о anywhere else
 bytes ru_ph_I  1d   # an unstressed е, и or я
 bytes ru_ph_X  21   # an unstressed е after ж or ш
 bytes ru_ph_U  2e   # an unstressed у
+bytes ru_dollar_prefix_text 83 85 63 63 61 64 48   # доллар and a space
